@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Prompt Extractor & Generator | Video & Foto to Prompt</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'shimmer': 'shimmer 2s linear infinite',
+          },
+          keyframes: {
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    pre, code, .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .glass {
+      background: rgba(24, 24, 27, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #18181b;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #3f3f46;
+      border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #52525b;
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen selection:bg-emerald-500 selection:text-white pb-20 custom-scrollbar">
+
+  <!-- Navbar -->
+  <header class="border-b border-zinc-800/80 sticky top-0 z-50 glass">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+          <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+        </div>
+        <div>
+          <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-zinc-200 to-emerald-400 bg-clip-text text-transparent">AI Prompt Extractor</span>
+          <span class="text-xs ml-2 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">v2.0 Pro</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="#history-section" class="flex items-center gap-1.5 text-sm text-zinc-400 hover:text-white transition px-3 py-1.5 rounded-lg hover:bg-zinc-800/50">
+          <i data-lucide="history" class="w-4 h-4"></i>
+          <span>Riwayat</span>
+        </a>
+        <div class="h-4 w-px bg-zinc-800"></div>
+        <span class="inline-flex items-center gap-1.5 text-xs text-emerald-400 bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded-full">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          <span>Multi-Model Fallback Ready</span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 pt-8">
+
+    <!-- Hero Title -->
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
+        Ekstrak Visual Menjadi <span class="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Prompt AI Berkualitas</span>
+      </h1>
+      <p class="text-zinc-400 text-sm md:text-base mt-2">
+        Upload foto/video atau paste link URL. Gemini AI menganalisis komposisi, pencahayaan, gerakan, dan menghasilkan prompt siap pakai untuk Midjourney, Sora, Runway, Kling & SDXL.
+      </p>
+    </div>
+
+    <!-- Main Container -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- Input Column (Left: 7 cols) -->
+      <div class="lg:col-span-7 space-y-6">
+
+        <!-- Input Source Tabs & Target Style -->
+        <div class="glass rounded-2xl p-5 border border-zinc-800/80 shadow-xl space-y-5">
+          
+          <!-- Mode Tabs -->
+          <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+            <label class="text-xs font-semibold uppercase tracking-wider text-zinc-400">Sumber Media:</label>
+            <div class="inline-flex p-1 bg-zinc-900 rounded-xl border border-zinc-800 text-xs font-medium">
+              <button id="tab-file-btn" onclick="switchTab('file')" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 text-white shadow-sm transition">
+                <i data-lucide="upload-cloud" class="w-4 h-4"></i>
+                <span>Upload / Drop File</span>
+              </button>
+              <button id="tab-url-btn" onclick="switchTab('url')" class="flex items-center gap-2 px-4 py-2 rounded-lg text-zinc-400 hover:text-white transition">
+                <i data-lucide="link" class="w-4 h-4"></i>
+                <span>Paste Link (URL)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Target Platform Selector -->
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">Target AI Generator:</label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="platform-selector">
+              <button type="button" data-val="flow" class="platform-btn active text-left p-2.5 rounded-xl border border-emerald-500/50 bg-emerald-500/10 text-emerald-300 text-xs font-medium transition hover:border-emerald-500 relative">
+                <span class="absolute -top-2 right-2 px-1.5 py-0.2 bg-emerald-500 text-zinc-950 font-bold text-[9px] rounded-full uppercase">Utama</span>
+                <span class="block font-semibold">✨ Google Flow / Veo</span>
+                <span class="text-[10px] text-zinc-400">Viral FB Reels & Shorts</span>
+              </button>
+              <button type="button" data-val="general" class="platform-btn text-left p-2.5 rounded-xl border border-zinc-800 bg-zinc-900/60 text-zinc-300 text-xs font-medium transition hover:border-zinc-700">
+                <span class="block font-semibold">⚡ Universal AI</span>
+                <span class="text-[10px] text-zinc-400">Semua AI visual & video</span>
+              </button>
+              <button type="button" data-val="video" class="platform-btn text-left p-2.5 rounded-xl border border-zinc-800 bg-zinc-900/60 text-zinc-300 text-xs font-medium transition hover:border-zinc-700">
+                <span class="block font-semibold">🎬 Sora / Runway / Kling</span>
+                <span class="text-[10px] text-zinc-400">Fokus gerakan & transisi</span>
+              </button>
+              <button type="button" data-val="midjourney" class="platform-btn text-left p-2.5 rounded-xl border border-zinc-800 bg-zinc-900/60 text-zinc-300 text-xs font-medium transition hover:border-zinc-700">
+                <span class="block font-semibold">🎨 Midjourney / FLUX</span>
+                <span class="text-[10px] text-zinc-400">Format --ar, --v, styles</span>
+              </button>
+              <button type="button" data-val="photorealistic" class="platform-btn text-left p-2.5 rounded-xl border border-zinc-800 bg-zinc-900/60 text-zinc-300 text-xs font-medium transition hover:border-zinc-700">
+                <span class="block font-semibold">📸 Photorealistic</span>
+                <span class="text-[10px] text-zinc-400">Kamera, lensa & lighting</span>
+              </button>
+              <button type="button" data-val="anime" class="platform-btn text-left p-2.5 rounded-xl border border-zinc-800 bg-zinc-900/60 text-zinc-300 text-xs font-medium transition hover:border-zinc-700">
+                <span class="block font-semibold">✨ Anime & Digital Art</span>
+                <span class="text-[10px] text-zinc-400">Gaya ilustrasi & manga</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- TAB CONTENT: FILE UPLOAD (DRAG & DROP) -->
+          <div id="tab-file-content" class="space-y-4">
+            <div id="drop-zone" class="relative group border-2 border-dashed border-zinc-700 hover:border-emerald-500 rounded-2xl p-8 text-center cursor-pointer transition-all duration-200 bg-zinc-900/40 hover:bg-emerald-950/10">
+              <input type="file" id="file-input" accept="image/*,video/*" class="hidden">
+              <div class="flex flex-col items-center justify-center space-y-3">
+                <div class="w-14 h-14 rounded-2xl bg-zinc-800 group-hover:bg-emerald-500/20 group-hover:scale-110 flex items-center justify-center transition-all duration-200 text-zinc-400 group-hover:text-emerald-400 shadow-inner">
+                  <i data-lucide="cloud-upload" class="w-7 h-7"></i>
+                </div>
+                <div>
+                  <p class="font-semibold text-zinc-200 text-sm md:text-base">
+                    Drag & drop file video / gambar di sini, atau <span class="text-emerald-400 underline decoration-dotted">pilih file</span>
+                  </p>
+                  <p class="text-xs text-zinc-400 mt-1">Mendukung MP4, MOV, WEBM, JPG, PNG, WEBP (Maksimal 100MB)</p>
+                </div>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-800/80 border border-zinc-700 text-[11px] text-zinc-300">
+                  <i data-lucide="clipboard" class="w-3.5 h-3.5 text-emerald-400"></i>
+                  <span>Bisa langsung tekan <b>Ctrl + V</b> untuk paste gambar!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB CONTENT: URL LINK PASTE -->
+          <div id="tab-url-content" class="hidden space-y-3">
+            <label class="block text-xs font-semibold text-zinc-300">Masukkan Link URL Media:</label>
+            <div class="flex gap-2">
+              <div class="relative flex-1">
+                <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-500">
+                  <i data-lucide="link-2" class="w-4 h-4"></i>
+                </span>
+                <input type="url" id="url-input" placeholder="https://contoh.com/video.mp4 atau https://...image.jpg" class="w-full bg-zinc-900 border border-zinc-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 rounded-xl py-3 pl-10 pr-4 text-sm text-zinc-100 placeholder-zinc-500 outline-none transition">
+              </div>
+              <button type="button" id="url-paste-btn" onclick="pasteFromClipboard()" class="px-4 py-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 rounded-xl text-xs font-medium flex items-center gap-1.5 transition">
+                <i data-lucide="clipboard-paste" class="w-4 h-4"></i>
+                <span>Paste</span>
+              </button>
+            </div>
+            <p class="text-xs text-zinc-400">Masukkan tautan langsung gambar atau video publik.</p>
+          </div>
+
+          <!-- Selected Media Preview Card -->
+          <div id="media-preview-container" class="hidden border border-zinc-800 bg-zinc-900/90 rounded-2xl p-4">
+            <div class="flex items-start justify-between mb-3">
+              <div class="flex items-center gap-3">
+                <div id="media-badge" class="px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-semibold uppercase">
+                  Image
+                </div>
+                <div>
+                  <h4 id="preview-filename" class="text-xs md:text-sm font-semibold text-zinc-200 truncate max-w-[240px] md:max-w-[320px]">filename.jpg</h4>
+                  <span id="preview-filesize" class="text-[11px] text-zinc-400">0 MB</span>
+                </div>
+              </div>
+              <button type="button" onclick="clearSelectedMedia()" class="text-xs text-zinc-400 hover:text-red-400 p-1.5 rounded-lg hover:bg-zinc-800 transition flex items-center gap-1">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                <span>Ganti</span>
+              </button>
+            </div>
+
+            <!-- Preview Frame -->
+            <div class="rounded-xl overflow-hidden bg-black/60 border border-zinc-800/80 flex items-center justify-center max-h-72">
+              <img id="img-preview" class="max-h-72 w-auto object-contain hidden" alt="Preview Gambar">
+              <video id="vid-preview" class="max-h-72 w-full object-contain hidden" controls playsinline></video>
+            </div>
+          </div>
+
+          <!-- Generate Action Button -->
+          <button id="generate-btn" onclick="startGeneration()" class="w-full relative overflow-hidden bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold py-4 px-6 rounded-2xl shadow-lg shadow-emerald-900/30 transition-all duration-200 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer group">
+            <i data-lucide="sparkle" class="w-5 h-5 group-hover:rotate-12 transition-transform"></i>
+            <span id="btn-text" class="text-base tracking-wide">Generate AI Prompt</span>
+          </button>
+
+          <!-- Visual Progress & Step Tracker (Shown while loading) -->
+          <div id="progress-container" class="hidden border border-emerald-500/30 bg-emerald-950/20 rounded-2xl p-5 space-y-4 animate-in fade-in duration-300">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <div class="w-4 h-4 border-2 border-emerald-400 border-t-transparent rounded-full animate-spin"></div>
+                <span id="step-title" class="text-sm font-semibold text-emerald-300">Memproses Media...</span>
+              </div>
+              <span id="progress-percentage" class="text-xs font-mono font-bold text-emerald-400">25%</span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full h-2.5 bg-zinc-800 rounded-full overflow-hidden p-0.5">
+              <div id="progress-bar-fill" class="h-full bg-gradient-to-r from-emerald-500 to-teal-300 rounded-full transition-all duration-500 w-1/4"></div>
+            </div>
+
+            <!-- Detailed Steps -->
+            <div class="grid grid-cols-3 gap-2 pt-1 text-center text-[11px]">
+              <div id="step-1" class="step-badge text-emerald-400 font-medium">
+                <span class="block">1. Upload Media</span>
+                <span class="text-[9px] text-zinc-500">File ingestion</span>
+              </div>
+              <div id="step-2" class="step-badge text-zinc-500">
+                <span class="block">2. Vision Scan</span>
+                <span class="text-[9px] text-zinc-500">Gemini File API</span>
+              </div>
+              <div id="step-3" class="step-badge text-zinc-500">
+                <span class="block">3. Craft Prompt</span>
+                <span class="text-[9px] text-zinc-500">Prompt engineering</span>
+              </div>
+            </div>
+
+            <p id="step-desc" class="text-xs text-zinc-400 italic text-center">Mengunggah file ke server...</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Result Column (Right: 5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+
+        <!-- Result Card -->
+        <div id="result-box" class="glass rounded-2xl p-5 border border-zinc-800/80 shadow-xl min-h-[460px] flex flex-col justify-between">
+          <div>
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b border-zinc-800 pb-4 mb-4">
+              <div class="flex items-center gap-2">
+                <i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i>
+                <h3 class="font-bold text-sm text-zinc-100">Hasil Generator Prompt</h3>
+              </div>
+              <div class="flex items-center gap-2">
+                <span id="model-badge" class="hidden text-[10px] px-2.5 py-0.5 rounded-full bg-zinc-800 border border-zinc-700 text-zinc-300 font-mono">
+                  gemini-3.5-flash
+                </span>
+                <button id="copy-all-btn" onclick="copyFullPrompt()" class="hidden text-xs bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-3 py-1.5 rounded-xl transition flex items-center gap-1.5">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                  <span>Copy Semua</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Empty State -->
+            <div id="result-empty" class="py-16 text-center text-zinc-500 space-y-3">
+              <div class="w-16 h-16 mx-auto rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-600">
+                <i data-lucide="sparkles" class="w-8 h-8"></i>
+              </div>
+              <p class="text-sm font-medium text-zinc-400">Belum ada prompt yang diekstrak</p>
+              <p class="text-xs text-zinc-500 max-w-xs mx-auto">Upload gambar atau video di sebelah kiri, lalu klik Generate AI Prompt.</p>
+            </div>
+
+            <!-- Populated Result Content -->
+            <div id="result-content" class="hidden space-y-4 text-sm">
+              
+              <!-- Quick Copy Card for English Prompt -->
+              <div class="bg-emerald-950/30 border border-emerald-500/30 rounded-xl p-4 space-y-2">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                  <span class="text-xs font-bold uppercase text-emerald-400 flex items-center gap-1.5">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> English Prompt (Ready to Copy)
+                  </span>
+                  <div class="flex items-center gap-2">
+                    <button onclick="copyEnglishOnly()" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1 rounded-lg transition font-medium flex items-center gap-1">
+                      <i data-lucide="copy" class="w-3 h-3"></i> Copy English
+                    </button>
+                    <a href="https://flow.google" target="_blank" rel="noopener noreferrer" class="text-xs bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-3 py-1 rounded-lg transition font-medium flex items-center gap-1 shadow-sm">
+                      <i data-lucide="external-link" class="w-3 h-3"></i> Buka Google Flow
+                    </a>
+                  </div>
+                </div>
+                <p id="result-english" class="text-zinc-200 text-xs md:text-sm font-mono leading-relaxed bg-black/40 p-3 rounded-lg border border-zinc-800 selection:bg-emerald-500"></p>
+                <div class="flex items-center justify-between text-[11px] text-zinc-400 pt-1">
+                  <span>💡 Tinggal paste prompt di atas ke Google Flow / Veo untuk render video!</span>
+                </div>
+              </div>
+
+              <!-- Full Prompt Breakdown -->
+              <div class="space-y-1">
+                <span class="text-xs font-semibold uppercase tracking-wider text-zinc-400">Rincian Lengkap:</span>
+                <div id="result-full-text" class="bg-zinc-900/90 border border-zinc-800 rounded-xl p-4 max-h-[380px] overflow-y-auto custom-scrollbar font-mono text-xs text-zinc-300 whitespace-pre-wrap leading-relaxed"></div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Result Footer -->
+          <div id="result-footer" class="hidden border-t border-zinc-800 pt-3 text-[11px] text-zinc-500 flex items-center justify-between">
+            <span>Disimpan otomatis ke SQLite database</span>
+            <button onclick="scrollToHistory()" class="text-emerald-400 hover:underline">Lihat riwayat →</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- History Section -->
+    <section id="history-section" class="mt-16 border-t border-zinc-800/80 pt-10 space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+            <i data-lucide="clock" class="w-6 h-6 text-emerald-400"></i>
+            <span>Riwayat Prompt Tersimpan</span>
+          </h2>
+          <p class="text-zinc-400 text-xs md:text-sm mt-1">Daftar riwayat analisis yang tersimpan di SQLite lokal.</p>
+        </div>
+        <button onclick="clearAllHistory()" class="text-xs text-red-400 hover:text-red-300 hover:bg-red-500/10 border border-red-500/20 px-3 py-1.5 rounded-xl transition flex items-center gap-1.5">
+          <i data-lucide="trash" class="w-3.5 h-3.5"></i>
+          <span>Hapus Semua</span>
+        </button>
+      </div>
+
+      <!-- History Grid -->
+      <div id="history-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-zinc-900 border border-emerald-500/40 text-zinc-100 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3">
+    <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
+    <span id="toast-message" class="text-sm font-medium">Berhasil disalin!</span>
+  </div>
+
+  <script>
+    // State
+    let currentTab = 'file';
+    let selectedFile = null;
+    let selectedPlatform = 'flow';
+    let currentResultPrompt = '';
+
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Tab Switching
+    function switchTab(tab) {
+      currentTab = tab;
+      const fileBtn = document.getElementById('tab-file-btn');
+      const urlBtn = document.getElementById('tab-url-btn');
+      const fileContent = document.getElementById('tab-file-content');
+      const urlContent = document.getElementById('tab-url-content');
+
+      if (tab === 'file') {
+        fileBtn.className = 'flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 text-white shadow-sm transition';
+        urlBtn.className = 'flex items-center gap-2 px-4 py-2 rounded-lg text-zinc-400 hover:text-white transition';
+        fileContent.classList.remove('hidden');
+        urlContent.classList.add('hidden');
+      } else {
+        urlBtn.className = 'flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 text-white shadow-sm transition';
+        fileBtn.className = 'flex items-center gap-2 px-4 py-2 rounded-lg text-zinc-400 hover:text-white transition';
+        urlContent.classList.remove('hidden');
+        fileContent.classList.add('hidden');
+      }
+    }
+
+    // Platform Selector
+    document.querySelectorAll('.platform-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.platform-btn').forEach(b => {
+          b.classList.remove('border-emerald-500/50', 'bg-emerald-500/10', 'text-emerald-300');
+          b.classList.add('border-zinc-800', 'bg-zinc-900/60', 'text-zinc-300');
+        });
+        btn.classList.remove('border-zinc-800', 'bg-zinc-900/60', 'text-zinc-300');
+        btn.classList.add('border-emerald-500/50', 'bg-emerald-500/10', 'text-emerald-300');
+        selectedPlatform = btn.getAttribute('data-val');
+      });
+    });
+
+    // Drag and Drop
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+
+    dropZone.onclick = () => fileInput.click();
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.add('border-emerald-500', 'bg-emerald-950/20');
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.remove('border-emerald-500', 'bg-emerald-950/20');
+      }, false);
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      if (files && files[0]) {
+        handleFileSelection(files[0]);
+      }
+    });
+
+    fileInput.onchange = () => {
+      if (fileInput.files && fileInput.files[0]) {
+        handleFileSelection(fileInput.files[0]);
+      }
+    };
+
+    // Paste from Clipboard (Ctrl+V) anywhere on page
+    window.addEventListener('paste', (e) => {
+      const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+      for (const item of items) {
+        if (item.type.indexOf('image') === 0) {
+          const blob = item.getAsFile();
+          switchTab('file');
+          handleFileSelection(blob, 'pasted-image-' + Date.now() + '.png');
+          showToast('Gambar dari clipboard berhasil dimuat!');
+          break;
+        }
+      }
+    });
+
+    // Paste button for URL
+    async function pasteFromClipboard() {
+      try {
+        const text = await navigator.clipboard.readText();
+        if (text && (text.startsWith('http://') || text.startsWith('https://'))) {
+          document.getElementById('url-input').value = text;
+          showToast('Tautan berhasil di-paste!');
+        } else {
+          showToast('Teks di clipboard bukan URL yang valid.', true);
+        }
+      } catch (err) {
+        showToast('Tidak dapat mengakses clipboard browser.', true);
+      }
+    }
+
+    // Handle File Selection & Preview
+    function handleFileSelection(file, overrideName) {
+      if (!file) return;
+      if (!file.type.startsWith('image/') && !file.type.startsWith('video/')) {
+        return showToast('Hanya format file gambar atau video yang didukung!', true);
+      }
+      if (file.size > 100 * 1024 * 1024) {
+        return showToast('Ukuran file melebihi batas maksimal 100MB!', true);
+      }
+
+      selectedFile = file;
+      const fname = overrideName || file.name || 'uploaded_media';
+      const fsize = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+      const isVideo = file.type.startsWith('video/');
+
+      document.getElementById('preview-filename').textContent = fname;
+      document.getElementById('preview-filesize').textContent = fsize;
+      document.getElementById('media-badge').textContent = isVideo ? 'Video' : 'Image';
+      document.getElementById('media-badge').className = isVideo
+        ? 'px-2.5 py-1 rounded-lg bg-teal-500/10 text-teal-400 border border-teal-500/20 text-xs font-semibold uppercase'
+        : 'px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-semibold uppercase';
+
+      const imgP = document.getElementById('img-preview');
+      const vidP = document.getElementById('vid-preview');
+      const url = URL.createObjectURL(file);
+
+      if (isVideo) {
+        vidP.src = url;
+        vidP.classList.remove('hidden');
+        imgP.classList.add('hidden');
+      } else {
+        imgP.src = url;
+        imgP.classList.remove('hidden');
+        vidP.classList.add('hidden');
+      }
+
+      document.getElementById('media-preview-container').classList.remove('hidden');
+    }
+
+    function clearSelectedMedia() {
+      selectedFile = null;
+      fileInput.value = '';
+      document.getElementById('img-preview').src = '';
+      document.getElementById('vid-preview').src = '';
+      document.getElementById('media-preview-container').classList.add('hidden');
+    }
+
+    // Generation Execution
+    async function startGeneration() {
+      const isFileMode = currentTab === 'file';
+      const urlValue = document.getElementById('url-input').value.trim();
+
+      if (isFileMode && !selectedFile) {
+        return showToast('Silakan pilih atau drop file gambar/video terlebih dahulu!', true);
+      }
+      if (!isFileMode && !urlValue) {
+        return showToast('Silakan masukkan link URL gambar atau video!', true);
+      }
+
+      const generateBtn = document.getElementById('generate-btn');
+      const progressContainer = document.getElementById('progress-container');
+      const progressBar = document.getElementById('progress-bar-fill');
+      const progressPercent = document.getElementById('progress-percentage');
+      const stepTitle = document.getElementById('step-title');
+      const stepDesc = document.getElementById('step-desc');
+
+      generateBtn.disabled = true;
+      progressContainer.classList.remove('hidden');
+
+      // Helper for step updates
+      function setProgress(pct, title, desc, stepNum) {
+        progressBar.style.width = pct + '%';
+        progressPercent.textContent = pct + '%';
+        stepTitle.textContent = title;
+        stepDesc.textContent = desc;
+
+        for (let i = 1; i <= 3; i++) {
+          const el = document.getElementById('step-' + i);
+          if (i <= stepNum) {
+            el.className = 'step-badge text-emerald-400 font-semibold';
+          } else {
+            el.className = 'step-badge text-zinc-500';
+          }
+        }
+      }
+
+      try {
+        let responseJson;
+
+        if (isFileMode) {
+          const isVid = selectedFile.type.startsWith('video/');
+          setProgress(20, 'Mengunggah File...', isVid ? 'Mengunggah video ke server...' : 'Mengunggah gambar...', 1);
+
+          const formData = new FormData();
+          formData.append('file', selectedFile);
+          formData.append('platform', selectedPlatform);
+
+          // Simulated progressive status
+          const stepTimer = setTimeout(() => {
+            setProgress(55, 'Pemrosesan Media AI...', isVid ? 'Google Gemini File API sedang memproses video...' : 'Gemini Vision menganalisis visual...', 2);
+          }, 2000);
+
+          const genTimer = setTimeout(() => {
+            setProgress(85, 'Meracik Prompt Generator...', 'Menyusun visual, motion, lighting, dan parameter...', 3);
+          }, isVid ? 8000 : 3500);
+
+          const res = await fetch('/api/generate', { method: 'POST', body: formData });
+          clearTimeout(stepTimer);
+          clearTimeout(genTimer);
+          responseJson = await res.json();
+        } else {
+          setProgress(25, 'Mengunduh Media dari URL...', 'Menghubungkan ke server sumber...', 1);
+
+          const stepTimer = setTimeout(() => {
+            setProgress(60, 'Menganalisis Media dengan AI...', 'Gemini AI memindai frame dan komposisi...', 2);
+          }, 3000);
+
+          const genTimer = setTimeout(() => {
+            setProgress(85, 'Meracik Prompt...', 'Mengekstrak visual prompts & negative parameters...', 3);
+          }, 7000);
+
+          const res = await fetch('/api/generate-url', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url: urlValue, platform: selectedPlatform })
+          });
+          clearTimeout(stepTimer);
+          clearTimeout(genTimer);
+          responseJson = await res.json();
+        }
+
+        if (responseJson.error) {
+          throw new Error(responseJson.error);
+        }
+
+        setProgress(100, 'Selesai!', 'Prompt berhasil dibuat.', 3);
+        displayResult(responseJson);
+        loadHistory();
+        showToast('Prompt generator berhasil dibuat!');
+
+      } catch (err) {
+        showToast('Gagal: ' + err.message, true);
+      } finally {
+        generateBtn.disabled = false;
+        setTimeout(() => {
+          progressContainer.classList.add('hidden');
+        }, 1200);
+      }
+    }
+
+    // Display Result
+    function displayResult(data) {
+      currentResultPrompt = data.prompt;
+
+      document.getElementById('result-empty').classList.add('hidden');
+      document.getElementById('result-content').classList.remove('hidden');
+      document.getElementById('result-footer').classList.remove('hidden');
+      document.getElementById('copy-all-btn').classList.remove('hidden');
+
+      if (data.modelUsed) {
+        const mb = document.getElementById('model-badge');
+        mb.textContent = '⚡ ' + data.modelUsed;
+        mb.classList.remove('hidden');
+      }
+
+      // Extract English prompt snippet if available
+      let englishPrompt = '';
+      const englishMatch = data.prompt.match(/(?:### 1\. English Prompt \(Ready to Copy\)|English Prompt \(Ready to Copy\)|English:?)([\s\S]*?)(?:### 2|\*\*Indonesian|\*\*Motion|\*\*Negative|$)/i);
+      if (englishMatch && englishMatch[1].trim()) {
+        englishPrompt = englishMatch[1].replace(/\[|\]/g, '').trim();
+      } else {
+        englishPrompt = data.prompt.slice(0, 300) + '...';
+      }
+      document.getElementById('result-english').textContent = englishPrompt;
+
+      // Full text
+      document.getElementById('result-full-text').textContent = data.prompt;
+    }
+
+    // Copy Handlers
+    function copyFullPrompt() {
+      if (!currentResultPrompt) return;
+      navigator.clipboard.writeText(currentResultPrompt);
+      showToast('Semua prompt berhasil disalin!');
+    }
+
+    function copyEnglishOnly() {
+      const txt = document.getElementById('result-english').textContent;
+      if (!txt) return;
+      navigator.clipboard.writeText(txt);
+      showToast('English prompt siap pakai disalin!');
+    }
+
+    // Toast Notification
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = msg;
+
+      if (isError) {
+        toast.className = 'fixed bottom-6 right-6 z-50 transform translate-y-0 opacity-100 transition-all duration-300 pointer-events-auto bg-zinc-900 border border-red-500/50 text-red-200 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3';
+      } else {
+        toast.className = 'fixed bottom-6 right-6 z-50 transform translate-y-0 opacity-100 transition-all duration-300 pointer-events-auto bg-zinc-900 border border-emerald-500/50 text-zinc-100 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3';
+      }
+
+      setTimeout(() => {
+        toast.className = 'fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-zinc-900 border border-zinc-800 text-zinc-100 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3';
+      }, 3500);
+    }
+
+    // History Functions
+    async function loadHistory() {
+      try {
+        const res = await fetch('/api/history');
+        const rows = await res.json();
+        const container = document.getElementById('history-list');
+
+        if (!rows || rows.length === 0) {
+          container.innerHTML = '<div class="col-span-full py-8 text-center text-zinc-500 text-sm">Belum ada riwayat prompt tersimpan.</div>';
+          return;
+        }
+
+        container.innerHTML = rows.map(item => {
+          const isVid = item.type === 'video';
+          const excerpt = item.prompt.slice(0, 160).replace(/[*#]/g, '') + '...';
+          const safePrompt = encodeURIComponent(item.prompt);
+
+          return `
+            <div class="glass border border-zinc-800/80 rounded-2xl p-4 flex flex-col justify-between hover:border-zinc-700 transition">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full ${isVid ? 'bg-teal-500/10 text-teal-400 border border-teal-500/20' : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'}">
+                    ${isVid ? '🎬 Video' : '🖼️ Gambar'}
+                  </span>
+                  <span class="text-[11px] text-zinc-500 font-mono">#${item.id}</span>
+                </div>
+                <h5 class="text-xs font-semibold text-zinc-300 truncate mb-1.5">${item.filename}</h5>
+                <p class="text-xs text-zinc-400 line-clamp-3 font-mono leading-relaxed mb-3">${excerpt}</p>
+              </div>
+              <div class="border-t border-zinc-800/80 pt-3 flex items-center justify-between text-xs">
+                <button onclick="restorePrompt('${safePrompt}')" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1 font-medium">
+                  <i data-lucide="eye" class="w-3.5 h-3.5"></i> Buka
+                </button>
+                <button onclick="deleteHistoryItem(${item.id})" class="text-zinc-500 hover:text-red-400 p-1 transition">
+                  <i data-lucide="trash" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        lucide.createIcons();
+      } catch (e) {
+        console.error('History load error:', e);
+      }
+    }
+
+    function restorePrompt(encodedPrompt) {
+      const decoded = decodeURIComponent(encodedPrompt);
+      displayResult({ prompt: decoded });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      showToast('Prompt dibuka dari riwayat!');
+    }
+
+    async function deleteHistoryItem(id) {
+      try {
+        await fetch('/api/history/' + id, { method: 'DELETE' });
+        loadHistory();
+        showToast('Riwayat berhasil dihapus.');
+      } catch (e) {
+        showToast('Gagal menghapus riwayat.', true);
+      }
+    }
+
+    async function clearAllHistory() {
+      if (!confirm('Apakah Anda yakin ingin menghapus semua riwayat?')) return;
+      try {
+        await fetch('/api/history', { method: 'DELETE' });
+        loadHistory();
+        showToast('Semua riwayat telah dibersihkan.');
+      } catch (e) {
+        showToast('Gagal membersihkan riwayat.', true);
+      }
+    }
+
+    function scrollToHistory() {
+      document.getElementById('history-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Initial Load
+    loadHistory();
+  </script>
+</body>
+</html>
