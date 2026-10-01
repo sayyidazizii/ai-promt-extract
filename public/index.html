@@ -998,6 +998,43 @@
         }
       }
 
+      // Smart Auto-Derivation: If IMAGE_2..5 were not explicitly generated, derive them from Video Parts!
+      if (!result.imagePrompts[2] && result.parts[0]) {
+        const cleanP1 = result.parts[0].prompt.replace(/^(timelapse of|fast-motion timelapse of|fast-motion of|cinematic shot of|video of)\s*/i, '');
+        result.imagePrompts[2] = {
+          num: 2,
+          title: 'Foto 2 (8s) - Progress 25% (Pola Kasar)',
+          prompt: `Photorealistic 8k photo: ${cleanP1}`
+        };
+      }
+
+      if (!result.imagePrompts[3] && result.parts[1]) {
+        const cleanP2 = result.parts[1].prompt.replace(/^(timelapse of|fast-motion timelapse of|fast-motion of|cinematic shot of|video of)\s*/i, '');
+        result.imagePrompts[3] = {
+          num: 3,
+          title: 'Foto 3 (16s) - Progress 50% (Wujud Utama)',
+          prompt: `Photorealistic 8k photo: ${cleanP2}`
+        };
+      }
+
+      if (!result.imagePrompts[4] && result.parts[2]) {
+        const cleanP3 = result.parts[2].prompt.replace(/^(timelapse of|fast-motion timelapse of|fast-motion of|cinematic shot of|video of)\s*/i, '');
+        result.imagePrompts[4] = {
+          num: 4,
+          title: 'Foto 4 (24s) - Progress 75% (Detailing & Amplas)',
+          prompt: `Photorealistic 8k photo: ${cleanP3}`
+        };
+      }
+
+      if (!result.imagePrompts[5] && result.parts[3]) {
+        const cleanP4 = result.parts[3].prompt.replace(/^(cinematic slow pull-back shot of|cinematic slow orbit shot of|cinematic shot of|timelapse of)\s*/i, '');
+        result.imagePrompts[5] = {
+          num: 5,
+          title: 'Foto 5 (32s) - Mahakarya Jadi (100% Selesai)',
+          prompt: `Photorealistic 8k photo: ${cleanP4}`
+        };
+      }
+
       // Guide extraction
       const guideMatch = rawText.match(/===TIMELAPSE_GUIDE===([\s\S]*?)(?:===END_FLOW===|$)/i);
       if (guideMatch) {
@@ -1084,7 +1121,7 @@
       ];
 
       imgContainer.innerHTML = imgKeys.map((num, idx) => {
-        const item = parsedStoryboardData.imagePrompts[num] || { title: `Foto ${num}`, prompt: 'Realistic visual prompt' };
+        const item = parsedStoryboardData.imagePrompts[num] || { title: `Foto ${num}`, prompt: `Photorealistic 8k photo of transformation milestone ${num}` };
         return `
           <div class="bg-zinc-900/90 border border-zinc-800 hover:border-amber-500/50 rounded-xl p-3.5 space-y-2.5 transition">
             <div class="flex items-center justify-between flex-wrap gap-2">
