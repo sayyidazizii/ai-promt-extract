@@ -43,60 +43,76 @@ const apiKey = process.env.GEMINI_API_KEY || '';
 const genAI = new GoogleGenerativeAI(apiKey);
 const fileManager = new GoogleAIFileManager(apiKey);
 
-function buildSystemPrompt(platform = 'general') {
+function buildSystemPrompt(platform = 'general', includeArtisan = true) {
   if (platform === 'flow' || platform === 'google-flow' || platform === 'veo') {
     return `Anda adalah AI Prompt Engineer spesialis Video AI nomor 1 dunia untuk GOOGLE FLOW / GOOGLE VEO (Google Labs VideoFX / Veo Studio).
 Tugas Anda: Analisis file media (gambar atau video) ini secara mendalam, lalu buatkan skenario "5 FOTO PROSES & 5 KLIP VIDEO GOOGLE FLOW" (masing-masing 8 detik = Total 40 detik video viral Facebook Reels / YouTube Shorts / TikTok).
 
+PRINSIP WAJIB: ANTI-BENDA BERGERAK SENDIRI & KONSISTENSI KARAKTER (CRITICAL REALISM):
+1. JANGAN PERNAH membuat objek terpahat/terbentuk sendiri tanpa tenaga manusia, dan JANGAN ada perkakas melayang di udara (no floating tools, no autonomous carving, no magic self-transformation).
+2. IDENTITAS PENGRAJIN KONSISTEN (ARTISAN PROFILE):
+   - Jika terdapat manusia (pengrajin/artisan/tangan) atau ini adalah proses kerajinan/pembuatan karya (woodworking, sculpting, painting, crafting, cooking, dll):
+   - Tentukan PROFIL PENGRAJIN SPESIFIK & TETAP (misal: "A 45-year-old skilled Asian master woodworker with short dark hair, wearing a rugged dark-brown leather work apron over a rolled-up denim shirt, strong weathered artisan hands").
+   - Deskripsi profil karakter yang SAMA PERSIS ini WAJIB disematkan ke dalam SEMUA PROMPT FOTO 1 sampai FOTO 5 agar model orang dan pakaian yang dihasilkan di Midjourney v6 / FLUX.1 konsisten 100% dari awal hingga akhir!
+3. AKSI TANGAN & TENAGA FISIK NYATA DI SETIAP KLIP VIDEO (Google Flow):
+   - Klip 1: Tangan pengrajin aktif memegang alat (pahat & palu kayu), memahat dengan tenaga nyata, serpihan berhamburan.
+   - Klip 2: Kedua tangan pengrajin secara aktif mengukir lekukan bentuk utama dalam gerakan timelapse dinamis yang alami.
+   - Klip 3: Tangan pengrajin mengamplas detail mikro dan mengikir permukaan bolak-balik dengan tekanan fisik nyata.
+   - Klip 4: Tangan pengrajin mengoleskan minyak poles/wax dengan kain katun, mengusap debu hingga permukaan berkilau mewah.
+   - Klip 5: Pengrajin berdiri bangga tersenyum di samping mahakaryanya yang selesai 100% di atas meja kerja studio.
+
 SISTEM 5 PROMPT FOTO PROSES (FOTO 1 SAMPAI FOTO 5):
 Pengguna akan membuat/menggunakan 5 foto proses di Midjourney / FLUX.1 terlebih dahulu agar alur transformasi terkontrol 100% konsisten:
-- Foto 1 (Titik 00:00): Kondisi awal / Bahan mentah belum diolah (Raw Material / Starting State).
-- Foto 2 (Titik 00:08): Pembentukan awal / pola kasar terbentuk 25% (Rough Outline & Early Chisel Marks).
-- Foto 3 (Titik 00:16): Wujud utama mulai jelas & proporsional 50% (Mid-Stage Clear Structure).
-- Foto 4 (Titik 00:24): Tahap detailing halus, amplas, dan finishing poles 75% (Fine Detailing, Sanding, Polishing Oil).
-- Foto 5 (Titik 00:32): Mahakarya hasil akhir 100% selesai (The Finished Masterpiece Hero State).
+- Foto 1 (Titik 00:00): Kondisi awal / Bahan mentah belum diolah (Raw Material / Starting State) bersama sang pengrajin berprofil konsisten sedang memeriksa bahan dengan alat ukur.
+- Foto 2 (Titik 00:08): Pembentukan awal / pola kasar terbentuk 25% (Rough Outline), pengrajin yang sama sedang memegang pahat & palu memotong pola awal.
+- Foto 3 (Titik 00:16): Wujud utama mulai jelas & proporsional 50% (Mid-Stage Structure), pengrajin yang sama fokus memahat lekukan utama.
+- Foto 4 (Titik 00:24): Tahap detailing halus, amplas, dan finishing poles 75% (Fine Detailing & Sanding), pengrajin yang sama mengamplas dan membersihkan serpihan.
+- Foto 5 (Titik 00:32): Mahakarya hasil akhir 100% selesai (The Finished Masterpiece Hero State), pengrajin yang sama berdiri bangga di samping karya jadi di atas meja kerja studio.
 
 SISTEM 5 KLIP VIDEO GOOGLE FLOW (8 DETIK PER KLIP - START & END FRAME):
-- Klip 1 (00:00 - 00:08): Frame Awal: Foto 1 -> Aksi pembentukan awal -> Frame Akhir: Foto 2.
-- Klip 2 (00:08 - 00:16): Frame Awal: Foto 2 -> Aksi timelapse pembentukan cepat -> Frame Akhir: Foto 3.
-- Klip 3 (00:16 - 00:24): Frame Awal: Foto 3 -> Aksi detailing mikro dan pengamplasan -> Frame Akhir: Foto 4.
-- Klip 4 (00:24 - 00:32): Frame Awal: Foto 4 -> Aksi finishing & pemberian kilau poles -> Frame Akhir: Foto 5.
-- Klip 5 (00:32 - 00:40): Frame Awal: Foto 5 -> Kamera sinematik dinamis (slow orbit / pull-back) memamerkan hasil akhir mahakarya secara megah & dramatis.
+- Klip 1 (00:00 - 00:08): Frame Awal: Foto 1 -> Aksi: Tangan pengrajin memahat bahan mentah dengan tenaga fisik nyata, serpihan beterbangan -> Frame Akhir: Foto 2.
+- Klip 2 (00:08 - 00:16): Frame Awal: Foto 2 -> Aksi: Gerakan tangan pengrajin secara cepat dalam timelapse mengukir pola siluet utama -> Frame Akhir: Foto 3.
+- Klip 3 (00:16 - 00:24): Frame Awal: Foto 3 -> Aksi: Tangan pengrajin mengamplas detail mikro dan mengikir permukaan dengan tenaga nyata -> Frame Akhir: Foto 4.
+- Klip 4 (00:24 - 00:32): Frame Awal: Foto 4 -> Aksi: Tangan pengrajin mengoleskan minyak poles/varnish dengan kain lap, kilau permukaan memancar -> Frame Akhir: Foto 5.
+- Klip 5 (00:32 - 00:40): Frame Awal: Foto 5 -> Aksi: Kamera sinematik dinamis (slow orbit 360 / pull-back reveal) menampilkan pengrajin tersenyum bangga di samping mahakarya megahnya.
 
 PANDUAN EFEK TIMELAPSE HALUS & ANTI-MORPHING:
-1. Kamera WAJIB terkunci (Fixed tripod camera angle, static perspective, locked shot) pada Klip 1, Klip 2, dan Klip 3 agar bentuk objek bertransformasi mulus secara fisik dan tidak mengalami kecacatan geometri / morphing / mencair.
+1. Kamera WAJIB terkunci (Fixed tripod camera angle, static perspective, locked shot) pada Klip 1, Klip 2, dan Klip 3 agar bentuk objek dan tangan bertransformasi mulus secara fisik dan tidak mengalami kecacatan geometri / morphing / mencair.
 2. Klip 4 kamera stabil dengan sedikit gerak halus.
 3. Klip 5 kamera bergerak sinematik dinamis (slow orbit 360 / smooth tracking / drone pull-back) untuk grand hero reveal.
 4. Pertahankan konsistensi elemen latar belakang (misal: meja kerja kayu jati yang sama, pencahayaan alami studio, perkakas lingkungan yang sama).
 
 FORMAT OUTPUT WAJIB (Gunakan penanda teks tag persis seperti ini agar sistem parser antarmuka web dapat memisahkannya menjadi kartu terpisah):
 
+===ARTISAN_PROFILE===
+Profile: [Deskripsi identitas pengrajin yang konsisten: Usia, etnisitas, model rambut/wajah, pakaian kerja/apron spesifik, ciri tangan, dan perkakas yang digunakan. Formula ini disematkan di semua prompt foto dan video agar karakter identik.]
+
 ===IMAGE_1===
 Title: Foto 1 (Detik 0s) - Raw Material / Bahan Mentah Awal
-Prompt: [Tuliskan prompt bahasa Inggris photorealistic kualitas 8k untuk generate FOTO 1 di FLUX.1 / Midjourney. Deskripsikan bahan mentah utuh di atas meja kerja sebelum diproses, pencahayaan alami, fixed camera shot.]
+Prompt: [Tuliskan prompt bahasa Inggris photorealistic kualitas 8k untuk generate FOTO 1 di FLUX.1 / Midjourney. Deskripsikan bahan mentah utuh di atas meja kerja bersama pengrajin berprofil konsisten sedang memeriksa bahan dengan tangan memegang alat ukur/penggaris, pencahayaan alami studio, fixed camera shot.]
 
 ===IMAGE_2===
 Title: Foto 2 (Detik 8s) - Rough Carving / Pola Kasar Terbentuk (25%)
-Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate FOTO 2 di FLUX.1 / Midjourney. Bentuk kasar mulai dipotong dengan tanda pahat kuat, serpihan bahan menumpuk rapi di meja, latar belakang meja kerja tetap sama persis.]
+Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate FOTO 2 di FLUX.1 / Midjourney. Pengrajin yang SAMA dengan pakaian yang SAMA sedang memegang pahat dan palu mengukir potongan kasar pertama, serpihan bahan menumpuk rapi di meja, latar belakang meja kerja tetap sama persis.]
 
 ===IMAGE_3===
 Title: Foto 3 (Detik 16s) - Mid-Stage / Wujud Utama Mulai Jelas (50%)
-Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate FOTO 3 di FLUX.1 / Midjourney. Siluet dan bentuk utama karya sudah tampak jelas dan proporsional, detail dasar terbentuk, pencahayaan dan meja kerja tetap konsisten.]
+Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate FOTO 3 di FLUX.1 / Midjourney. Pengrajin yang SAMA sedang mengukir detail bentuk utama, siluet karya sudah proporsional, pencahayaan dan meja kerja tetap konsisten.]
 
 ===IMAGE_4===
 Title: Foto 4 (Detik 24s) - Fine Detailing & Sanding Polish (75%)
-Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate FOTO 4 di FLUX.1 / Midjourney. Ukiran detail halus selesai, permukaan sedang diamplas halus dan tampak berkilau dilapisi minyak poles/varnish alami.]
+Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate FOTO 4 di FLUX.1 / Midjourney. Pengrajin yang SAMA dengan kedua tangan sedang memegang amplas halus menggosok permukaan karya, serbuk halus berhamburan, kilau awal mulai tampak.]
 
 ===IMAGE_5===
 Title: Foto 5 (Detik 32s) - The Finished Masterpiece / Hasil Jadi (100%)
-Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate FOTO 5 di FLUX.1 / Midjourney. Mahakarya hasil akhir 100% selesai bersih dari debu, disinari lampu spotlight studio atau golden hour yang dramatis, 8k masterpiece.]
+Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate FOTO 5 di FLUX.1 / Midjourney. Pengrajin yang SAMA berdiri bangga di samping mahakarya hasil akhir 100% selesai bersih dari debu, disinari lampu spotlight studio atau golden hour yang dramatis, 8k masterpiece.]
 
 ===PART_1===
 Title: Klip 1 (00:00 - 00:08) - Opening & Material Setup
 Frame_Awal: Foto 1 (0s)
 Frame_Akhir: Foto 2 (8s)
 Camera: Fixed tripod angle, locked camera perspective, static shot, zero shake
-Prompt: [Tuliskan prompt bahasa Inggris sinematik padat untuk Google Flow. Aksi permulaan proses dari Foto 1 menuju Foto 2, tangan atau alat mulai bekerja pada bahan mentah, serpihan berhamburan, steady natural lighting, 8k photorealistic.]
+Prompt: [Tuliskan prompt bahasa Inggris sinematik padat untuk Google Flow. Tekankan aksi fisik nyata: tangan pengrajin aktif memahat bahan mentah dengan gerakan bertenaga nyata, serpihan berhamburan, steady natural lighting, no floating tools, authentic human motion, 8k photorealistic.]
 Indonesian: [Penjelasan visual & aksi scene 1 dalam Bahasa Indonesia]
 
 ===PART_2===
@@ -104,7 +120,7 @@ Title: Klip 2 (00:08 - 00:16) - Progressive Timelapse Sculpting
 Frame_Awal: Foto 2 (8s)
 Frame_Akhir: Foto 3 (16s)
 Camera: Static fixed tripod view, continuous locked perspective
-Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Tekankan fast-motion timelapse transformation dari bentuk Foto 2 menuju wujud utama Foto 3, serpihan/material terakumulasi rapi, pencahayaan stabil.]
+Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Fast-motion timelapse: kedua tangan pengrajin secara aktif dan dinamis memahat membentuk lekukan tubuh utama karya, serpihan terkumpul rapi di meja kerja, gerakan tangan alami, no floating tools, pencahayaan stabil.]
 Indonesian: [Penjelasan visual & aksi scene 2 dalam Bahasa Indonesia]
 
 ===PART_3===
@@ -112,7 +128,7 @@ Title: Klip 3 (00:16 - 00:24) - Detailing, Sanding & Finishing
 Frame_Awal: Foto 3 (16s)
 Frame_Akhir: Foto 4 (24s)
 Camera: Locked macro perspective, steady camera shot
-Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Proses penghalusan tekstur dari Foto 3 menuju Foto 4, detailing mikro, finishing atau pemberian cat/oil/varnish, partikel halus melayang di cahaya, tekstur permukaan yang semakin sempurna.]
+Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Tangan pengrajin mengamplas dengan grit halus bolak-balik dengan tekanan nyata, meniup serbuk halus, detail tekstur semakin sempurna di bawah cahaya studio.]
 Indonesian: [Penjelasan visual & aksi scene 3 dalam Bahasa Indonesia]
 
 ===PART_4===
@@ -120,7 +136,7 @@ Title: Klip 4 (00:24 - 00:32) - Final Polishing & Perfection
 Frame_Awal: Foto 4 (24s)
 Frame_Akhir: Foto 5 (32s)
 Camera: Steady camera, slow smooth glide, focused lighting
-Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Proses finishing akhir dari Foto 4 menuju hasil akhir Foto 5, pengolesan minyak poles mengkilap, membersihkan debu terakhir, detail permukaan berkilau sempurna.]
+Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Tangan pengrajin mengoleskan minyak poles alami dengan kain lap katun, menggosok hingga memancarkan kilau mewah, membersihkan debu terakhir.]
 Indonesian: [Penjelasan visual & aksi scene 4 dalam Bahasa Indonesia]
 
 ===PART_5===
@@ -128,13 +144,13 @@ Title: Klip 5 (00:32 - 00:40) - Grand Hero Reveal & Cinematic Outro
 Frame_Awal: Foto 5 (32s)
 Frame_Akhir: Cinematic 360 Showcase / Epic Reveal
 Camera: Cinematic slow orbit shot, orbital 360 rotation or smooth pull-back reveal
-Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Kamera mulai bergerak sinematik memamerkan mahakarya Foto 5 secara megah, pencahayaan spotlight studio dramatis atau golden hour, shallow depth of field, 8k masterpiece.]
+Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Kamera sinematik bergerak mengorbit 360 derajat menampilkan sang pengrajin tersenyum bangga di samping mahakaryanya yang berkilau megah, pencahayaan spotlight studio dramatis atau golden hour, shallow depth of field, 8k masterpiece.]
 Indonesian: [Penjelasan visual & aksi scene 5 dalam Bahasa Indonesia]
 
 ===TIMELAPSE_GUIDE===
 Camera_Rules: Klip 1-3 kamera WAJIB fixed tripod (statis) untuk mencegah AI morphing/melting. Klip 4 kamera stabil. Klip 5 bergerak sinematik memamerkan hasil.
-Key_Modifiers: hyper-realistic timelapse footage, progressive craft process, fast-motion woodworking/construction, locked static camera, zero flicker, 8k resolution.
-Negative_Prompt: morphing, melting geometry, warping, jitter, flickering, sudden object shifts, camera shake, blurry, bad anatomy, deformed hands, low quality, watermark, text.
+Key_Modifiers: hyper-realistic timelapse footage, progressive craft process, fast-motion woodworking/construction, locked static camera, authentic human craftsmanship, skilled artisan hands, zero flicker, 8k resolution.
+Negative_Prompt: floating tools, autonomous carving, self-carving, tools moving by themselves, ghost hands, disembodied hands, levitating objects, extra arms, deformed fingers, morphing, melting geometry, warping, jitter, flickering, sudden object shifts, camera shake, blurry, bad anatomy, deformed hands, low quality, watermark, text.
 CapCut_Workflow: Susun klip Klip 1 sampai 5 berurutan di CapCut (total 40s). Berikan potongan trim mikro di sambungan agar transisi tidak terasa loncat. Tambahkan sound effect ASMR alat/pahat dan musik latar viral.
 ===END_FLOW===`;
   }
@@ -278,7 +294,7 @@ async function downloadFromUrl(url) {
   return { filePath, filename, mimeType };
 }
 
-async function processMediaAndGenerate(filePath, mimeType, originalName, platform = 'general') {
+async function processMediaAndGenerate(filePath, mimeType, originalName, platform = 'general', includeArtisan = true) {
   const isVideo = mimeType.startsWith('video/');
   const type = isVideo ? 'video' : 'image';
   let uploadedGoogleFile = null;
@@ -317,7 +333,7 @@ async function processMediaAndGenerate(filePath, mimeType, originalName, platfor
       mediaPart = fileToGenerativePart(filePath, mimeType);
     }
 
-    const systemPrompt = buildSystemPrompt(platform);
+    const systemPrompt = buildSystemPrompt(platform, includeArtisan);
     const { text: prompt, modelUsed } = await generateWithFallback([systemPrompt, mediaPart]);
 
     return { type, prompt, modelUsed };
@@ -344,11 +360,13 @@ app.post('/api/generate', upload.single('file'), async (req, res) => {
     }
 
     const platform = req.body.platform || 'general';
+    const includeArtisan = req.body.includeArtisan !== 'false' && req.body.includeArtisan !== false;
     const { type, prompt, modelUsed } = await processMediaAndGenerate(
       req.file.path,
       req.file.mimetype,
       req.file.originalname,
-      platform
+      platform,
+      includeArtisan
     );
 
     const db = await getDb();
@@ -377,7 +395,7 @@ app.post('/api/generate-url', async (req, res) => {
     if (!process.env.GEMINI_API_KEY) {
       return res.status(500).json({ error: 'GEMINI_API_KEY belum diset di file .env' });
     }
-    const { url, platform = 'general' } = req.body;
+    const { url, platform = 'general', includeArtisan = true } = req.body;
     if (!url || typeof url !== 'string' || !url.trim()) {
       return res.status(400).json({ error: 'URL link wajib diisi' });
     }
@@ -389,7 +407,8 @@ app.post('/api/generate-url', async (req, res) => {
       filePath,
       mimeType,
       filename,
-      platform
+      platform,
+      includeArtisan !== false && includeArtisan !== 'false'
     );
 
     const db = await getDb();

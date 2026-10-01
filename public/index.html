@@ -131,7 +131,7 @@
               <button type="button" data-val="flow" class="platform-btn active col-span-2 text-left p-3 rounded-xl border border-emerald-500/50 bg-emerald-500/10 text-emerald-300 text-xs font-medium transition hover:border-emerald-500 relative">
                 <span class="absolute top-2 right-2 px-2 py-0.5 bg-emerald-500 text-zinc-950 font-bold text-[9px] rounded-full uppercase">Utama</span>
                 <span class="block font-bold text-sm text-emerald-200">✨ Google Flow / Veo (Split Prompt Edition)</span>
-                <span class="text-[11px] text-zinc-300 block mt-0.5">5 Prompt Image (Midjourney/FLUX) + 4 Prompt Video (Start & End Frame)</span>
+                <span class="text-[11px] text-zinc-300 block mt-0.5">5 Prompt Image (Midjourney/FLUX) + 5 Prompt Video (Start & End Frame)</span>
               </button>
               <button type="button" data-val="general" class="platform-btn text-left p-2.5 rounded-xl border border-zinc-800 bg-zinc-900/60 text-zinc-300 text-xs font-medium transition hover:border-zinc-700">
                 <span class="block font-semibold">⚡ Universal AI</span>
@@ -214,6 +214,23 @@
               <img id="img-preview" class="max-h-56 w-auto object-contain hidden" alt="Preview Gambar">
               <video id="vid-preview" class="max-h-56 w-full object-contain hidden" controls playsinline></video>
             </div>
+          </div>
+
+          <!-- Artisan / Consistent Human Anchor Option -->
+          <div class="bg-zinc-900/70 border border-zinc-800 hover:border-emerald-500/40 rounded-2xl p-3.5 space-y-1.5 transition">
+            <div class="flex items-center justify-between">
+              <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                <input type="checkbox" id="artisan-toggle" checked class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 bg-zinc-800 border-zinc-700 cursor-pointer">
+                <span class="text-xs font-bold text-zinc-100 flex items-center gap-1.5">
+                  <i data-lucide="user-check" class="w-4 h-4 text-emerald-400"></i>
+                  Karakter Manusia & Tangan Konsisten
+                </span>
+              </label>
+              <span class="text-[9px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 font-medium">Anti-Benda Bergerak Sendiri</span>
+            </div>
+            <p class="text-[11px] text-zinc-400 leading-relaxed pl-6">
+              Mengunci identitas pengrajin (wajah, pakaian/apron, & tangan aktif memegang alat) secara identik di Foto 1-5 & Klip 1-5 agar objek dipahat secara realistis, bukan bergerak sendiri.
+            </p>
           </div>
 
           <!-- Generate Action Button -->
@@ -368,6 +385,25 @@
                       </div>
                     </div>
                     <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono">5 Foto Keyframe</span>
+                  </div>
+
+                  <!-- Consistent Artisan Profile Anchor Banner (Rendered dynamically if present) -->
+                  <div id="artisan-profile-card" class="hidden bg-gradient-to-r from-amber-950/40 via-zinc-900 to-amber-950/20 border border-amber-500/40 rounded-xl p-3.5 space-y-2">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                      <div class="flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center border border-amber-500/30">
+                          <i data-lucide="user-check" class="w-4 h-4"></i>
+                        </span>
+                        <div>
+                          <h5 class="text-xs font-bold text-amber-300">Profil Pengrajin / Artisan (Anchor Konsistensi Karakter)</h5>
+                          <span class="text-[10px] text-zinc-400">Identitas orang & pakaian dikunci sama persis di Foto 1-5 agar tidak berubah</span>
+                        </div>
+                      </div>
+                      <button onclick="copyElementText('artisan-profile-val', 'Profil karakter berhasil disalin!')" class="text-xs bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 px-2.5 py-1 rounded-lg border border-amber-500/30 transition flex items-center gap-1 font-medium">
+                        <i data-lucide="copy" class="w-3 h-3"></i> Copy Profil
+                      </button>
+                    </div>
+                    <p id="artisan-profile-val" class="text-zinc-200 text-xs font-mono leading-relaxed bg-black/40 p-2.5 rounded-lg border border-zinc-800/80 select-all"></p>
                   </div>
 
                   <!-- Container 5 Cards Image Prompts -->
@@ -534,6 +570,18 @@
           <p>
             Dengan menyiapkan Foto 1 sampai Foto 5 terlebih dahulu, Anda memegang kendali penuh atas wujud transformasi. Saat di Google Flow, Anda tinggal memasukkan Foto Awal (Start Frame) dan Foto Akhir (End Frame), sehingga AI tidak akan berhalusinasi atau mengubah bentuk objek secara acak.
           </p>
+        </div>
+
+        <!-- Consistency & Anti-Ghost Box -->
+        <div class="bg-emerald-950/30 border border-emerald-500/30 rounded-2xl p-4 text-xs text-emerald-200 space-y-2 leading-relaxed">
+          <p class="font-semibold text-emerald-300 flex items-center gap-1.5">
+            <i data-lucide="user-check" class="w-4 h-4"></i> Rahasia Karakter Sama Terus & Barang Tidak Bergerak Sendiri:
+          </p>
+          <ul class="space-y-1 text-zinc-300 text-[11px] list-disc list-inside">
+            <li><b>Deskripsi Pakaian & Fisik Identik</b>: Semua prompt Foto 1 sampai 5 menyertakan profil karakter yang sama (misal: <i>apron kulit cokelat di atas kemeja denim, tangan berotot terampil</i>).</li>
+            <li><b>Kunci Wajah dengan Midjourney <code class="text-amber-300">--cref</code></b>: Setelah Foto 1 selesai di-generate, copy link gambar Foto 1, lalu tambahkan parameter <code class="text-amber-300">--cref [URL Foto 1]</code> di akhir prompt Foto 2, 3, 4, 5 agar wajah orangnya terkunci 100% sama!</li>
+            <li><b>Aksi Fisik Nyata di Google Flow</b>: Karena Foto 1 dan Foto 2 menampilkan orang yang memegang alat, saat Google Flow memproses dari Foto 1 ke Foto 2, AI akan menggerakkan tangan secara fisik memahat, bukan membiarkan kayu memahat dirinya sendiri.</li>
+          </ul>
         </div>
 
         <!-- Steps Timeline -->
@@ -879,6 +927,9 @@
       try {
         let responseJson;
 
+        const artisanToggle = document.getElementById('artisan-toggle');
+        const includeArtisan = artisanToggle ? artisanToggle.checked : true;
+
         if (isFileMode) {
           const isVid = selectedFile.type.startsWith('video/');
           setProgress(20, 'Mengunggah File...', isVid ? 'Mengunggah video ke server...' : 'Mengunggah gambar...', 1);
@@ -886,6 +937,7 @@
           const formData = new FormData();
           formData.append('file', selectedFile);
           formData.append('platform', selectedPlatform);
+          formData.append('includeArtisan', includeArtisan);
 
           const stepTimer = setTimeout(() => {
             setProgress(55, 'Pemrosesan Media AI...', isVid ? 'Google Gemini File API sedang memproses video...' : 'Gemini Vision menganalisis visual...', 2);
@@ -913,7 +965,7 @@
           const res = await fetch('/api/generate-url', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ url: urlValue, platform: selectedPlatform })
+            body: JSON.stringify({ url: urlValue, platform: selectedPlatform, includeArtisan })
           });
           clearTimeout(stepTimer);
           clearTimeout(genTimer);
@@ -947,8 +999,9 @@
       }
 
       const result = {
+        artisanProfile: '',
         imagePrompts: {}, // 1..5
-        parts: [],        // 1..4
+        parts: [],        // 1..5
         timelapseGuide: {
           cameraRules: '',
           keyModifiers: '',
@@ -956,6 +1009,13 @@
           capcutWorkflow: ''
         }
       };
+
+      // Extract Consistent Artisan Profile (if present)
+      const artisanMatch = rawText.match(/===ARTISAN_PROFILE===([\s\S]*?)(?:===IMAGE_1===|$)/i);
+      if (artisanMatch) {
+        const pMatch = artisanMatch[1].match(/(?:Profile|Deskripsi):\s*([\s\S]*?)$/i);
+        result.artisanProfile = pMatch ? pMatch[1].replace(/\[|\]/g, '').trim() : artisanMatch[1].replace(/\[|\]/g, '').trim();
+      }
 
       // Extract 5 Image Prompts
       for (let i = 1; i <= 5; i++) {
@@ -1103,6 +1163,16 @@
         // RENDER 5 IMAGE PROMPTS (TOP) & 5 VIDEO PROMPTS (BOTTOM)
         flowView.classList.remove('hidden');
         genView.classList.add('hidden');
+
+        // Populate Artisan Profile Card
+        const artisanCard = document.getElementById('artisan-profile-card');
+        const artisanVal = document.getElementById('artisan-profile-val');
+        if (parsedStoryboardData.artisanProfile) {
+          artisanVal.textContent = parsedStoryboardData.artisanProfile;
+          artisanCard.classList.remove('hidden');
+        } else {
+          artisanCard.classList.add('hidden');
+        }
 
         renderSplitPrompts();
 
@@ -1257,6 +1327,9 @@
       }
 
       let text = `📸 DAFTAR 5 PROMPT GAMBAR PROSES (GENERATE DI MIDJOURNEY / FLUX)\n=================================================================\n\n`;
+      if (parsedStoryboardData.artisanProfile) {
+        text += `🧑‍🎨 PROFIL PENGRAJIN KONSISTEN (CHARACTER ANCHOR):\n${parsedStoryboardData.artisanProfile}\n\n-----------------------------------------------------------------\n\n`;
+      }
       for (let i = 1; i <= 5; i++) {
         const item = parsedStoryboardData.imagePrompts[i];
         if (item) {
@@ -1294,6 +1367,10 @@
       if (parsedStoryboardData && parsedStoryboardData.parts.length > 0) {
         textToDownload = `🎬 GOOGLE FLOW (VEO) 40-SECOND STORYBOARD (5 IMAGES & 5 VIDEOS)\n=================================================================\n\n`;
         
+        if (parsedStoryboardData.artisanProfile) {
+          textToDownload += `🧑‍🎨 PROFIL PENGRAJIN KONSISTEN (CHARACTER ANCHOR)\n-----------------------------------------------------------------\n${parsedStoryboardData.artisanProfile}\n\n`;
+        }
+
         textToDownload += `📸 SEKSI 1: PROMPT GAMBAR PROSES (GENERATE DI MIDJOURNEY / FLUX)\n-----------------------------------------------------------------\n`;
         for (let i = 1; i <= 5; i++) {
           const item = parsedStoryboardData.imagePrompts[i];
