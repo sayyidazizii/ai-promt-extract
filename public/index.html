@@ -1,120 +1,253 @@
 <!DOCTYPE html>
-<html lang="id" class="dark">
+<html lang="id" class="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Prompt Extractor | 5 Image Prompts & 5 Google Flow Video Prompts (40s)</title>
+  <title>AI Prompt Extractor | Slush Style (5 Image & 5 Video Prompts)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#ecfdf5',
-              500: '#10b981',
-              600: '#059669',
-              700: '#047857',
-            }
-          }
-        }
-      }
-    }
-  </script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    pre, code, .font-mono { font-family: 'JetBrains Mono', monospace; }
-    .glass {
-      background: rgba(24, 24, 27, 0.82);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    :root {
+      --color-carbon: #000000;
+      --color-paper-white: #ffffff;
+      --color-sky-wash: #dceeff;
+      --color-concrete-gray: #cccccc;
+      --color-soft-mist: #e9e9e9;
+      --color-electric-blue: #4da2ff;
+      --color-mint-pop: #55db9c;
+      --color-lavender: #e9ccff;
+      --color-ember: #fb4903;
+      --color-sunburst: #ffd731;
+      --color-voltage-violet: #5c4ade;
     }
+
+    body {
+      font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    pre, code, .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Slush Sticker System Utilities */
+    .slush-border {
+      border: 1px solid #000000;
+    }
+
+    .slush-card {
+      background: #ffffff;
+      border: 1px solid #000000;
+      border-radius: 20px;
+    }
+
+    .slush-card-elevated {
+      background: #ffffff;
+      border: 1px solid #000000;
+      border-radius: 28px;
+    }
+
+    .slush-pill {
+      border: 1px solid #000000;
+      border-radius: 9999px;
+    }
+
+    .slush-btn-primary {
+      background-color: #000000;
+      color: #ffffff;
+      border: 1px solid #000000;
+      border-radius: 9999px;
+      font-weight: 700;
+      transition: all 0.15s ease;
+    }
+    .slush-btn-primary:hover {
+      background-color: #222222;
+      transform: translateY(-1px);
+    }
+    .slush-btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .slush-btn-secondary {
+      background-color: #ffffff;
+      color: #000000;
+      border: 1px solid #000000;
+      border-radius: 9999px;
+      font-weight: 700;
+      transition: all 0.15s ease;
+    }
+    .slush-btn-secondary:hover {
+      background-color: #f4f4f5;
+      transform: translateY(-1px);
+    }
+    .slush-btn-secondary:active {
+      transform: translateY(0);
+    }
+
+    /* Continuous Loop Marquee Animation */
+    @keyframes slushMarquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .animate-slush-marquee {
+      display: inline-flex;
+      white-space: nowrap;
+      animation: slushMarquee 30s linear infinite;
+    }
+
+    .animate-slush-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    /* Custom Scrollbar */
     .custom-scrollbar::-webkit-scrollbar {
       width: 6px;
       height: 6px;
     }
     .custom-scrollbar::-webkit-scrollbar-track {
-      background: #18181b;
+      background: #f4f4f5;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: #3f3f46;
-      border-radius: 3px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-      background: #52525b;
+      background: #000000;
+      border-radius: 9999px;
     }
   </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 min-h-screen selection:bg-emerald-500 selection:text-white pb-20 custom-scrollbar">
+<body class="bg-white text-black min-h-screen selection:bg-[#ffd731] selection:text-black pb-20 custom-scrollbar">
 
-  <!-- Navbar -->
-  <header class="border-b border-zinc-800/80 sticky top-0 z-50 glass">
+  <!-- ======================================================== -->
+  <!-- TOP RUNNING MARQUEE BANNER (Slush Style #000000 Strip)    -->
+  <!-- ======================================================== -->
+  <div class="w-full bg-black text-white text-[11px] md:text-xs font-bold uppercase tracking-wider py-2 overflow-hidden border-b border-black select-none z-50">
+    <div class="animate-slush-marquee flex items-center gap-8">
+      <span>✨ GOOGLE FLOW VEO 40S STORYBOARD</span>
+      <span>•</span>
+      <span>📸 5 FOTO PROSES (FLUX / MIDJOURNEY)</span>
+      <span>•</span>
+      <span>🎬 5 KLIP VIDEO GOOGLE FLOW (START &amp; END FRAME)</span>
+      <span>•</span>
+      <span>🧑‍🎨 ARTISAN ANCHOR KONSISTEN</span>
+      <span>•</span>
+      <span>🚫 ZERO FLOATING TOOLS &amp; ANTI-MORPHING</span>
+      <span>•</span>
+      <span>✨ GOOGLE FLOW VEO 40S STORYBOARD</span>
+      <span>•</span>
+      <span>📸 5 FOTO PROSES (FLUX / MIDJOURNEY)</span>
+      <span>•</span>
+      <span>🎬 5 KLIP VIDEO GOOGLE FLOW (START &amp; END FRAME)</span>
+      <span>•</span>
+      <span>🧑‍🎨 ARTISAN ANCHOR KONSISTEN</span>
+      <span>•</span>
+      <span>🚫 ZERO FLOATING TOOLS &amp; ANTI-MORPHING</span>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- NAVBAR (Slush Clean Pill Navigation)                    -->
+  <!-- ======================================================== -->
+  <header class="border-b border-black sticky top-0 z-40 bg-white/95 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo & Badge -->
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 via-teal-500 to-indigo-500 flex items-center justify-center shadow-lg shadow-emerald-500/20">
-          <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+        <div class="w-9 h-9 rounded-full border border-black bg-[#ffd731] flex items-center justify-center font-black text-black text-base shadow-sm">
+          ✦
         </div>
-        <div>
-          <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-zinc-200 to-emerald-400 bg-clip-text text-transparent">AI Prompt Extractor</span>
-          <span class="text-xs ml-2 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">v3.5 Split Edition</span>
+        <div class="flex items-center gap-2">
+          <span class="font-extrabold text-base md:text-lg tracking-tight text-black">AI Prompt Extractor</span>
+          <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-black bg-[#e9ccff] text-black uppercase">
+            Slush v4.0
+          </span>
         </div>
       </div>
+
+      <!-- Action Nav Buttons -->
       <div class="flex items-center gap-2 sm:gap-3">
-        <button onclick="openTutorialModal()" class="flex items-center gap-1.5 text-xs text-amber-300 hover:text-amber-200 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-3 py-1.5 rounded-xl transition shadow-sm font-medium">
-          <i data-lucide="book-open" class="w-4 h-4 text-amber-400"></i>
-          <span class="hidden sm:inline">Panduan</span> <span>Start & End Frame</span>
+        <button onclick="openTutorialModal()" class="slush-btn-secondary px-3.5 py-1.5 text-xs flex items-center gap-1.5 hover:bg-[#ffd731]">
+          <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">Panduan</span> <span>Workflow</span>
         </button>
 
-        <a href="https://flow.google" target="_blank" rel="noopener noreferrer" class="hidden md:flex items-center gap-1.5 text-xs text-blue-300 hover:text-blue-200 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 px-3 py-1.5 rounded-xl transition font-medium">
-          <i data-lucide="external-link" class="w-3.5 h-3.5 text-blue-400"></i>
+        <a href="https://flow.google" target="_blank" rel="noopener noreferrer" class="slush-btn-secondary px-3.5 py-1.5 text-xs flex items-center gap-1.5 hover:bg-[#dceeff]">
+          <i data-lucide="external-link" class="w-3.5 h-3.5 text-[#4da2ff]"></i>
           <span>Google Flow</span>
         </a>
 
-        <a href="#history-section" class="flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white transition px-3 py-1.5 rounded-xl hover:bg-zinc-800/50">
-          <i data-lucide="history" class="w-4 h-4"></i>
+        <a href="#history-section" class="slush-btn-secondary px-3.5 py-1.5 text-xs flex items-center gap-1.5 hover:bg-[#e9e9e9]">
+          <i data-lucide="history" class="w-3.5 h-3.5"></i>
           <span class="hidden sm:inline">Riwayat</span>
         </a>
       </div>
+
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-4 pt-6">
-
-    <!-- Hero Title -->
-    <div class="text-center max-w-3xl mx-auto mb-7">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">
-        <i data-lucide="layers" class="w-3.5 h-3.5"></i>
-        <span>Pemisahan Rapi: 5 Prompt Image (Atas) & 5 Prompt Video (Bawah)</span>
+  <!-- ======================================================== -->
+  <!-- HERO SECTION (Sky Wash #dceeff Pastel Canvas)            -->
+  <!-- ======================================================== -->
+  <section class="bg-[#dceeff] border-b border-black py-10 md:py-14 px-4">
+    <div class="max-w-5xl mx-auto text-center space-y-4">
+      
+      <!-- Floating Sticker Chips -->
+      <div class="flex flex-wrap items-center justify-center gap-2">
+        <span class="px-3 py-1 rounded-full border border-black bg-[#ffd731] text-black text-[11px] font-bold uppercase tracking-wider">
+          📸 5 Foto Keyframe
+        </span>
+        <span class="px-3 py-1 rounded-full border border-black bg-[#55db9c] text-black text-[11px] font-bold uppercase tracking-wider">
+          🎬 5 Klip Video (40 Detik)
+        </span>
+        <span class="px-3 py-1 rounded-full border border-black bg-[#e9ccff] text-black text-[11px] font-bold uppercase tracking-wider">
+          🧑‍🎨 Artisan Anchor
+        </span>
+        <span class="px-3 py-1 rounded-full border border-black bg-white text-black text-[11px] font-bold uppercase tracking-wider">
+          🚫 No Floating Tools
+        </span>
       </div>
-      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
-        Ekstrak Visual Menjadi <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">Prompt Image & Video Terpisah</span>
-      </h1>
-      <p class="text-zinc-400 text-xs md:text-sm mt-2 max-w-2xl mx-auto">
-        Generate Foto 1 sampai 5 terlebih dahulu di Midjourney / FLUX, lalu gunakan sebagai <b>Frame Awal & Frame Akhir</b> di Google Flow untuk menghasilkan 5 klip video 40 detik yang mulus tanpa cacat!
-      </p>
-    </div>
 
-    <!-- Main Container Grid -->
+      <!-- Sculptural Display Title (Slush Style Lateral feel) -->
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight uppercase leading-[0.95] text-black max-w-4xl mx-auto">
+        Ekstrak Visual Menjadi <br>
+        <span class="bg-[#ffd731] px-3 py-0.5 rounded-2xl border border-black inline-block mt-1 transform -rotate-1 shadow-sm">
+          5 Foto &amp; 5 Video Terpisah
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-xs sm:text-sm md:text-base font-medium text-black max-w-2xl mx-auto leading-relaxed pt-1">
+        Satu media diekstrak otomatis menjadi <b>5 Foto Proses</b> (Midjourney / FLUX) dan <b>5 Prompt Video</b> (Google Flow Start &amp; End Frame) dengan karakter manusia konsisten tanpa benda bergerak sendiri.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- MAIN WORKSPACE CONTAINER                                 -->
+  <!-- ======================================================== -->
+  <main class="max-w-7xl mx-auto px-4 py-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-7">
       
-      <!-- Input Column (Left: 5 cols) -->
+      <!-- ====================================================== -->
+      <!-- LEFT COLUMN: INPUT FORMS (5 cols)                      -->
+      <!-- ====================================================== -->
       <div class="lg:col-span-5 space-y-5">
 
-        <!-- Input Source Tabs & Target Style -->
-        <div class="glass rounded-2xl p-5 border border-zinc-800/80 shadow-xl space-y-4">
+        <!-- Form Card Container -->
+        <div class="slush-card-elevated p-5 md:p-6 space-y-5 bg-white">
           
-          <!-- Mode Tabs -->
-          <div class="flex items-center justify-between border-b border-zinc-800 pb-3">
-            <label class="text-xs font-semibold uppercase tracking-wider text-zinc-400">Sumber Media:</label>
-            <div class="inline-flex p-1 bg-zinc-900 rounded-xl border border-zinc-800 text-xs font-medium">
-              <button id="tab-file-btn" onclick="switchTab('file')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 text-white shadow-sm transition">
+          <!-- Mode Tabs (File vs URL) -->
+          <div class="flex items-center justify-between border-b border-black/10 pb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-black">Sumber Media:</span>
+            <div class="inline-flex p-1 bg-[#f4f4f5] rounded-full border border-black text-xs font-bold">
+              <button id="tab-file-btn" onclick="switchTab('file')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black text-white transition">
                 <i data-lucide="upload-cloud" class="w-3.5 h-3.5"></i>
                 <span>Upload File</span>
               </button>
-              <button id="tab-url-btn" onclick="switchTab('url')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-zinc-400 hover:text-white transition">
+              <button id="tab-url-btn" onclick="switchTab('url')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-black hover:bg-black/5 transition">
                 <i data-lucide="link" class="w-3.5 h-3.5"></i>
                 <span>Paste URL</span>
               </button>
@@ -122,189 +255,199 @@
           </div>
 
           <!-- Target Platform Selector -->
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400">Target AI Generator:</label>
-              <span class="text-[10px] text-emerald-400 font-medium">✨ Rekomendasi: Google Flow</span>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <label class="block text-xs font-bold uppercase tracking-wider text-black">Target AI Generator:</label>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full border border-black bg-[#ffd731] text-black">
+                ✨ Rekomendasi
+              </span>
             </div>
+
             <div class="grid grid-cols-2 gap-2" id="platform-selector">
-              <button type="button" data-val="flow" class="platform-btn active col-span-2 text-left p-3 rounded-xl border border-emerald-500/50 bg-emerald-500/10 text-emerald-300 text-xs font-medium transition hover:border-emerald-500 relative">
-                <span class="absolute top-2 right-2 px-2 py-0.5 bg-emerald-500 text-zinc-950 font-bold text-[9px] rounded-full uppercase">Utama</span>
-                <span class="block font-bold text-sm text-emerald-200">✨ Google Flow / Veo (Split Prompt Edition)</span>
-                <span class="text-[11px] text-zinc-300 block mt-0.5">5 Prompt Image (Midjourney/FLUX) + 5 Prompt Video (Start & End Frame)</span>
+              <button type="button" data-val="flow" class="platform-btn active col-span-2 text-left p-3.5 rounded-2xl border border-black bg-[#dceeff] text-black text-xs font-medium transition hover:bg-[#dceeff]/80 relative">
+                <span class="absolute top-2.5 right-2.5 px-2 py-0.5 bg-black text-white font-bold text-[9px] rounded-full uppercase">Utama</span>
+                <span class="block font-black text-sm text-black">✨ Google Flow / Veo (Split Edition)</span>
+                <span class="text-[11px] text-black/80 block mt-0.5 font-medium">5 Prompt Foto (Midjourney/FLUX) + 5 Prompt Video (Start &amp; End Frame)</span>
               </button>
-              <button type="button" data-val="general" class="platform-btn text-left p-2.5 rounded-xl border border-zinc-800 bg-zinc-900/60 text-zinc-300 text-xs font-medium transition hover:border-zinc-700">
-                <span class="block font-semibold">⚡ Universal AI</span>
-                <span class="text-[10px] text-zinc-400">Semua AI visual & video</span>
+              <button type="button" data-val="general" class="platform-btn text-left p-2.5 rounded-xl border border-black bg-white text-black text-xs font-medium transition hover:bg-[#f4f4f5]">
+                <span class="block font-bold">⚡ Universal AI</span>
+                <span class="text-[10px] text-zinc-600">Semua AI visual</span>
               </button>
-              <button type="button" data-val="video" class="platform-btn text-left p-2.5 rounded-xl border border-zinc-800 bg-zinc-900/60 text-zinc-300 text-xs font-medium transition hover:border-zinc-700">
-                <span class="block font-semibold">🎬 Sora / Runway / Kling</span>
-                <span class="text-[10px] text-zinc-400">Fokus gerak & transisi</span>
+              <button type="button" data-val="video" class="platform-btn text-left p-2.5 rounded-xl border border-black bg-white text-black text-xs font-medium transition hover:bg-[#f4f4f5]">
+                <span class="block font-bold">🎬 Sora / Kling</span>
+                <span class="text-[10px] text-zinc-600">Fokus pergerakan</span>
               </button>
-              <button type="button" data-val="midjourney" class="platform-btn text-left p-2.5 rounded-xl border border-zinc-800 bg-zinc-900/60 text-zinc-300 text-xs font-medium transition hover:border-zinc-700">
-                <span class="block font-semibold">🎨 Midjourney / FLUX</span>
-                <span class="text-[10px] text-zinc-400">Format --ar, --v, styles</span>
+              <button type="button" data-val="midjourney" class="platform-btn text-left p-2.5 rounded-xl border border-black bg-white text-black text-xs font-medium transition hover:bg-[#f4f4f5]">
+                <span class="block font-bold">🎨 Midjourney</span>
+                <span class="text-[10px] text-zinc-600">Format parameter</span>
               </button>
-              <button type="button" data-val="photorealistic" class="platform-btn text-left p-2.5 rounded-xl border border-zinc-800 bg-zinc-900/60 text-zinc-300 text-xs font-medium transition hover:border-zinc-700">
-                <span class="block font-semibold">📸 Photorealistic</span>
-                <span class="text-[10px] text-zinc-400">Kamera & pencahayaan</span>
+              <button type="button" data-val="photorealistic" class="platform-btn text-left p-2.5 rounded-xl border border-black bg-white text-black text-xs font-medium transition hover:bg-[#f4f4f5]">
+                <span class="block font-bold">📸 Photorealistic</span>
+                <span class="text-[10px] text-zinc-600">Kamera &amp; lensa</span>
               </button>
             </div>
           </div>
 
-          <!-- TAB CONTENT: FILE UPLOAD (DRAG & DROP) -->
+          <!-- TAB 1: FILE UPLOAD DROP-ZONE -->
           <div id="tab-file-content" class="space-y-3">
-            <div id="drop-zone" class="relative group border-2 border-dashed border-zinc-700 hover:border-emerald-500 rounded-2xl p-6 text-center cursor-pointer transition-all duration-200 bg-zinc-900/40 hover:bg-emerald-950/10">
+            <div id="drop-zone" class="relative group border-2 border-dashed border-black hover:border-black rounded-2xl p-6 text-center cursor-pointer transition-all bg-[#fafafa] hover:bg-[#dceeff]/30">
               <input type="file" id="file-input" accept="image/*,video/*" class="hidden">
-              <div class="flex flex-col items-center justify-center space-y-2.5">
-                <div class="w-12 h-12 rounded-xl bg-zinc-800 group-hover:bg-emerald-500/20 group-hover:scale-105 flex items-center justify-center transition-all duration-200 text-zinc-400 group-hover:text-emerald-400 shadow-inner">
+              <div class="flex flex-col items-center justify-center space-y-2">
+                <div class="w-12 h-12 rounded-full border border-black bg-[#ffd731] flex items-center justify-center text-black shadow-sm group-hover:scale-105 transition-transform">
                   <i data-lucide="cloud-upload" class="w-6 h-6"></i>
                 </div>
                 <div>
-                  <p class="font-semibold text-zinc-200 text-sm">
-                    Drag & drop video / gambar, atau <span class="text-emerald-400 underline decoration-dotted">pilih file</span>
+                  <p class="font-bold text-black text-sm">
+                    Drag &amp; drop video / gambar, atau <span class="underline decoration-black">pilih file</span>
                   </p>
-                  <p class="text-[11px] text-zinc-400 mt-0.5">Mendukung MP4, MOV, WEBM, JPG, PNG, WEBP (Maks 100MB)</p>
+                  <p class="text-[11px] text-zinc-600 mt-0.5">MP4, MOV, WEBM, JPG, PNG, WEBP (Maks 100MB)</p>
                 </div>
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-zinc-800/80 border border-zinc-700 text-[10px] text-zinc-300">
-                  <i data-lucide="clipboard" class="w-3 h-3 text-emerald-400"></i>
-                  <span>Bisa langsung tekan <b>Ctrl + V</b> untuk paste!</span>
+                <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white border border-black text-[10px] font-bold text-black">
+                  <i data-lucide="clipboard" class="w-3 h-3 text-[#fb4903]"></i>
+                  <span>Bisa langsung tekan <b>Ctrl + V</b> untuk paste</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- TAB CONTENT: URL LINK PASTE -->
+          <!-- TAB 2: URL LINK INPUT -->
           <div id="tab-url-content" class="hidden space-y-3">
-            <label class="block text-xs font-semibold text-zinc-300">Masukkan Link URL Media Publik:</label>
+            <label class="block text-xs font-bold text-black uppercase">Masukkan Link URL Media Publik:</label>
             <div class="flex gap-2">
               <div class="relative flex-1">
                 <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-500">
                   <i data-lucide="link-2" class="w-4 h-4"></i>
                 </span>
-                <input type="url" id="url-input" placeholder="https://contoh.com/video.mp4 atau image.jpg" class="w-full bg-zinc-900 border border-zinc-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 rounded-xl py-2.5 pl-10 pr-3 text-xs text-zinc-100 placeholder-zinc-500 outline-none transition">
+                <input type="url" id="url-input" placeholder="https://contoh.com/video.mp4 atau image.jpg" class="w-full bg-white border border-black rounded-full py-2.5 pl-10 pr-3 text-xs text-black placeholder-zinc-400 outline-none transition focus:bg-[#dceeff]/20">
               </div>
-              <button type="button" id="url-paste-btn" onclick="pasteFromClipboard()" class="px-3 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 rounded-xl text-xs font-medium flex items-center gap-1 transition">
+              <button type="button" id="url-paste-btn" onclick="pasteFromClipboard()" class="slush-btn-secondary px-4 py-2.5 text-xs font-bold flex items-center gap-1">
                 <i data-lucide="clipboard-paste" class="w-3.5 h-3.5"></i>
                 <span>Paste</span>
               </button>
             </div>
           </div>
 
-          <!-- Selected Media Preview Card -->
-          <div id="media-preview-container" class="hidden border border-zinc-800 bg-zinc-900/90 rounded-2xl p-3">
-            <div class="flex items-start justify-between mb-2">
+          <!-- Selected Media Preview -->
+          <div id="media-preview-container" class="hidden border border-black bg-[#fafafa] rounded-2xl p-3.5 space-y-2">
+            <div class="flex items-start justify-between">
               <div class="flex items-center gap-2">
-                <div id="media-badge" class="px-2 py-0.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-semibold uppercase">
+                <div id="media-badge" class="px-2.5 py-0.5 rounded-full bg-[#55db9c] text-black border border-black text-[10px] font-bold uppercase">
                   Image
                 </div>
                 <div>
-                  <h4 id="preview-filename" class="text-xs font-semibold text-zinc-200 truncate max-w-[200px]">filename.jpg</h4>
-                  <span id="preview-filesize" class="text-[10px] text-zinc-400">0 MB</span>
+                  <h4 id="preview-filename" class="text-xs font-bold text-black truncate max-w-[200px]">filename.jpg</h4>
+                  <span id="preview-filesize" class="text-[10px] text-zinc-600 font-mono">0 MB</span>
                 </div>
               </div>
-              <button type="button" onclick="clearSelectedMedia()" class="text-xs text-zinc-400 hover:text-red-400 p-1 rounded-lg hover:bg-zinc-800 transition flex items-center gap-1">
-                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+              <button type="button" onclick="clearSelectedMedia()" class="slush-btn-secondary px-2.5 py-1 text-xs hover:bg-[#fb4903] hover:text-white flex items-center gap-1">
+                <i data-lucide="trash-2" class="w-3 h-3"></i>
                 <span>Ganti</span>
               </button>
             </div>
 
-            <!-- Preview Frame -->
-            <div class="rounded-xl overflow-hidden bg-black/60 border border-zinc-800/80 flex items-center justify-center max-h-56">
+            <!-- Preview Player / Image -->
+            <div class="rounded-xl overflow-hidden bg-white border border-black flex items-center justify-center max-h-56">
               <img id="img-preview" class="max-h-56 w-auto object-contain hidden" alt="Preview Gambar">
               <video id="vid-preview" class="max-h-56 w-full object-contain hidden" controls playsinline></video>
             </div>
           </div>
 
-          <!-- Artisan / Consistent Human Anchor Option -->
-          <div class="bg-zinc-900/70 border border-zinc-800 hover:border-emerald-500/40 rounded-2xl p-3.5 space-y-1.5 transition">
+          <!-- Artisan Consistency Toggle (Lavender #e9ccff Sticker Card) -->
+          <div class="border border-black bg-[#e9ccff] rounded-2xl p-3.5 space-y-1.5 transition">
             <div class="flex items-center justify-between">
               <label class="flex items-center gap-2.5 cursor-pointer select-none">
-                <input type="checkbox" id="artisan-toggle" checked class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 bg-zinc-800 border-zinc-700 cursor-pointer">
-                <span class="text-xs font-bold text-zinc-100 flex items-center gap-1.5">
-                  <i data-lucide="user-check" class="w-4 h-4 text-emerald-400"></i>
-                  Karakter Manusia & Tangan Konsisten
+                <input type="checkbox" id="artisan-toggle" checked class="w-4 h-4 rounded text-black focus:ring-black bg-white border-black cursor-pointer">
+                <span class="text-xs font-extrabold text-black flex items-center gap-1.5">
+                  <i data-lucide="user-check" class="w-4 h-4 text-black"></i>
+                  Karakter Manusia &amp; Tangan Konsisten
                 </span>
               </label>
-              <span class="text-[9px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 font-medium">Anti-Benda Bergerak Sendiri</span>
+              <span class="text-[9px] px-2 py-0.5 rounded-full bg-white text-black border border-black font-bold uppercase">
+                Anti-Benda Bergerak Sendiri
+              </span>
             </div>
-            <p class="text-[11px] text-zinc-400 leading-relaxed pl-6">
-              Mengunci identitas pengrajin (wajah, pakaian/apron, & tangan aktif memegang alat) secara identik di Foto 1-5 & Klip 1-5 agar objek dipahat secara realistis, bukan bergerak sendiri.
+            <p class="text-[11px] text-black/80 font-medium leading-relaxed pl-6">
+              Mengunci profil pengrajin (wajah, pakaian/apron, &amp; tangan memegang perkakas) secara identik di Foto 1-5 &amp; Klip 1-5 agar objek dipahat secara realistis tanpa barang bergerak sendiri.
             </p>
           </div>
 
-          <!-- Generate Action Button -->
-          <button id="generate-btn" onclick="startGeneration()" class="w-full relative overflow-hidden bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 hover:from-emerald-500 hover:to-indigo-500 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg shadow-emerald-900/30 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer group">
-            <i data-lucide="sparkle" class="w-4 h-4 group-hover:rotate-12 transition-transform"></i>
-            <span id="btn-text" class="text-sm font-semibold tracking-wide">Generate Prompt Terpisah (5 Image & 5 Video)</span>
+          <!-- Main Action Button (Slush Black Filled CTA) -->
+          <button id="generate-btn" onclick="startGeneration()" class="slush-btn-primary w-full py-4 text-sm font-black uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-none">
+            <i data-lucide="sparkle" class="w-4 h-4"></i>
+            <span id="btn-text">Generate Prompt Terpisah (5 Image &amp; 5 Video)</span>
           </button>
 
           <!-- Visual Progress Tracker -->
-          <div id="progress-container" class="hidden border border-emerald-500/30 bg-emerald-950/20 rounded-2xl p-4 space-y-3 animate-in fade-in duration-300">
+          <div id="progress-container" class="hidden border border-black bg-[#dceeff] rounded-2xl p-4 space-y-3">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
-                <div class="w-3.5 h-3.5 border-2 border-emerald-400 border-t-transparent rounded-full animate-spin"></div>
-                <span id="step-title" class="text-xs font-semibold text-emerald-300">Memproses Media...</span>
+                <div class="w-3.5 h-3.5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                <span id="step-title" class="text-xs font-bold text-black">Memproses Media...</span>
               </div>
-              <span id="progress-percentage" class="text-xs font-mono font-bold text-emerald-400">25%</span>
+              <span id="progress-percentage" class="text-xs font-mono font-black text-black">25%</span>
             </div>
 
-            <div class="w-full h-2 bg-zinc-800 rounded-full overflow-hidden p-0.5">
-              <div id="progress-bar-fill" class="h-full bg-gradient-to-r from-emerald-500 to-teal-300 rounded-full transition-all duration-500 w-1/4"></div>
+            <div class="w-full h-2.5 bg-white border border-black rounded-full overflow-hidden p-0.5">
+              <div id="progress-bar-fill" class="h-full bg-[#55db9c] border border-black rounded-full transition-all duration-500 w-1/4"></div>
             </div>
 
-            <div class="grid grid-cols-3 gap-2 pt-1 text-center text-[10px]">
-              <div id="step-1" class="step-badge text-emerald-400 font-medium">
+            <div class="grid grid-cols-3 gap-2 pt-1 text-center text-[10px] font-bold">
+              <div id="step-1" class="step-badge text-black">
                 <span class="block">1. Upload</span>
-                <span class="text-[8px] text-zinc-500">File Ingestion</span>
+                <span class="text-[8px] text-zinc-600 font-normal">File Ingestion</span>
               </div>
-              <div id="step-2" class="step-badge text-zinc-500">
+              <div id="step-2" class="step-badge text-zinc-400">
                 <span class="block">2. Vision Scan</span>
-                <span class="text-[8px] text-zinc-500">Frame Analysis</span>
+                <span class="text-[8px] text-zinc-400 font-normal">Frame Analysis</span>
               </div>
-              <div id="step-3" class="step-badge text-zinc-500">
+              <div id="step-3" class="step-badge text-zinc-400">
                 <span class="block">3. Craft Storyboard</span>
-                <span class="text-[8px] text-zinc-500">5 Image & 5 Video</span>
+                <span class="text-[8px] text-zinc-400 font-normal">5 Image &amp; 5 Video</span>
               </div>
             </div>
 
-            <p id="step-desc" class="text-[11px] text-zinc-400 italic text-center">Mengunggah file ke server...</p>
+            <p id="step-desc" class="text-[11px] text-zinc-700 italic text-center font-medium">Mengunggah file ke server...</p>
           </div>
 
         </div>
 
       </div>
 
-      <!-- Result Column (Right: 7 cols) -->
+      <!-- ====================================================== -->
+      <!-- RIGHT COLUMN: RESULTS WORKSPACE (7 cols)               -->
+      <!-- ====================================================== -->
       <div class="lg:col-span-7 space-y-6">
 
-        <!-- Result Box -->
-        <div id="result-box" class="glass rounded-2xl p-5 border border-zinc-800/80 shadow-xl min-h-[520px] flex flex-col justify-between">
+        <!-- Result Box Container -->
+        <div id="result-box" class="slush-card-elevated p-5 md:p-6 bg-white min-h-[520px] flex flex-col justify-between">
           <div>
-            <!-- Header Result -->
-            <div class="flex items-center justify-between border-b border-zinc-800 pb-3 mb-4">
+            
+            <!-- Result Header -->
+            <div class="flex items-center justify-between border-b border-black pb-3 mb-5">
               <div class="flex items-center gap-2">
-                <i data-lucide="clapperboard" class="w-4 h-4 text-emerald-400"></i>
-                <h3 class="font-bold text-sm text-zinc-100">Hasil Generator: 5 Image & 5 Video Prompts</h3>
+                <div class="w-7 h-7 rounded-lg border border-black bg-[#ffd731] flex items-center justify-center font-bold text-xs text-black">
+                  🎬
+                </div>
+                <h3 class="font-extrabold text-sm text-black uppercase tracking-tight">Hasil Generator: 5 Image &amp; 5 Video Prompts</h3>
               </div>
               <div class="flex items-center gap-2">
-                <span id="model-badge" class="hidden text-[10px] px-2.5 py-0.5 rounded-full bg-zinc-800 border border-zinc-700 text-zinc-300 font-mono">
+                <span id="model-badge" class="hidden text-[10px] px-2.5 py-0.5 rounded-full bg-[#dceeff] border border-black text-black font-mono font-bold">
                   gemini-3.5-flash
                 </span>
-                <button id="copy-all-btn" onclick="copyFullPrompt()" class="hidden text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-200 font-medium px-3 py-1 rounded-lg transition flex items-center gap-1 border border-zinc-700">
+                <button id="copy-all-btn" onclick="copyFullPrompt()" class="hidden slush-btn-secondary px-3 py-1 text-xs">
                   <i data-lucide="copy" class="w-3 h-3"></i>
                   <span>Salin Semua</span>
                 </button>
               </div>
             </div>
 
-            <!-- Empty State -->
-            <div id="result-empty" class="py-24 text-center text-zinc-500 space-y-3">
-              <div class="w-16 h-16 mx-auto rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-600">
+            <!-- Empty State Display -->
+            <div id="result-empty" class="py-24 text-center space-y-3">
+              <div class="w-16 h-16 mx-auto rounded-full border border-black bg-[#dceeff] flex items-center justify-center text-black">
                 <i data-lucide="layers" class="w-8 h-8"></i>
               </div>
-              <p class="text-sm font-medium text-zinc-400">Belum ada prompt yang diekstrak</p>
-              <p class="text-xs text-zinc-500 max-w-sm mx-auto">
+              <p class="text-base font-extrabold text-black">Belum ada prompt yang diekstrak</p>
+              <p class="text-xs text-zinc-600 max-w-sm mx-auto font-medium">
                 Upload video atau foto di sebelah kiri, pilih <b>Google Flow</b>, lalu klik <b>Generate</b> untuk mendapatkan 5 prompt gambar proses dan 5 prompt video terpisah.
               </p>
             </div>
@@ -315,95 +458,95 @@
               <!-- GOOGLE FLOW SPLIT VIEW (5 IMAGES TOP, 5 VIDEOS BOTTOM) -->
               <div id="flow-storyboard-view" class="hidden space-y-6">
                 
-                <!-- Chaining Workflow Diagram Banner -->
-                <div class="bg-gradient-to-r from-emerald-950/40 via-zinc-900 to-indigo-950/40 border border-emerald-500/30 rounded-xl p-3.5">
-                  <div class="flex items-center justify-between mb-2">
-                    <span class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
-                      <i data-lucide="git-merge" class="w-3.5 h-3.5"></i> Alur Kerja 5 Foto ➔ 5 Klip Video di Google Flow (40s):
+                <!-- Chaining Workflow Diagram Banner (Sky Wash Pastel) -->
+                <div class="bg-[#dceeff] border border-black rounded-2xl p-4 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-black text-black flex items-center gap-1.5 uppercase tracking-wide">
+                      <i data-lucide="git-merge" class="w-4 h-4"></i> Alur Kerja 5 Foto ➔ 5 Klip Video Google Flow (40s):
                     </span>
-                    <button onclick="openTutorialModal()" class="text-[11px] text-amber-300 hover:underline flex items-center gap-1">
+                    <button onclick="openTutorialModal()" class="text-[11px] font-bold text-black underline flex items-center gap-1">
                       <i data-lucide="help-circle" class="w-3 h-3"></i> Cara Pakai
                     </button>
                   </div>
-                  <div class="flex items-center gap-1 overflow-x-auto text-[10px] pb-1 font-mono text-zinc-300 custom-scrollbar">
-                    <span class="px-2 py-1 bg-amber-950/80 text-amber-300 rounded border border-amber-500/30 whitespace-nowrap">📸 Foto 1 (0s)</span>
-                    <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
-                    <span class="px-2 py-1 bg-emerald-950 text-emerald-300 rounded border border-emerald-500/40 whitespace-nowrap">🎬 Klip 1 (8s)</span>
-                    <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
-                    <span class="px-2 py-1 bg-amber-950/80 text-amber-300 rounded border border-amber-500/30 whitespace-nowrap">📸 Foto 2 (8s)</span>
-                    <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
-                    <span class="px-2 py-1 bg-emerald-950 text-emerald-300 rounded border border-emerald-500/40 whitespace-nowrap">🎬 Klip 2 (8s)</span>
-                    <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
-                    <span class="px-2 py-1 bg-amber-950/80 text-amber-300 rounded border border-amber-500/30 whitespace-nowrap">📸 Foto 3 (16s)</span>
-                    <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
-                    <span class="px-2 py-1 bg-emerald-950 text-emerald-300 rounded border border-emerald-500/40 whitespace-nowrap">🎬 Klip 3 (8s)</span>
-                    <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
-                    <span class="px-2 py-1 bg-amber-950/80 text-amber-300 rounded border border-amber-500/30 whitespace-nowrap">📸 Foto 4 (24s)</span>
-                    <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
-                    <span class="px-2 py-1 bg-emerald-950 text-emerald-300 rounded border border-emerald-500/40 whitespace-nowrap">🎬 Klip 4 (8s)</span>
-                    <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
-                    <span class="px-2 py-1 bg-amber-950/80 text-amber-300 rounded border border-amber-500/30 whitespace-nowrap">📸 Foto 5 (32s)</span>
-                    <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
-                    <span class="px-2 py-1 bg-indigo-950 text-indigo-300 rounded border border-indigo-500/40 whitespace-nowrap">🎬 Klip 5 (8s Outro)</span>
+                  <div class="flex items-center gap-1.5 overflow-x-auto text-[10px] pb-1 font-mono font-bold text-black custom-scrollbar">
+                    <span class="px-2.5 py-1 bg-[#ffd731] text-black rounded-full border border-black whitespace-nowrap">📸 Foto 1 (0s)</span>
+                    <i data-lucide="arrow-right" class="w-3 h-3 text-black flex-shrink-0"></i>
+                    <span class="px-2.5 py-1 bg-[#55db9c] text-black rounded-full border border-black whitespace-nowrap">🎬 Klip 1 (8s)</span>
+                    <i data-lucide="arrow-right" class="w-3 h-3 text-black flex-shrink-0"></i>
+                    <span class="px-2.5 py-1 bg-[#ffd731] text-black rounded-full border border-black whitespace-nowrap">📸 Foto 2 (8s)</span>
+                    <i data-lucide="arrow-right" class="w-3 h-3 text-black flex-shrink-0"></i>
+                    <span class="px-2.5 py-1 bg-[#55db9c] text-black rounded-full border border-black whitespace-nowrap">🎬 Klip 2 (8s)</span>
+                    <i data-lucide="arrow-right" class="w-3 h-3 text-black flex-shrink-0"></i>
+                    <span class="px-2.5 py-1 bg-[#ffd731] text-black rounded-full border border-black whitespace-nowrap">📸 Foto 3 (16s)</span>
+                    <i data-lucide="arrow-right" class="w-3 h-3 text-black flex-shrink-0"></i>
+                    <span class="px-2.5 py-1 bg-[#55db9c] text-black rounded-full border border-black whitespace-nowrap">🎬 Klip 3 (8s)</span>
+                    <i data-lucide="arrow-right" class="w-3 h-3 text-black flex-shrink-0"></i>
+                    <span class="px-2.5 py-1 bg-[#ffd731] text-black rounded-full border border-black whitespace-nowrap">📸 Foto 4 (24s)</span>
+                    <i data-lucide="arrow-right" class="w-3 h-3 text-black flex-shrink-0"></i>
+                    <span class="px-2.5 py-1 bg-[#55db9c] text-black rounded-full border border-black whitespace-nowrap">🎬 Klip 4 (8s)</span>
+                    <i data-lucide="arrow-right" class="w-3 h-3 text-black flex-shrink-0"></i>
+                    <span class="px-2.5 py-1 bg-[#ffd731] text-black rounded-full border border-black whitespace-nowrap">📸 Foto 5 (32s)</span>
+                    <i data-lucide="arrow-right" class="w-3 h-3 text-black flex-shrink-0"></i>
+                    <span class="px-2.5 py-1 bg-[#e9ccff] text-black rounded-full border border-black whitespace-nowrap">🎬 Klip 5 (8s Outro)</span>
                   </div>
                 </div>
 
-                <!-- Action Toolbar -->
+                <!-- Action Toolbar (Pill Sticker Buttons) -->
                 <div class="flex items-center justify-between flex-wrap gap-2 pt-1">
                   <div class="flex items-center flex-wrap gap-2">
-                    <button onclick="copyAllImagePrompts()" class="text-xs bg-amber-600 hover:bg-amber-500 text-white font-medium px-3.5 py-1.5 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+                    <button onclick="copyAllImagePrompts()" class="text-xs bg-[#ffd731] hover:bg-[#ffd731]/80 text-black font-extrabold px-3.5 py-2 rounded-full border border-black transition flex items-center gap-1.5 shadow-sm">
                       <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                      <span>Salin Semua Prompt Image (1-5)</span>
+                      <span>Salin Semua Prompt Foto (1-5)</span>
                     </button>
-                    <button onclick="copyAllVideoPrompts()" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-3.5 py-1.5 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+                    <button onclick="copyAllVideoPrompts()" class="text-xs bg-[#55db9c] hover:bg-[#55db9c]/80 text-black font-extrabold px-3.5 py-2 rounded-full border border-black transition flex items-center gap-1.5 shadow-sm">
                       <i data-lucide="copy-check" class="w-3.5 h-3.5"></i>
                       <span>Salin Semua Prompt Video (1-5)</span>
                     </button>
-                    <button onclick="downloadStoryboardTxt()" class="text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-200 font-medium px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 border border-zinc-700">
+                    <button onclick="downloadStoryboardTxt()" class="slush-btn-secondary text-xs px-3.5 py-2 flex items-center gap-1.5">
                       <i data-lucide="download" class="w-3.5 h-3.5"></i>
                       <span>Download .txt</span>
                     </button>
                   </div>
-                  <a href="https://flow.google" target="_blank" rel="noopener noreferrer" class="text-xs bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+                  <a href="https://flow.google" target="_blank" rel="noopener noreferrer" class="text-xs bg-[#4da2ff] hover:bg-[#4da2ff]/90 text-white font-extrabold px-4 py-2 rounded-full border border-black transition flex items-center gap-1.5 shadow-sm">
                     <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
                     <span>Buka Google Flow</span>
                   </a>
                 </div>
 
                 <!-- ========================================== -->
-                <!-- SEKSI 1: PROMPT GAMBAR PROSES (IMAGE 1..5) -->
+                <!-- SEKSI 1: PROMPT GAMBAR PROSES (FOTO 1..5) -->
                 <!-- ========================================== -->
                 <div class="space-y-3 pt-2">
-                  <div class="flex items-center justify-between border-b border-amber-500/30 pb-2">
+                  <div class="flex items-center justify-between border-b border-black pb-2">
                     <div class="flex items-center gap-2">
-                      <div class="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs">
+                      <div class="w-7 h-7 rounded-lg bg-[#ffd731] border border-black text-black flex items-center justify-center font-black text-xs">
                         📸
                       </div>
                       <div>
-                        <h4 class="text-xs sm:text-sm font-bold text-amber-300">SEKSI 1: PROMPT GAMBAR PROSES (FOTO 1 - 5)</h4>
-                        <p class="text-[10px] text-zinc-400">Generate 5 foto ini di Midjourney v6 atau FLUX.1 terlebih dahulu</p>
+                        <h4 class="text-xs sm:text-sm font-black text-black uppercase tracking-tight">SEKSI 1: PROMPT GAMBAR PROSES (FOTO 1 - 5)</h4>
+                        <p class="text-[11px] text-zinc-600 font-medium">Generate 5 foto ini di Midjourney v6 atau FLUX.1 terlebih dahulu</p>
                       </div>
                     </div>
-                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono">5 Foto Keyframe</span>
+                    <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-[#ffd731] text-black border border-black font-mono font-bold">5 Foto Keyframe</span>
                   </div>
 
-                  <!-- Consistent Artisan Profile Anchor Banner (Rendered dynamically if present) -->
-                  <div id="artisan-profile-card" class="hidden bg-gradient-to-r from-amber-950/40 via-zinc-900 to-amber-950/20 border border-amber-500/40 rounded-xl p-3.5 space-y-2">
+                  <!-- Consistent Artisan Profile Anchor Banner (Lavender #e9ccff) -->
+                  <div id="artisan-profile-card" class="hidden bg-[#e9ccff] border border-black rounded-2xl p-4 space-y-2">
                     <div class="flex items-center justify-between flex-wrap gap-2">
                       <div class="flex items-center gap-2">
-                        <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center border border-amber-500/30">
-                          <i data-lucide="user-check" class="w-4 h-4"></i>
+                        <span class="w-8 h-8 rounded-full bg-white border border-black text-black flex items-center justify-center font-bold text-sm">
+                          🧑‍🎨
                         </span>
                         <div>
-                          <h5 class="text-xs font-bold text-amber-300">Profil Pengrajin / Artisan (Anchor Konsistensi Karakter)</h5>
-                          <span class="text-[10px] text-zinc-400">Identitas orang & pakaian dikunci sama persis di Foto 1-5 agar tidak berubah</span>
+                          <h5 class="text-xs font-black text-black uppercase tracking-tight">Profil Karakter Pengrajin (Anchor Konsistensi)</h5>
+                          <span class="text-[11px] text-black/80 font-medium">Karakter &amp; pakaian ini dikunci sama persis di Foto 1-5 agar orangnya identik &amp; barang tidak memahat sendiri</span>
                         </div>
                       </div>
-                      <button onclick="copyElementText('artisan-profile-val', 'Profil karakter berhasil disalin!')" class="text-xs bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 px-2.5 py-1 rounded-lg border border-amber-500/30 transition flex items-center gap-1 font-medium">
+                      <button onclick="copyElementText('artisan-profile-val', 'Profil karakter berhasil disalin!')" class="slush-btn-secondary text-xs px-3 py-1 font-bold flex items-center gap-1">
                         <i data-lucide="copy" class="w-3 h-3"></i> Copy Profil
                       </button>
                     </div>
-                    <p id="artisan-profile-val" class="text-zinc-200 text-xs font-mono leading-relaxed bg-black/40 p-2.5 rounded-lg border border-zinc-800/80 select-all"></p>
+                    <p id="artisan-profile-val" class="text-black text-xs font-mono leading-relaxed bg-white p-3 rounded-xl border border-black select-all"></p>
                   </div>
 
                   <!-- Container 5 Cards Image Prompts -->
@@ -416,17 +559,17 @@
                 <!-- SEKSI 2: PROMPT VIDEO GOOGLE FLOW (KLIP 1..5) -->
                 <!-- ========================================== -->
                 <div class="space-y-3 pt-4">
-                  <div class="flex items-center justify-between border-b border-emerald-500/30 pb-2">
+                  <div class="flex items-center justify-between border-b border-black pb-2">
                     <div class="flex items-center gap-2">
-                      <div class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">
+                      <div class="w-7 h-7 rounded-lg bg-[#55db9c] border border-black text-black flex items-center justify-center font-black text-xs">
                         🎬
                       </div>
                       <div>
-                        <h4 class="text-xs sm:text-sm font-bold text-emerald-300">SEKSI 2: PROMPT VIDEO GOOGLE FLOW (KLIP 1 - 5 @ 8 DETIK)</h4>
-                        <p class="text-[10px] text-zinc-400">Gunakan foto hasil generate di atas sebagai Frame Awal & Frame Akhir di Google Flow</p>
+                        <h4 class="text-xs sm:text-sm font-black text-black uppercase tracking-tight">SEKSI 2: PROMPT VIDEO GOOGLE FLOW (KLIP 1 - 5 @ 8 DETIK)</h4>
+                        <p class="text-[11px] text-zinc-600 font-medium">Gunakan foto hasil generate di atas sebagai Frame Awal &amp; Frame Akhir di Google Flow</p>
                       </div>
                     </div>
-                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">5 Klip @8s = 40s</span>
+                    <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-[#55db9c] text-black border border-black font-mono font-bold">5 Klip @8s = 40s</span>
                   </div>
 
                   <!-- Container 5 Cards Video Prompts -->
@@ -438,35 +581,35 @@
                 <!-- ========================================== -->
                 <!-- SEKSI 3: TIMELAPSE GUIDE & NEGATIVE PROMPT -->
                 <!-- ========================================== -->
-                <div id="card-timelapse-guide" class="bg-zinc-900/90 border border-zinc-800 rounded-xl p-4 space-y-3 mt-4">
+                <div id="card-timelapse-guide" class="bg-[#fafafa] border border-black rounded-2xl p-4 space-y-3 mt-4">
                   <div class="flex items-center justify-between">
-                    <h4 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5 uppercase tracking-wider">
-                      <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> Panduan Timelapse & Negative Prompt
+                    <h4 class="text-xs font-black text-black flex items-center gap-1.5 uppercase tracking-wider">
+                      <i data-lucide="shield-alert" class="w-4 h-4 text-[#fb4903]"></i> Panduan Timelapse &amp; Negative Prompt
                     </h4>
-                    <button onclick="copyElementText('negative-prompt-text', 'Negative prompt disalin!')" class="text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-300 px-2.5 py-1 rounded-lg transition flex items-center gap-1 border border-zinc-700">
+                    <button onclick="copyElementText('negative-prompt-text', 'Negative prompt disalin!')" class="slush-btn-secondary text-xs px-3 py-1 font-bold flex items-center gap-1">
                       <i data-lucide="copy" class="w-3 h-3"></i> Copy Negative
                     </button>
                   </div>
 
                   <!-- Negative Prompt Box -->
                   <div class="space-y-1">
-                    <span class="text-[11px] font-semibold text-zinc-400">Negative Prompt (Paste di Google Flow):</span>
-                    <p id="negative-prompt-text" class="text-red-300 text-xs font-mono bg-red-950/20 border border-red-500/20 p-2.5 rounded-lg leading-relaxed"></p>
+                    <span class="text-[11px] font-bold text-black uppercase tracking-wide">Negative Prompt (Paste di Google Flow):</span>
+                    <p id="negative-prompt-text" class="text-black text-xs font-mono font-bold bg-[#fb4903]/10 border border-[#fb4903] p-3 rounded-xl leading-relaxed"></p>
                   </div>
 
                   <!-- Tips Grid -->
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1">
-                    <div class="bg-black/30 p-2.5 rounded-lg border border-zinc-800/80 space-y-1">
-                      <span class="font-bold text-amber-400 flex items-center gap-1 text-[11px]">
-                        <i data-lucide="camera" class="w-3 h-3"></i> Kamera Fixed Tripod:
+                    <div class="bg-[#ffd731]/20 p-3 rounded-xl border border-black space-y-1">
+                      <span class="font-extrabold text-black flex items-center gap-1 text-[11px] uppercase">
+                        <i data-lucide="camera" class="w-3.5 h-3.5"></i> Kamera Fixed Tripod:
                       </span>
-                      <p id="guide-camera-rules" class="text-zinc-300 text-[11px]">Kamera WAJIB statis/terkunci pada Klip 1-3 untuk mencegah bentuk objek meleleh atau cacat morphing. Klip 4 stabil, Klip 5 orbit sinematik.</p>
+                      <p id="guide-camera-rules" class="text-zinc-800 text-[11px] font-medium">Kamera WAJIB statis/terkunci pada Klip 1-3 untuk mencegah bentuk objek meleleh atau cacat morphing. Klip 4 stabil, Klip 5 orbit sinematik.</p>
                     </div>
-                    <div class="bg-black/30 p-2.5 rounded-lg border border-zinc-800/80 space-y-1">
-                      <span class="font-bold text-indigo-400 flex items-center gap-1 text-[11px]">
-                        <i data-lucide="scissors" class="w-3 h-3"></i> Tips CapCut:
+                    <div class="bg-[#55db9c]/20 p-3 rounded-xl border border-black space-y-1">
+                      <span class="font-extrabold text-black flex items-center gap-1 text-[11px] uppercase">
+                        <i data-lucide="scissors" class="w-3.5 h-3.5"></i> Tips CapCut:
                       </span>
-                      <p id="guide-capcut" class="text-zinc-300 text-[11px]">Susun klip 1-5 di CapCut (total 40s), beri trim mikro di sambungan frame, dan tambahkan efek audio ASMR viral.</p>
+                      <p id="guide-capcut" class="text-zinc-800 text-[11px] font-medium">Susun klip 1-5 di CapCut (total 40s), beri trim mikro di sambungan frame, dan tambahkan efek audio ASMR viral.</p>
                     </div>
                   </div>
                 </div>
@@ -475,29 +618,29 @@
 
               <!-- GENERAL / UNIVERSAL AI VIEW (For other platforms) -->
               <div id="general-result-view" class="hidden space-y-4">
-                <div class="bg-emerald-950/30 border border-emerald-500/30 rounded-xl p-4 space-y-2">
+                <div class="bg-[#dceeff] border border-black rounded-2xl p-5 space-y-3">
                   <div class="flex items-center justify-between flex-wrap gap-2">
-                    <span class="text-xs font-bold uppercase text-emerald-400 flex items-center gap-1.5">
-                      <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> English Prompt (Ready to Copy)
+                    <span class="text-xs font-black uppercase tracking-wide text-black flex items-center gap-1.5">
+                      <i data-lucide="check-circle-2" class="w-4 h-4 text-black"></i> English Prompt (Ready to Copy)
                     </span>
-                    <button onclick="copyElementText('result-english', 'English prompt berhasil disalin!')" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1 rounded-lg transition font-medium flex items-center gap-1">
+                    <button onclick="copyElementText('result-english', 'English prompt berhasil disalin!')" class="slush-btn-primary px-3.5 py-1.5 text-xs font-bold flex items-center gap-1">
                       <i data-lucide="copy" class="w-3 h-3"></i> Copy English
                     </button>
                   </div>
-                  <p id="result-english" class="text-zinc-200 text-xs md:text-sm font-mono leading-relaxed bg-black/40 p-3 rounded-lg border border-zinc-800 selection:bg-emerald-500"></p>
+                  <p id="result-english" class="text-black text-xs md:text-sm font-mono leading-relaxed bg-white p-3.5 rounded-xl border border-black"></p>
                 </div>
               </div>
 
               <!-- Full Raw Prompt Breakdown (Collapsible Accordion) -->
-              <div class="border border-zinc-800 bg-zinc-900/60 rounded-xl overflow-hidden mt-3">
-                <button type="button" onclick="toggleRawText()" class="w-full px-4 py-2.5 flex items-center justify-between text-xs font-semibold text-zinc-400 hover:text-zinc-200 bg-zinc-900/80 transition">
-                  <span class="flex items-center gap-1.5">
-                    <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Teks Analisis Lengkap (Raw Output)
+              <div class="border border-black bg-[#fafafa] rounded-2xl overflow-hidden mt-3">
+                <button type="button" onclick="toggleRawText()" class="w-full px-4 py-3 flex items-center justify-between text-xs font-bold text-black hover:bg-black/5 transition">
+                  <span class="flex items-center gap-1.5 uppercase tracking-wide">
+                    <i data-lucide="file-text" class="w-4 h-4"></i> Teks Analisis Lengkap (Raw Output)
                   </span>
-                  <span id="raw-toggle-icon" class="text-[10px] text-zinc-500">Klik untuk buka ▼</span>
+                  <span id="raw-toggle-icon" class="text-[10px] text-zinc-600 font-bold">Klik untuk buka ▼</span>
                 </button>
-                <div id="raw-text-wrapper" class="hidden p-4 border-t border-zinc-800 bg-zinc-950/60">
-                  <div id="result-full-text" class="max-h-[360px] overflow-y-auto custom-scrollbar font-mono text-xs text-zinc-300 whitespace-pre-wrap leading-relaxed"></div>
+                <div id="raw-text-wrapper" class="hidden p-4 border-t border-black bg-white">
+                  <div id="result-full-text" class="max-h-[360px] overflow-y-auto custom-scrollbar font-mono text-xs text-black whitespace-pre-wrap leading-relaxed"></div>
                 </div>
               </div>
 
@@ -505,9 +648,9 @@
           </div>
 
           <!-- Result Footer -->
-          <div id="result-footer" class="hidden border-t border-zinc-800 pt-3 text-[11px] text-zinc-500 flex items-center justify-between">
+          <div id="result-footer" class="hidden border-t border-black pt-3 mt-4 text-[11px] font-bold text-zinc-600 flex items-center justify-between">
             <span>Disimpan otomatis ke SQLite database</span>
-            <button onclick="scrollToHistory()" class="text-emerald-400 hover:underline">Lihat riwayat →</button>
+            <button onclick="scrollToHistory()" class="text-black underline hover:text-[#4da2ff]">Lihat riwayat →</button>
           </div>
         </div>
 
@@ -515,17 +658,19 @@
 
     </div>
 
-    <!-- History Section -->
-    <section id="history-section" class="mt-16 border-t border-zinc-800/80 pt-10 space-y-6">
-      <div class="flex items-center justify-between">
+    <!-- ======================================================== -->
+    <!-- HISTORY SECTION (Slush Grid of Cards)                    -->
+    <!-- ======================================================== -->
+    <section id="history-section" class="mt-16 border-t border-black pt-10 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-2">
         <div>
-          <h2 class="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-            <i data-lucide="clock" class="w-6 h-6 text-emerald-400"></i>
+          <h2 class="text-2xl md:text-3xl font-black tracking-tight uppercase text-black flex items-center gap-2">
+            <i data-lucide="clock" class="w-6 h-6"></i>
             <span>Riwayat Prompt Tersimpan</span>
           </h2>
-          <p class="text-zinc-400 text-xs md:text-sm mt-1">Daftar riwayat analisis yang tersimpan di SQLite lokal.</p>
+          <p class="text-zinc-600 text-xs md:text-sm mt-0.5 font-medium">Daftar riwayat analisis yang tersimpan di SQLite lokal.</p>
         </div>
-        <button onclick="clearAllHistory()" class="text-xs text-red-400 hover:text-red-300 hover:bg-red-500/10 border border-red-500/20 px-3 py-1.5 rounded-xl transition flex items-center gap-1.5">
+        <button onclick="clearAllHistory()" class="slush-btn-secondary px-3.5 py-1.5 text-xs text-[#fb4903] hover:bg-[#fb4903] hover:text-white flex items-center gap-1.5">
           <i data-lucide="trash" class="w-3.5 h-3.5"></i>
           <span>Hapus Semua</span>
         </button>
@@ -533,166 +678,168 @@
 
       <!-- History Grid -->
       <div id="history-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Rendered by JS -->
+        <!-- Rendered dynamically by JS -->
       </div>
     </section>
 
   </main>
 
-  <!-- MODAL TUTORIAL WORKFLOW START FRAME & END FRAME -->
-  <div id="tutorial-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+  <!-- ======================================================== -->
+  <!-- MODAL TUTORIAL WORKFLOW START FRAME & END FRAME (Slush)   -->
+  <!-- ======================================================== -->
+  <div id="tutorial-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white border-2 border-black rounded-[28px] max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
       
       <!-- Modal Header -->
-      <div class="p-5 border-b border-zinc-800 flex items-center justify-between bg-zinc-950/60">
+      <div class="p-5 border-b border-black flex items-center justify-between bg-[#dceeff]">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
+          <div class="w-10 h-10 rounded-full border border-black bg-[#ffd731] flex items-center justify-center text-black font-black">
             <i data-lucide="clapperboard" class="w-5 h-5"></i>
           </div>
           <div>
-            <h3 class="font-bold text-base text-zinc-100">Tutorial Workflow Start & End Frame (40s)</h3>
-            <p class="text-xs text-zinc-400">Generate 5 foto proses manual dulu, lalu gerakkan di Google Flow (5 Klip @ 8 Detik)</p>
+            <h3 class="font-black text-base text-black uppercase tracking-tight">Tutorial Workflow Start &amp; End Frame (40s)</h3>
+            <p class="text-xs text-black/80 font-medium">Generate 5 foto proses manual dulu, lalu gerakkan di Google Flow (5 Klip @ 8 Detik)</p>
           </div>
         </div>
-        <button onclick="closeTutorialModal()" class="text-zinc-400 hover:text-white p-2 rounded-xl hover:bg-zinc-800 transition">
-          <i data-lucide="x" class="w-5 h-5"></i>
+        <button onclick="closeTutorialModal()" class="w-8 h-8 rounded-full border border-black bg-white hover:bg-black hover:text-white transition flex items-center justify-center text-black">
+          <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
 
       <!-- Modal Body (Scrollable) -->
-      <div class="p-6 space-y-6 overflow-y-auto custom-scrollbar text-sm">
+      <div class="p-6 space-y-5 overflow-y-auto custom-scrollbar text-sm">
         
         <!-- Summary Box -->
-        <div class="bg-amber-950/30 border border-amber-500/30 rounded-2xl p-4 text-xs text-amber-200 space-y-1.5 leading-relaxed">
-          <p class="font-semibold text-amber-300 flex items-center gap-1.5">
+        <div class="bg-[#ffd731]/30 border border-black rounded-2xl p-4 text-xs text-black space-y-1.5 leading-relaxed">
+          <p class="font-black text-black flex items-center gap-1.5 uppercase">
             <i data-lucide="info" class="w-4 h-4"></i> Mengapa Memakai Metode Ini?
           </p>
-          <p>
+          <p class="font-medium">
             Dengan menyiapkan Foto 1 sampai Foto 5 terlebih dahulu, Anda memegang kendali penuh atas wujud transformasi. Saat di Google Flow, Anda tinggal memasukkan Foto Awal (Start Frame) dan Foto Akhir (End Frame), sehingga AI tidak akan berhalusinasi atau mengubah bentuk objek secara acak.
           </p>
         </div>
 
         <!-- Consistency & Anti-Ghost Box -->
-        <div class="bg-emerald-950/30 border border-emerald-500/30 rounded-2xl p-4 text-xs text-emerald-200 space-y-2 leading-relaxed">
-          <p class="font-semibold text-emerald-300 flex items-center gap-1.5">
-            <i data-lucide="user-check" class="w-4 h-4"></i> Rahasia Karakter Sama Terus & Barang Tidak Bergerak Sendiri:
+        <div class="bg-[#e9ccff] border border-black rounded-2xl p-4 text-xs text-black space-y-2 leading-relaxed">
+          <p class="font-black text-black flex items-center gap-1.5 uppercase">
+            <i data-lucide="user-check" class="w-4 h-4"></i> Rahasia Karakter Sama Terus &amp; Barang Tidak Bergerak Sendiri:
           </p>
-          <ul class="space-y-1 text-zinc-300 text-[11px] list-disc list-inside">
-            <li><b>Deskripsi Pakaian & Fisik Identik</b>: Semua prompt Foto 1 sampai 5 menyertakan profil karakter yang sama (misal: <i>apron kulit cokelat di atas kemeja denim, tangan berotot terampil</i>).</li>
-            <li><b>Kunci Wajah dengan Midjourney <code class="text-amber-300">--cref</code></b>: Setelah Foto 1 selesai di-generate, copy link gambar Foto 1, lalu tambahkan parameter <code class="text-amber-300">--cref [URL Foto 1]</code> di akhir prompt Foto 2, 3, 4, 5 agar wajah orangnya terkunci 100% sama!</li>
+          <ul class="space-y-1.5 text-black text-[11px] list-disc list-inside font-medium">
+            <li><b>Deskripsi Pakaian &amp; Fisik Identik</b>: Semua prompt Foto 1 sampai 5 menyertakan profil karakter yang sama (misal: <i>apron kulit cokelat di atas kemeja denim, tangan berotot terampil</i>).</li>
+            <li><b>Kunci Wajah dengan Midjourney <code class="bg-white px-1.5 py-0.5 rounded border border-black text-black font-bold">--cref</code></b>: Setelah Foto 1 selesai di-generate, copy link gambar Foto 1, lalu tambahkan parameter <code class="bg-white px-1.5 py-0.5 rounded border border-black text-black font-bold">--cref [URL Foto 1]</code> di akhir prompt Foto 2, 3, 4, 5 agar wajah orangnya terkunci 100% sama!</li>
             <li><b>Aksi Fisik Nyata di Google Flow</b>: Karena Foto 1 dan Foto 2 menampilkan orang yang memegang alat, saat Google Flow memproses dari Foto 1 ke Foto 2, AI akan menggerakkan tangan secara fisik memahat, bukan membiarkan kayu memahat dirinya sendiri.</li>
           </ul>
         </div>
 
         <!-- Steps Timeline -->
-        <div class="space-y-4">
-          <div class="flex gap-4">
-            <div class="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500 text-amber-400 font-bold flex items-center justify-center text-xs flex-shrink-0">
+        <div class="space-y-3.5">
+          <div class="flex gap-3.5">
+            <div class="w-8 h-8 rounded-full bg-[#ffd731] border border-black text-black font-black flex items-center justify-center text-xs flex-shrink-0">
               1
             </div>
             <div class="space-y-1">
-              <h4 class="font-bold text-zinc-200 text-xs">Generate 5 Foto di Midjourney v6 atau FLUX.1</h4>
-              <p class="text-xs text-zinc-400 leading-relaxed">
+              <h4 class="font-black text-black text-xs uppercase">Generate 5 Foto di Midjourney v6 atau FLUX.1</h4>
+              <p class="text-xs text-zinc-700 leading-relaxed font-medium">
                 Salin prompt dari <b>Seksi 1 (Foto 1 sampai 5)</b>. Generate di Midjourney / FLUX, lalu simpan kelima foto tersebut ke laptop Anda:
-                <br>• <code class="text-amber-300">foto1.jpg</code> (0s - Bahan Mentah Awal)
-                <br>• <code class="text-amber-300">foto2.jpg</code> (8s - Pola Kasar Terbentuk 25%)
-                <br>• <code class="text-amber-300">foto3.jpg</code> (16s - Wujud Utama Mulai Jelas 50%)
-                <br>• <code class="text-amber-300">foto4.jpg</code> (24s - Detailing & Amplas Poles 75%)
-                <br>• <code class="text-amber-300">foto5.jpg</code> (32s - Mahakarya Jadi Sempurna 100%)
+                <br>• <code class="bg-[#fafafa] px-1 py-0.5 rounded border border-black font-bold text-black">foto1.jpg</code> (0s - Bahan Mentah Awal)
+                <br>• <code class="bg-[#fafafa] px-1 py-0.5 rounded border border-black font-bold text-black">foto2.jpg</code> (8s - Pola Kasar Terbentuk 25%)
+                <br>• <code class="bg-[#fafafa] px-1 py-0.5 rounded border border-black font-bold text-black">foto3.jpg</code> (16s - Wujud Utama Mulai Jelas 50%)
+                <br>• <code class="bg-[#fafafa] px-1 py-0.5 rounded border border-black font-bold text-black">foto4.jpg</code> (24s - Detailing &amp; Amplas Poles 75%)
+                <br>• <code class="bg-[#fafafa] px-1 py-0.5 rounded border border-black font-bold text-black">foto5.jpg</code> (32s - Mahakarya Jadi Sempurna 100%)
               </p>
             </div>
           </div>
 
-          <div class="flex gap-4">
-            <div class="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500 text-emerald-400 font-bold flex items-center justify-center text-xs flex-shrink-0">
+          <div class="flex gap-3.5">
+            <div class="w-8 h-8 rounded-full bg-[#55db9c] border border-black text-black font-black flex items-center justify-center text-xs flex-shrink-0">
               2
             </div>
             <div class="space-y-1">
-              <h4 class="font-bold text-zinc-200 text-xs">Buka Google Flow & Render Klip 1 (00:00 - 00:08)</h4>
-              <p class="text-xs text-zinc-400 leading-relaxed">
-                Buka <a href="https://flow.google" target="_blank" class="text-blue-400 underline">flow.google</a>. Masukkan <b>Start Frame: foto1.jpg</b> dan <b>End Frame: foto2.jpg</b> + paste <b>Prompt Video 1</b>. Klik Generate (8 detik).
+              <h4 class="font-black text-black text-xs uppercase">Buka Google Flow &amp; Render Klip 1 (00:00 - 00:08)</h4>
+              <p class="text-xs text-zinc-700 leading-relaxed font-medium">
+                Buka <a href="https://flow.google" target="_blank" class="text-blue-600 underline font-bold">flow.google</a>. Masukkan <b>Start Frame: foto1.jpg</b> dan <b>End Frame: foto2.jpg</b> + paste <b>Prompt Video 1</b>. Klik Generate (8 detik).
               </p>
             </div>
           </div>
 
-          <div class="flex gap-4">
-            <div class="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500 text-emerald-400 font-bold flex items-center justify-center text-xs flex-shrink-0">
+          <div class="flex gap-3.5">
+            <div class="w-8 h-8 rounded-full bg-[#55db9c] border border-black text-black font-black flex items-center justify-center text-xs flex-shrink-0">
               3
             </div>
             <div class="space-y-1">
-              <h4 class="font-bold text-zinc-200 text-xs">Render Klip 2 (00:08 - 00:16)</h4>
-              <p class="text-xs text-zinc-400 leading-relaxed">
+              <h4 class="font-black text-black text-xs uppercase">Render Klip 2 (00:08 - 00:16)</h4>
+              <p class="text-xs text-zinc-700 leading-relaxed font-medium">
                 Masukkan <b>Start Frame: foto2.jpg</b> dan <b>End Frame: foto3.jpg</b> + paste <b>Prompt Video 2</b>. Klik Generate (8 detik).
               </p>
             </div>
           </div>
 
-          <div class="flex gap-4">
-            <div class="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500 text-emerald-400 font-bold flex items-center justify-center text-xs flex-shrink-0">
+          <div class="flex gap-3.5">
+            <div class="w-8 h-8 rounded-full bg-[#55db9c] border border-black text-black font-black flex items-center justify-center text-xs flex-shrink-0">
               4
             </div>
             <div class="space-y-1">
-              <h4 class="font-bold text-zinc-200 text-xs">Render Klip 3 (00:16 - 00:24)</h4>
-              <p class="text-xs text-zinc-400 leading-relaxed">
+              <h4 class="font-black text-black text-xs uppercase">Render Klip 3 (00:16 - 00:24)</h4>
+              <p class="text-xs text-zinc-700 leading-relaxed font-medium">
                 Masukkan <b>Start Frame: foto3.jpg</b> dan <b>End Frame: foto4.jpg</b> + paste <b>Prompt Video 3</b>. Klik Generate (8 detik).
               </p>
             </div>
           </div>
 
-          <div class="flex gap-4">
-            <div class="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500 text-emerald-400 font-bold flex items-center justify-center text-xs flex-shrink-0">
+          <div class="flex gap-3.5">
+            <div class="w-8 h-8 rounded-full bg-[#55db9c] border border-black text-black font-black flex items-center justify-center text-xs flex-shrink-0">
               5
             </div>
             <div class="space-y-1">
-              <h4 class="font-bold text-zinc-200 text-xs">Render Klip 4 (00:24 - 00:32) - Final Polishing</h4>
-              <p class="text-xs text-zinc-400 leading-relaxed">
+              <h4 class="font-black text-black text-xs uppercase">Render Klip 4 (00:24 - 00:32) - Final Polishing</h4>
+              <p class="text-xs text-zinc-700 leading-relaxed font-medium">
                 Masukkan <b>Start Frame: foto4.jpg</b> dan <b>End Frame: foto5.jpg</b> + paste <b>Prompt Video 4</b>. Proses finishing dan pemolesan kilau menuju hasil sempurna!
               </p>
             </div>
           </div>
 
-          <div class="flex gap-4">
-            <div class="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500 text-emerald-400 font-bold flex items-center justify-center text-xs flex-shrink-0">
+          <div class="flex gap-3.5">
+            <div class="w-8 h-8 rounded-full bg-[#55db9c] border border-black text-black font-black flex items-center justify-center text-xs flex-shrink-0">
               6
             </div>
             <div class="space-y-1">
-              <h4 class="font-bold text-zinc-200 text-xs">Render Klip 5 (00:32 - 00:40) - Grand Hero Reveal & Cinematic Outro</h4>
-              <p class="text-xs text-zinc-400 leading-relaxed">
+              <h4 class="font-black text-black text-xs uppercase">Render Klip 5 (00:32 - 00:40) - Grand Hero Reveal</h4>
+              <p class="text-xs text-zinc-700 leading-relaxed font-medium">
                 Masukkan <b>Start Frame: foto5.jpg</b> + paste <b>Prompt Video 5</b>. Kamera bergerak sinematik (slow orbit 360 / pull-back reveal) menampilkan kemegahan mahakarya hasil jadi!
               </p>
             </div>
           </div>
 
-          <div class="flex gap-4">
-            <div class="w-8 h-8 rounded-full bg-indigo-500/20 border border-indigo-500 text-indigo-400 font-bold flex items-center justify-center text-xs flex-shrink-0">
+          <div class="flex gap-3.5">
+            <div class="w-8 h-8 rounded-full bg-[#e9ccff] border border-black text-black font-black flex items-center justify-center text-xs flex-shrink-0">
               7
             </div>
             <div class="space-y-1">
-              <h4 class="font-bold text-zinc-200 text-xs">Satukan di CapCut (40 Detik Video Utuh)</h4>
-              <p class="text-xs text-zinc-400 leading-relaxed">
-                Tarik ke-5 klip ke CapCut secara berurutan. Beri potongan trim mikro (0.1s) di sambungan klip, tambahkan musik viral dan efek suara ASMR. Siap diunggah ke Facebook Reels & Shorts!
+              <h4 class="font-black text-black text-xs uppercase">Satukan di CapCut (40 Detik Video Utuh)</h4>
+              <p class="text-xs text-zinc-700 leading-relaxed font-medium">
+                Tarik ke-5 klip ke CapCut secara berurutan. Beri potongan trim mikro (0.1s) di sambungan klip, tambahkan musik viral dan efek suara ASMR. Siap diunggah ke Facebook Reels &amp; Shorts!
               </p>
             </div>
           </div>
         </div>
 
-        <!-- Video Reference Link -->
-        <div class="p-3.5 rounded-xl bg-blue-950/30 border border-blue-500/30 flex items-center justify-between">
+        <!-- Video Reference Link Card -->
+        <div class="p-4 rounded-2xl bg-[#dceeff] border border-black flex items-center justify-between">
           <div class="space-y-0.5">
-            <span class="text-xs font-semibold text-blue-300">Tonton Video Referensi (Saiful Hidayat):</span>
-            <p class="text-[11px] text-zinc-400">Flow + Facebook = The Fastest Way to Make Money</p>
+            <span class="text-xs font-black uppercase text-black">Tonton Video Referensi (Saiful Hidayat):</span>
+            <p class="text-[11px] text-zinc-700 font-medium">Flow + Facebook = The Fastest Way to Make Money</p>
           </div>
-          <a href="https://www.youtube.com/watch?v=0kjEvygPGqQ&t=499s" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-medium flex items-center gap-1.5 transition">
+          <a href="https://www.youtube.com/watch?v=0kjEvygPGqQ&t=499s" target="_blank" rel="noopener noreferrer" class="slush-btn-primary px-3.5 py-1.5 text-xs font-bold flex items-center gap-1.5">
             <i data-lucide="play" class="w-3.5 h-3.5"></i>
-            <span>Buka Video (8:19)</span>
+            <span>Buka Video</span>
           </a>
         </div>
 
       </div>
 
       <!-- Modal Footer -->
-      <div class="p-4 border-t border-zinc-800 bg-zinc-950/60 flex items-center justify-end">
-        <button onclick="closeTutorialModal()" class="px-5 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold transition">
+      <div class="p-4 border-t border-black bg-[#fafafa] flex items-center justify-end">
+        <button onclick="closeTutorialModal()" class="slush-btn-secondary px-5 py-2 text-xs font-black uppercase tracking-wider">
           Tutup Panduan
         </button>
       </div>
@@ -700,10 +847,10 @@
     </div>
   </div>
 
-  <!-- Toast Notification Container -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-zinc-900 border border-emerald-500/40 text-zinc-100 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3">
-    <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
-    <span id="toast-message" class="text-sm font-medium">Berhasil disalin!</span>
+  <!-- Toast Notification (Slush Black Pill) -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-black border border-black text-white px-5 py-3 rounded-full shadow-xl flex items-center gap-3">
+    <i data-lucide="check-circle" class="w-4 h-4 text-[#55db9c]"></i>
+    <span id="toast-message" class="text-xs font-bold">Berhasil disalin!</span>
   </div>
 
   <script>
@@ -749,13 +896,13 @@
       const urlContent = document.getElementById('tab-url-content');
 
       if (tab === 'file') {
-        fileBtn.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 text-white shadow-sm transition';
-        urlBtn.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-zinc-400 hover:text-white transition';
+        fileBtn.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black text-white transition';
+        urlBtn.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-black hover:bg-black/5 transition';
         fileContent.classList.remove('hidden');
         urlContent.classList.add('hidden');
       } else {
-        urlBtn.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 text-white shadow-sm transition';
-        fileBtn.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-zinc-400 hover:text-white transition';
+        urlBtn.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black text-white transition';
+        fileBtn.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-black hover:bg-black/5 transition';
         urlContent.classList.remove('hidden');
         fileContent.classList.add('hidden');
       }
@@ -765,11 +912,10 @@
     document.querySelectorAll('.platform-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.platform-btn').forEach(b => {
-          b.classList.remove('border-emerald-500/50', 'bg-emerald-500/10', 'text-emerald-300');
-          b.classList.add('border-zinc-800', 'bg-zinc-900/60', 'text-zinc-300');
+          b.classList.remove('active', 'bg-[#dceeff]');
+          b.classList.add('bg-white');
         });
-        btn.classList.remove('border-zinc-800', 'bg-zinc-900/60', 'text-zinc-300');
-        btn.classList.add('border-emerald-500/50', 'bg-emerald-500/10', 'text-emerald-300');
+        btn.classList.add('active', 'bg-[#dceeff]');
         selectedPlatform = btn.getAttribute('data-val');
       });
     });
@@ -784,7 +930,7 @@
       dropZone.addEventListener(eventName, (e) => {
         e.preventDefault();
         e.stopPropagation();
-        dropZone.classList.add('border-emerald-500', 'bg-emerald-950/20');
+        dropZone.classList.add('bg-[#dceeff]/50');
       }, false);
     });
 
@@ -792,7 +938,7 @@
       dropZone.addEventListener(eventName, (e) => {
         e.preventDefault();
         e.stopPropagation();
-        dropZone.classList.remove('border-emerald-500', 'bg-emerald-950/20');
+        dropZone.classList.remove('bg-[#dceeff]/50');
       }, false);
     });
 
@@ -810,92 +956,92 @@
       }
     };
 
-    // Paste from Clipboard (Ctrl+V) anywhere on page
+    // Paste file from clipboard anywhere
     window.addEventListener('paste', (e) => {
-      const items = (e.clipboardData || e.originalEvent.clipboardData).items;
-      for (const item of items) {
-        if (item.type.indexOf('image') === 0) {
-          const blob = item.getAsFile();
-          switchTab('file');
-          handleFileSelection(blob, 'pasted-image-' + Date.now() + '.png');
-          showToast('Gambar dari clipboard berhasil dimuat!');
-          break;
+      const items = e.clipboardData && e.clipboardData.items;
+      if (!items) return;
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].kind === 'file') {
+          const file = items[i].getAsFile();
+          if (file) {
+            handleFileSelection(file);
+            showToast('File dari clipboard berhasil dimuat!');
+            break;
+          }
         }
       }
     });
 
-    // Paste button for URL
-    async function pasteFromClipboard() {
-      try {
-        const text = await navigator.clipboard.readText();
-        if (text && (text.startsWith('http://') || text.startsWith('https://'))) {
-          document.getElementById('url-input').value = text;
-          showToast('Tautan berhasil di-paste!');
-        } else {
-          showToast('Teks di clipboard bukan URL yang valid.', true);
-        }
-      } catch (err) {
-        showToast('Tidak dapat mengakses clipboard browser.', true);
-      }
-    }
-
-    // Handle File Selection & Preview
-    function handleFileSelection(file, overrideName) {
+    // Handle Selected File
+    function handleFileSelection(file) {
       if (!file) return;
-      if (!file.type.startsWith('image/') && !file.type.startsWith('video/')) {
-        return showToast('Hanya format file gambar atau video yang didukung!', true);
-      }
-      if (file.size > 100 * 1024 * 1024) {
-        return showToast('Ukuran file melebihi batas maksimal 100MB!', true);
-      }
-
       selectedFile = file;
-      const fname = overrideName || file.name || 'uploaded_media';
-      const fsize = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+
+      const previewContainer = document.getElementById('media-preview-container');
+      const filenameLabel = document.getElementById('preview-filename');
+      const filesizeLabel = document.getElementById('preview-filesize');
+      const mediaBadge = document.getElementById('media-badge');
+      const imgPreview = document.getElementById('img-preview');
+      const vidPreview = document.getElementById('vid-preview');
+
+      filenameLabel.textContent = file.name;
+      filesizeLabel.textContent = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
+
       const isVideo = file.type.startsWith('video/');
+      mediaBadge.textContent = isVideo ? 'Video' : 'Image';
+      mediaBadge.className = isVideo 
+        ? 'px-2.5 py-0.5 rounded-full bg-[#55db9c] text-black border border-black text-[10px] font-bold uppercase' 
+        : 'px-2.5 py-0.5 rounded-full bg-[#ffd731] text-black border border-black text-[10px] font-bold uppercase';
 
-      document.getElementById('preview-filename').textContent = fname;
-      document.getElementById('preview-filesize').textContent = fsize;
-      document.getElementById('media-badge').textContent = isVideo ? 'Video' : 'Image';
-      document.getElementById('media-badge').className = isVideo
-        ? 'px-2 py-0.5 rounded-lg bg-teal-500/10 text-teal-400 border border-teal-500/20 text-[10px] font-semibold uppercase'
-        : 'px-2 py-0.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-semibold uppercase';
-
-      const imgP = document.getElementById('img-preview');
-      const vidP = document.getElementById('vid-preview');
-      const url = URL.createObjectURL(file);
+      const fileUrl = URL.createObjectURL(file);
 
       if (isVideo) {
-        vidP.src = url;
-        vidP.classList.remove('hidden');
-        imgP.classList.add('hidden');
+        imgPreview.classList.add('hidden');
+        vidPreview.classList.remove('hidden');
+        vidPreview.src = fileUrl;
       } else {
-        imgP.src = url;
-        imgP.classList.remove('hidden');
-        vidP.classList.add('hidden');
+        vidPreview.classList.add('hidden');
+        imgPreview.classList.remove('hidden');
+        imgPreview.src = fileUrl;
       }
 
-      document.getElementById('media-preview-container').classList.remove('hidden');
+      previewContainer.classList.remove('hidden');
+      lucide.createIcons();
     }
 
     function clearSelectedMedia() {
       selectedFile = null;
       fileInput.value = '';
+      document.getElementById('media-preview-container').classList.add('hidden');
       document.getElementById('img-preview').src = '';
       document.getElementById('vid-preview').src = '';
-      document.getElementById('media-preview-container').classList.add('hidden');
     }
 
-    // Generation Execution
+    async function pasteFromClipboard() {
+      try {
+        const text = await navigator.clipboard.readText();
+        if (text) {
+          document.getElementById('url-input').value = text.trim();
+          showToast('URL berhasil ditempel!');
+        }
+      } catch (err) {
+        showToast('Tidak bisa mengakses clipboard.', true);
+      }
+    }
+
+    // Generation Handler
     async function startGeneration() {
       const isFileMode = currentTab === 'file';
       const urlValue = document.getElementById('url-input').value.trim();
 
       if (isFileMode && !selectedFile) {
-        return showToast('Silakan pilih atau drop file gambar/video terlebih dahulu!', true);
+        showToast('Pilih atau drop file gambar/video terlebih dahulu.', true);
+        return;
       }
+
       if (!isFileMode && !urlValue) {
-        return showToast('Silakan masukkan link URL gambar atau video!', true);
+        showToast('Masukkan link URL gambar atau video terlebih dahulu.', true);
+        return;
       }
 
       const generateBtn = document.getElementById('generate-btn');
@@ -917,9 +1063,9 @@
         for (let i = 1; i <= 3; i++) {
           const el = document.getElementById('step-' + i);
           if (i <= stepNum) {
-            el.className = 'step-badge text-emerald-400 font-semibold';
+            el.className = 'step-badge text-black font-extrabold';
           } else {
-            el.className = 'step-badge text-zinc-500';
+            el.className = 'step-badge text-zinc-400 font-normal';
           }
         }
       }
@@ -991,7 +1137,7 @@
       }
     }
 
-    // Storyboard Parser for 5 Images + 4 Clips
+    // Storyboard Parser for 5 Images + 5 Clips
     function parseFlowStoryboard(rawText) {
       const hasFlowMarkers = rawText.includes('===IMAGE_1===') || rawText.includes('===PART_1===');
       if (!hasFlowMarkers) {
@@ -1177,7 +1323,7 @@
         renderSplitPrompts();
 
         // Populate Timelapse Guide & Negative Prompt
-        document.getElementById('negative-prompt-text').textContent = parsedStoryboardData.timelapseGuide.negativePrompt || 'morphing, melting geometry, warping, jitter, flickering, sudden object shifts, camera shake, blurry, bad anatomy, deformed hands, low quality, watermark, text.';
+        document.getElementById('negative-prompt-text').textContent = parsedStoryboardData.timelapseGuide.negativePrompt || 'floating tools, autonomous carving, self-carving, tools moving by themselves, ghost hands, disembodied hands, levitating objects, extra arms, deformed fingers, morphing, melting geometry, warping, jitter, flickering, sudden object shifts, camera shake, blurry, bad anatomy, deformed hands, low quality, watermark, text.';
         if (parsedStoryboardData.timelapseGuide.cameraRules) {
           document.getElementById('guide-camera-rules').textContent = parsedStoryboardData.timelapseGuide.cameraRules;
         }
@@ -1220,25 +1366,25 @@
       imgContainer.innerHTML = imgKeys.map((num, idx) => {
         const item = parsedStoryboardData.imagePrompts[num] || { title: `Foto ${num}`, prompt: `Photorealistic 8k photo of transformation milestone ${num}` };
         return `
-          <div class="bg-zinc-900/90 border border-zinc-800 hover:border-amber-500/50 rounded-xl p-3.5 space-y-2.5 transition">
+          <div class="bg-white border border-black rounded-2xl p-4 space-y-2.5 transition hover:bg-[#fafafa]">
             <div class="flex items-center justify-between flex-wrap gap-2">
               <div class="flex items-center gap-2">
-                <span class="w-6 h-6 rounded-md bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center border border-amber-500/30">
+                <span class="w-7 h-7 rounded-lg bg-[#ffd731] text-black font-black text-xs flex items-center justify-center border border-black shadow-sm">
                   ${num}
                 </span>
                 <div>
-                  <h5 class="text-xs font-bold text-zinc-100">${item.title}</h5>
-                  <span class="text-[10px] text-amber-400/90 font-mono">${milestoneTags[idx]}</span>
+                  <h5 class="text-xs font-black text-black uppercase tracking-tight">${item.title}</h5>
+                  <span class="text-[10px] text-zinc-600 font-mono font-bold">${milestoneTags[idx]}</span>
                 </div>
               </div>
 
-              <button onclick="copyElementText('img-prompt-val-${num}', 'Prompt Foto ${num} berhasil disalin!')" class="text-xs bg-zinc-800 hover:bg-zinc-700 text-amber-300 hover:text-white px-3 py-1.5 rounded-lg transition font-medium flex items-center gap-1.5 border border-zinc-700 shadow-sm">
+              <button onclick="copyElementText('img-prompt-val-${num}', 'Prompt Foto ${num} berhasil disalin!')" class="slush-btn-secondary text-xs px-3.5 py-1.5 font-bold flex items-center gap-1.5">
                 <i data-lucide="copy" class="w-3 h-3"></i>
                 <span>Copy Prompt Foto ${num}</span>
               </button>
             </div>
 
-            <p id="img-prompt-val-${num}" class="text-zinc-200 text-xs font-mono leading-relaxed bg-black/40 p-2.5 rounded-lg border border-zinc-800/80 selection:bg-amber-500/30 select-all">${item.prompt}</p>
+            <p id="img-prompt-val-${num}" class="text-black text-xs font-mono leading-relaxed bg-[#f8f9fa] p-3 rounded-xl border border-black/80 selection:bg-[#ffd731] select-all">${item.prompt}</p>
           </div>
         `;
       }).join('');
@@ -1250,21 +1396,21 @@
         const endFoto = part.num === 5 ? 'Cinematic 360 Showcase' : `Foto ${part.num + 1} (${part.num * 8}s)`;
 
         return `
-          <div class="bg-zinc-900/90 border border-zinc-800 hover:border-emerald-500/50 rounded-xl p-4 space-y-3 transition">
+          <div class="bg-white border border-black rounded-2xl p-4 space-y-3 transition hover:bg-[#fafafa]">
             
             <!-- Video Card Header -->
             <div class="flex items-center justify-between flex-wrap gap-2">
               <div class="flex items-center gap-2">
-                <span class="w-6 h-6 rounded-md bg-emerald-500/20 text-emerald-400 font-bold text-xs flex items-center justify-center border border-emerald-500/30">
+                <span class="w-7 h-7 rounded-lg bg-[#55db9c] text-black font-black text-xs flex items-center justify-center border border-black shadow-sm">
                   ${part.num}
                 </span>
                 <div>
-                  <h5 class="text-xs font-bold text-zinc-100">${part.title}</h5>
-                  <span class="text-[10px] text-emerald-400 font-mono">Durasi: 8 Detik (${(part.num - 1) * 8}s - ${part.num * 8}s)</span>
+                  <h5 class="text-xs font-black text-black uppercase tracking-tight">${part.title}</h5>
+                  <span class="text-[10px] text-zinc-600 font-mono font-bold">Durasi: 8 Detik (${(part.num - 1) * 8}s - ${part.num * 8}s)</span>
                 </div>
               </div>
 
-              <button onclick="copyElementText('vid-prompt-val-${part.num}', 'Prompt Video Klip ${part.num} berhasil disalin!')" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-lg transition font-medium flex items-center gap-1.5 shadow-sm">
+              <button onclick="copyElementText('vid-prompt-val-${part.num}', 'Prompt Video Klip ${part.num} berhasil disalin!')" class="slush-btn-secondary text-xs px-3.5 py-1.5 font-bold flex items-center gap-1.5">
                 <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                 <span>Copy Prompt Video ${part.num}</span>
               </button>
@@ -1272,31 +1418,31 @@
 
             <!-- Start Frame & End Frame Badge Tracker -->
             <div class="flex flex-wrap items-center gap-2 text-[10px]">
-              <div class="px-2.5 py-1 rounded-md bg-amber-950/40 border border-amber-500/30 text-amber-300 flex items-center gap-1 font-mono">
-                <i data-lucide="image" class="w-3 h-3 text-amber-400"></i>
+              <div class="px-3 py-1 rounded-full bg-[#ffd731] border border-black text-black flex items-center gap-1.5 font-mono font-bold">
+                <i data-lucide="image" class="w-3 h-3 text-black"></i>
                 <span><b>Frame Awal:</b> ${part.frameAwal || startFoto}</span>
               </div>
-              <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-emerald-400"></i>
-              <div class="px-2.5 py-1 rounded-md ${part.num === 5 ? 'bg-indigo-950/40 border-indigo-500/30 text-indigo-300' : 'bg-amber-950/40 border-amber-500/30 text-amber-300'} border flex items-center gap-1 font-mono">
-                <i data-lucide="${part.num === 5 ? 'sparkles' : 'image'}" class="w-3 h-3 ${part.num === 5 ? 'text-indigo-400' : 'text-amber-400'}"></i>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-black"></i>
+              <div class="px-3 py-1 rounded-full ${part.num === 5 ? 'bg-[#e9ccff]' : 'bg-[#ffd731]'} border border-black text-black flex items-center gap-1.5 font-mono font-bold">
+                <i data-lucide="${part.num === 5 ? 'sparkles' : 'image'}" class="w-3 h-3 text-black"></i>
                 <span><b>Frame Akhir:</b> ${part.frameAkhir || endFoto}</span>
               </div>
-              <div class="px-2 py-1 rounded-md bg-zinc-800 border border-zinc-700 text-teal-300 flex items-center gap-1">
-                <i data-lucide="camera" class="w-3 h-3 text-teal-400"></i>
+              <div class="px-3 py-1 rounded-full bg-[#dceeff] border border-black text-black flex items-center gap-1.5 font-medium">
+                <i data-lucide="camera" class="w-3 h-3 text-black"></i>
                 <span>${part.camera}</span>
               </div>
             </div>
 
             <!-- Video Prompt Box -->
             <div class="space-y-1">
-              <span class="text-[11px] font-semibold text-emerald-400 uppercase tracking-wider">Prompt Video Google Flow (Paste bersama Foto Awal & Akhir):</span>
-              <p id="vid-prompt-val-${part.num}" class="text-zinc-100 text-xs font-mono leading-relaxed bg-black/50 p-2.5 rounded-lg border border-zinc-800 selection:bg-emerald-500 select-all">${part.prompt}</p>
+              <span class="text-[11px] font-black text-black uppercase tracking-wider">Prompt Video Google Flow (Paste bersama Foto Awal &amp; Akhir):</span>
+              <p id="vid-prompt-val-${part.num}" class="text-black text-xs font-mono leading-relaxed bg-[#f8f9fa] p-3 rounded-xl border border-black/80 selection:bg-[#55db9c] select-all">${part.prompt}</p>
             </div>
 
             <!-- Indonesian Description -->
             ${part.indonesian ? `
-              <div class="bg-zinc-950/50 p-2 rounded-lg border border-zinc-800/80 text-[11px] text-zinc-300">
-                <span class="font-semibold text-zinc-400">Deskripsi:</span> ${part.indonesian}
+              <div class="bg-[#fafafa] p-2.5 rounded-xl border border-black/30 text-[11px] text-zinc-700 font-medium">
+                <span class="font-bold text-black">Deskripsi:</span> ${part.indonesian}
               </div>
             ` : ''}
 
@@ -1409,13 +1555,13 @@
       toastMsg.textContent = msg;
 
       if (isError) {
-        toast.className = 'fixed bottom-6 right-6 z-50 transform translate-y-0 opacity-100 transition-all duration-300 pointer-events-auto bg-zinc-900 border border-red-500/50 text-red-200 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3';
+        toast.className = 'fixed bottom-6 right-6 z-50 transform translate-y-0 opacity-100 transition-all duration-300 pointer-events-auto bg-[#fb4903] text-white border border-black px-5 py-3 rounded-full shadow-2xl flex items-center gap-3';
       } else {
-        toast.className = 'fixed bottom-6 right-6 z-50 transform translate-y-0 opacity-100 transition-all duration-300 pointer-events-auto bg-zinc-900 border border-emerald-500/50 text-zinc-100 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3';
+        toast.className = 'fixed bottom-6 right-6 z-50 transform translate-y-0 opacity-100 transition-all duration-300 pointer-events-auto bg-black text-white border border-black px-5 py-3 rounded-full shadow-2xl flex items-center gap-3';
       }
 
       setTimeout(() => {
-        toast.className = 'fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-zinc-900 border border-zinc-800 text-zinc-100 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3';
+        toast.className = 'fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-black text-white border border-black px-5 py-3 rounded-full shadow-2xl flex items-center gap-3';
       }, 3500);
     }
 
@@ -1427,7 +1573,7 @@
         const container = document.getElementById('history-list');
 
         if (!rows || rows.length === 0) {
-          container.innerHTML = '<div class="col-span-full py-8 text-center text-zinc-500 text-sm">Belum ada riwayat prompt tersimpan.</div>';
+          container.innerHTML = '<div class="col-span-full py-8 text-center text-zinc-500 text-sm font-medium">Belum ada riwayat prompt tersimpan.</div>';
           return;
         }
 
@@ -1438,25 +1584,25 @@
           const safePrompt = encodeURIComponent(item.prompt);
 
           return `
-            <div class="glass border border-zinc-800/80 rounded-2xl p-4 flex flex-col justify-between hover:border-zinc-700 transition">
+            <div class="bg-white border border-black rounded-2xl p-4 flex flex-col justify-between hover:bg-[#fafafa] transition">
               <div>
                 <div class="flex items-center justify-between mb-2">
                   <div class="flex items-center gap-1.5">
-                    <span class="text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full ${isVid ? 'bg-teal-500/10 text-teal-400 border border-teal-500/20' : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'}">
+                    <span class="text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full border border-black ${isVid ? 'bg-[#55db9c] text-black' : 'bg-[#ffd731] text-black'}">
                       ${isVid ? '🎬 Video' : '🖼️ Gambar'}
                     </span>
-                    ${isFlow ? '<span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">5 Image & 5 Video</span>' : ''}
+                    ${isFlow ? '<span class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-[#dceeff] text-black border border-black">5 Foto &amp; 5 Video</span>' : ''}
                   </div>
-                  <span class="text-[11px] text-zinc-500 font-mono">#${item.id}</span>
+                  <span class="text-[11px] text-zinc-500 font-mono font-bold">#${item.id}</span>
                 </div>
-                <h5 class="text-xs font-semibold text-zinc-300 truncate mb-1.5">${item.filename}</h5>
-                <p class="text-xs text-zinc-400 line-clamp-3 font-mono leading-relaxed mb-3">${excerpt}</p>
+                <h5 class="text-xs font-black text-black truncate mb-1.5 uppercase">${item.filename}</h5>
+                <p class="text-xs text-zinc-600 line-clamp-3 font-mono leading-relaxed mb-3">${excerpt}</p>
               </div>
-              <div class="border-t border-zinc-800/80 pt-3 flex items-center justify-between text-xs">
-                <button onclick="restorePrompt('${safePrompt}')" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1 font-medium">
+              <div class="border-t border-black/10 pt-3 flex items-center justify-between text-xs">
+                <button onclick="restorePrompt('${safePrompt}')" class="slush-btn-secondary px-3 py-1 font-bold text-black flex items-center gap-1 hover:bg-[#ffd731]">
                   <i data-lucide="eye" class="w-3.5 h-3.5"></i> Buka Storyboard
                 </button>
-                <button onclick="deleteHistoryItem(${item.id})" class="text-zinc-500 hover:text-red-400 p-1 transition">
+                <button onclick="deleteHistoryItem(${item.id})" class="text-zinc-400 hover:text-[#fb4903] p-1 transition" title="Hapus">
                   <i data-lucide="trash" class="w-3.5 h-3.5"></i>
                 </button>
               </div>
