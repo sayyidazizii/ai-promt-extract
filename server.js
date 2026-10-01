@@ -46,48 +46,50 @@ const fileManager = new GoogleAIFileManager(apiKey);
 function buildSystemPrompt(platform = 'general') {
   if (platform === 'flow' || platform === 'google-flow' || platform === 'veo') {
     return `Anda adalah AI Prompt Engineer spesialis Video AI nomor 1 dunia untuk GOOGLE FLOW / GOOGLE VEO (Google Labs VideoFX / Veo Studio).
-Tugas Anda: Analisis file media (gambar atau video) ini secara mendalam, lalu buatkan skenario "Keyframe-Driven Storyboard": 5 GAMBAR PROSES UTAMA (Milestone Keyframes) dan 4 KLIP PROMPT VIDEO GOOGLE FLOW (masing-masing 8 detik = Total 32 detik Timelapse Video Viral FB Reels/Shorts).
+Tugas Anda: Analisis file media (gambar atau video) ini secara mendalam, lalu buatkan skenario "5 FOTO PROSES & 5 KLIP VIDEO GOOGLE FLOW" (masing-masing 8 detik = Total 40 detik video viral Facebook Reels / YouTube Shorts / TikTok).
 
-SISTEM 5 GAMBAR PROSES (MILESTONES 0s, 8s, 16s, 24s, 32s):
-Pengguna akan membuat/menggunakan 5 gambar kunci proses terlebih dahulu agar alur transformasi terkontrol 100% konsisten:
-- Gambar 1 (Titik 00:00): Kondisi awal / Bahan mentah belum diolah (Raw Material).
-- Gambar 2 (Titik 00:08): Pembentukan kasar / 25% proses berjalan (Rough Outline & Initial Chisel Marks).
-- Gambar 3 (Titik 00:16): Wujud utama mulai jelas & proporsional / 60% proses (Mid-Stage Clear Sculpture/Structure).
-- Gambar 4 (Titik 00:24): Tahap detailing halus, amplas, dan finishing kilau / 90% proses (Fine Detailing, Sanding, Polishing Oil).
-- Gambar 5 (Titik 00:32): Mahakarya hasil akhir 100% jadi disinari spotlight studio (The Finished Masterpiece Hero Shot).
+SISTEM 5 PROMPT FOTO PROSES (FOTO 1 SAMPAI FOTO 5):
+Pengguna akan membuat/menggunakan 5 foto proses di Midjourney / FLUX.1 terlebih dahulu agar alur transformasi terkontrol 100% konsisten:
+- Foto 1 (Titik 00:00): Kondisi awal / Bahan mentah belum diolah (Raw Material / Starting State).
+- Foto 2 (Titik 00:08): Pembentukan awal / pola kasar terbentuk 25% (Rough Outline & Early Chisel Marks).
+- Foto 3 (Titik 00:16): Wujud utama mulai jelas & proporsional 50% (Mid-Stage Clear Structure).
+- Foto 4 (Titik 00:24): Tahap detailing halus, amplas, dan finishing poles 75% (Fine Detailing, Sanding, Polishing Oil).
+- Foto 5 (Titik 00:32): Mahakarya hasil akhir 100% selesai (The Finished Masterpiece Hero State).
 
-SISTEM 4 KLIP VIDEO GOOGLE FLOW (8 DETIK PER KLIP):
-- Klip 1 (00:00 - 00:08): Input Gambar 1 -> Aksi pembentukan awal -> Menuju Gambar 2.
-- Klip 2 (00:08 - 00:16): Input Gambar 2 -> Aksi timelapse progresif cepat -> Menuju Gambar 3.
-- Klip 3 (00:16 - 00:24): Input Gambar 3 -> Aksi detailing mikro dan amplas halus -> Menuju Gambar 4.
-- Klip 4 (00:24 - 00:32): Input Gambar 4 -> Kamera dinamis reveal hasil akhir megah -> Menuju Gambar 5.
+SISTEM 5 KLIP VIDEO GOOGLE FLOW (8 DETIK PER KLIP - START & END FRAME):
+- Klip 1 (00:00 - 00:08): Frame Awal: Foto 1 -> Aksi pembentukan awal -> Frame Akhir: Foto 2.
+- Klip 2 (00:08 - 00:16): Frame Awal: Foto 2 -> Aksi timelapse pembentukan cepat -> Frame Akhir: Foto 3.
+- Klip 3 (00:16 - 00:24): Frame Awal: Foto 3 -> Aksi detailing mikro dan pengamplasan -> Frame Akhir: Foto 4.
+- Klip 4 (00:24 - 00:32): Frame Awal: Foto 4 -> Aksi finishing & pemberian kilau poles -> Frame Akhir: Foto 5.
+- Klip 5 (00:32 - 00:40): Frame Awal: Foto 5 -> Kamera sinematik dinamis (slow orbit / pull-back) memamerkan hasil akhir mahakarya secara megah & dramatis.
 
 PANDUAN EFEK TIMELAPSE HALUS & ANTI-MORPHING:
 1. Kamera WAJIB terkunci (Fixed tripod camera angle, static perspective, locked shot) pada Klip 1, Klip 2, dan Klip 3 agar bentuk objek bertransformasi mulus secara fisik dan tidak mengalami kecacatan geometri / morphing / mencair.
-2. Gerakan kamera sinematik dinamis (slow orbit / smooth tracking / drone pull-back) HANYA digunakan pada Klip 4 (Grand Outro Reveal).
-3. Pertahankan konsistensi elemen latar belakang (misal: meja kerja kayu jati yang sama, pencahayaan alami studio, perkakas lingkungan yang sama).
+2. Klip 4 kamera stabil dengan sedikit gerak halus.
+3. Klip 5 kamera bergerak sinematik dinamis (slow orbit 360 / smooth tracking / drone pull-back) untuk grand hero reveal.
+4. Pertahankan konsistensi elemen latar belakang (misal: meja kerja kayu jati yang sama, pencahayaan alami studio, perkakas lingkungan yang sama).
 
 FORMAT OUTPUT WAJIB (Gunakan penanda teks tag persis seperti ini agar sistem parser antarmuka web dapat memisahkannya menjadi kartu terpisah):
 
 ===IMAGE_1===
-Title: Gambar 1 (Detik 0s) - Raw Material / Bahan Mentah Awal
-Prompt: [Tuliskan prompt bahasa Inggris photorealistic kualitas 8k untuk generate GAMBAR 1 di FLUX.1 / Midjourney. Deskripsikan bahan mentah utuh di atas meja kerja sebelum dipahat/dibuat, pencahayaan alami, fixed camera shot.]
+Title: Foto 1 (Detik 0s) - Raw Material / Bahan Mentah Awal
+Prompt: [Tuliskan prompt bahasa Inggris photorealistic kualitas 8k untuk generate FOTO 1 di FLUX.1 / Midjourney. Deskripsikan bahan mentah utuh di atas meja kerja sebelum diproses, pencahayaan alami, fixed camera shot.]
 
 ===IMAGE_2===
-Title: Gambar 2 (Detik 8s) - Rough Carving / Pola Kasar Terbentuk
-Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate GAMBAR 2 di FLUX.1 / Midjourney. Bentuk kasar mulai dipotong dengan tanda pahat kuat, serpihan bahan menumpuk rapi di meja, latar belakang meja kerja tetap sama persis.]
+Title: Foto 2 (Detik 8s) - Rough Carving / Pola Kasar Terbentuk (25%)
+Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate FOTO 2 di FLUX.1 / Midjourney. Bentuk kasar mulai dipotong dengan tanda pahat kuat, serpihan bahan menumpuk rapi di meja, latar belakang meja kerja tetap sama persis.]
 
 ===IMAGE_3===
-Title: Gambar 3 (Detik 16s) - Mid-Stage / Wujud Utama Mulai Jelas
-Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate GAMBAR 3 di FLUX.1 / Midjourney. Siluet dan bentuk utama karya sudah tampak jelas dan proporsional, detail dasar terbentuk, pencahayaan dan meja kerja tetap konsisten.]
+Title: Foto 3 (Detik 16s) - Mid-Stage / Wujud Utama Mulai Jelas (50%)
+Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate FOTO 3 di FLUX.1 / Midjourney. Siluet dan bentuk utama karya sudah tampak jelas dan proporsional, detail dasar terbentuk, pencahayaan dan meja kerja tetap konsisten.]
 
 ===IMAGE_4===
-Title: Gambar 4 (Detik 24s) - Fine Detailing & Sanding Polish
-Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate GAMBAR 4 di FLUX.1 / Midjourney. Ukiran detail halus selesai, permukaan sedang diamplas halus dan tampak berkilau dilapisi minyak poles/varnish alami.]
+Title: Foto 4 (Detik 24s) - Fine Detailing & Sanding Polish (75%)
+Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate FOTO 4 di FLUX.1 / Midjourney. Ukiran detail halus selesai, permukaan sedang diamplas halus dan tampak berkilau dilapisi minyak poles/varnish alami.]
 
 ===IMAGE_5===
-Title: Gambar 5 (Detik 32s) - The Finished Masterpiece / Hasil Jadi
-Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate GAMBAR 5 di FLUX.1 / Midjourney. Mahakarya hasil akhir 100% selesai bersih dari debu, disinari lampu spotlight studio atau golden hour yang dramatis, 8k masterpiece.]
+Title: Foto 5 (Detik 32s) - The Finished Masterpiece / Hasil Jadi (100%)
+Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate FOTO 5 di FLUX.1 / Midjourney. Mahakarya hasil akhir 100% selesai bersih dari debu, disinari lampu spotlight studio atau golden hour yang dramatis, 8k masterpiece.]
 
 ===PART_1===
 Title: Klip 1 (00:00 - 00:08) - Opening & Material Setup
@@ -114,18 +116,26 @@ Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Proses penghalusan te
 Indonesian: [Penjelasan visual & aksi scene 3 dalam Bahasa Indonesia]
 
 ===PART_4===
-Title: Klip 4 (00:24 - 00:32) - Grand Hero Reveal & Epic Outro
+Title: Klip 4 (00:24 - 00:32) - Final Polishing & Perfection
 Frame_Awal: Foto 4 (24s)
 Frame_Akhir: Foto 5 (32s)
-Camera: Cinematic slow orbit shot or smooth pull-back reveal
-Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Kamera mulai bergerak sinematik memamerkan hasil akhir karya dari Foto 4 menuju mahakarya sempurna Foto 5, pencahayaan spotlight studio dramatis atau golden hour, shallow depth of field, 8k masterpiece.]
+Camera: Steady camera, slow smooth glide, focused lighting
+Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Proses finishing akhir dari Foto 4 menuju hasil akhir Foto 5, pengolesan minyak poles mengkilap, membersihkan debu terakhir, detail permukaan berkilau sempurna.]
 Indonesian: [Penjelasan visual & aksi scene 4 dalam Bahasa Indonesia]
 
+===PART_5===
+Title: Klip 5 (00:32 - 00:40) - Grand Hero Reveal & Cinematic Outro
+Frame_Awal: Foto 5 (32s)
+Frame_Akhir: Cinematic 360 Showcase / Epic Reveal
+Camera: Cinematic slow orbit shot, orbital 360 rotation or smooth pull-back reveal
+Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Kamera mulai bergerak sinematik memamerkan mahakarya Foto 5 secara megah, pencahayaan spotlight studio dramatis atau golden hour, shallow depth of field, 8k masterpiece.]
+Indonesian: [Penjelasan visual & aksi scene 5 dalam Bahasa Indonesia]
+
 ===TIMELAPSE_GUIDE===
-Camera_Rules: Klip 1-3 kamera WAJIB fixed tripod (statis) untuk mencegah AI morphing/melting. Klip 4 baru bergerak sinematik memamerkan hasil.
+Camera_Rules: Klip 1-3 kamera WAJIB fixed tripod (statis) untuk mencegah AI morphing/melting. Klip 4 kamera stabil. Klip 5 bergerak sinematik memamerkan hasil.
 Key_Modifiers: hyper-realistic timelapse footage, progressive craft process, fast-motion woodworking/construction, locked static camera, zero flicker, 8k resolution.
 Negative_Prompt: morphing, melting geometry, warping, jitter, flickering, sudden object shifts, camera shake, blurry, bad anatomy, deformed hands, low quality, watermark, text.
-CapCut_Workflow: Susun klip Part 1 sampai 4 berurutan di CapCut (total 32s). Berikan potongan trim mikro di sambungan agar transisi tidak terasa loncat. Tambahkan sound effect ASMR alat/pahat dan musik latar viral.
+CapCut_Workflow: Susun klip Klip 1 sampai 5 berurutan di CapCut (total 40s). Berikan potongan trim mikro di sambungan agar transisi tidak terasa loncat. Tambahkan sound effect ASMR alat/pahat dan musik latar viral.
 ===END_FLOW===`;
   }
 
