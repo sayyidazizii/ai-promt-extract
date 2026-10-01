@@ -6,14 +6,16 @@ Aplikasi web modern untuk mengekstrak dan mereplikasi visual dari **foto/video**
 
 ## ✨ Fitur Utama
 
-- **🎥 Video & Image to Prompt:** Unggah file foto/video (hingga 100MB) atau paste link (URL) media.
-- **✨ Preset Khusus Google Flow (Veo):**
-  - **Single Clip Prompt (8s)** untuk generate klip cepat.
-  - **30-Second Multi-Scene Storyboard (4 Klip Berurutan):** AI otomatis membagi video menjadi 4 scene (0-8s, 8-16s, 16-24s, 24-30s) untuk siap digabung di CapCut menjadi video viral 30 detik (FB Reels / Shorts).
-- **📋 1-Click Copy:** Salin prompt bahasa Inggris siap pakai langsung ke clipboard.
+- **🎥 Video & Image to Prompt:** Unggah file foto/video (hingga 100MB) atau paste link (URL) media publik.
+- **✨ Preset Unggulan Google Flow (Veo) 32-Second Storyboard:**
+  - **Sequential Image-to-Video Chaining:** Otomatis membagi video menjadi 4 klip (@8 detik) berurutan (0-8s, 8-16s, 16-24s, 24-32s) siap pakai di Google Flow dan digabung di CapCut.
+  - **Starting Frame Base Image:** Prompt pembuka khusus FLUX.1 / Midjourney untuk menghasilkan frame awal (00:00).
+  - **Rantai Gambar Referensi:** Panduan visual mengambil screenshot frame akhir (detik 07.9, 15.9, 23.9) sebagai input gambar klip berikutnya.
+  - **Tips Timelapse Anti-Morphing:** Kamera terkunci statis (*fixed tripod*) pada klip 1-3 untuk mencegah bentuk objek mencair/cacat.
+  - **1-Click Copy per Part & Download .txt:** Tombol salin terpisah untuk tiap part, tombol copy semua, dan fitur unduh file storyboard `.txt`.
 - **🔄 Auto Retry & Multi-Model Fallback:** Tahan lonjakan beban Google API (mencegah error 404 & 503 dengan auto-fallback bertingkat: `gemini-3.5-flash` → `gemini-3.5-flash-lite` → `gemini-3.8-flash`).
 - **📁 File Management:** Mendukung drag & drop, file explorer, paste dari clipboard (`Ctrl + V`), dan download langsung dari tautan URL publik.
-- **💾 SQLite Local Database:** Riwayat analisis prompt otomatis tersimpan secara lokal dan dapat dibuka kembali kapan saja.
+- **💾 SQLite Local Database:** Riwayat analisis prompt otomatis tersimpan secara lokal dan dapat dibuka kembali dalam format kartu storyboard kapan saja.
 
 ---
 

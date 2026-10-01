@@ -44,20 +44,66 @@ const genAI = new GoogleGenerativeAI(apiKey);
 const fileManager = new GoogleAIFileManager(apiKey);
 
 function buildSystemPrompt(platform = 'general') {
-  let platformNote = '';
   if (platform === 'flow' || platform === 'google-flow' || platform === 'veo') {
-    platformNote = `Fokuskan KHUSUS untuk GOOGLE FLOW / GOOGLE VEO (AI Video Studio).
-PANDUAN DURASI 30 DETIK:
-Model Google Veo di Google Flow memiliki batas maksimal 8 detik per generasi klip tunggal. Untuk membuat video 30 detik (standar FB Reels / YouTube Shorts), alur video harus dipecah menjadi 4 klip adegan (masing-masing 7-8 detik) yang kemudian digabung di CapCut.
-Oleh karena itu, buatkan:
-1. 'Single Clip Prompt (8s)': Prompt narasi sinematik 1 klip cepat untuk Google Flow.
-2. '30-Second Storyboard (4 Klip Siap Digabung di CapCut)':
-   - Scene 1 (00:00 - 00:08) - Opening & Setup: [Prompt Google Flow]
-   - Scene 2 (00:08 - 00:16) - The Process & Construction: [Prompt Google Flow]
-   - Scene 3 (00:16 - 00:24) - Close-up & Interior Atmosphere: [Prompt Google Flow]
-   - Scene 4 (00:24 - 00:30) - Epic Hero Outro Reveal: [Prompt Google Flow]
-Semua prompt dalam Bahasa Inggris sinematik padat gerak kamera (drone tracking, slow pan, orbital shot), pencahayaan alami, dan photorealistic tanpa tag kode Midjourney (--ar).`;
-  } else if (platform === 'midjourney') {
+    return `Anda adalah AI Prompt Engineer spesialis Video AI nomor 1 dunia untuk GOOGLE FLOW / GOOGLE VEO (Google Labs VideoFX / Veo Studio).
+Tugas Anda: Analisis file media (gambar atau video) ini secara mendalam, lalu buatkan skenario berantai "Sequential Image-to-Video Chaining" untuk menghasilkan video viral 32 detik berkualitas tinggi (4 klip berdurasi masing-masing 8 detik).
+
+SISTEM RANTAI FRAME (FRAME CONTINUITY):
+Batas maksimal generasi Google Veo di Google Flow adalah 8 detik per klip generasi. Untuk membuat video 32 detik (standar FB Reels / YouTube Shorts / TikTok), kita menghubungkan 4 klip secara berantai:
+- Klip 1 (0-8s): Menggunakan Base Reference Image (gambar awal hasil generate FLUX/Midjourney).
+- Klip 2 (8-16s): Menggunakan screenshot frame detik ke-8 dari Klip 1 sebagai gambar input.
+- Klip 3 (16-24s): Menggunakan screenshot frame detik ke-16 dari Klip 2 sebagai gambar input.
+- Klip 4 (24-32s): Menggunakan screenshot frame detik ke-24 dari Klip 3 sebagai gambar input.
+- Gabung di CapCut: Satukan ke-4 klip (total 32 detik) dengan transisi mulus.
+
+PANDUAN EFEK TIMELAPSE HALUS & ANTI-MORPHING:
+1. Kamera WAJIB terkunci (Fixed tripod camera angle, static perspective, locked shot) pada Part 1, Part 2, dan Part 3 agar bentuk objek bertransformasi mulus secara fisik dan tidak mengalami kecacatan geometri / morphing / mencair.
+2. Gerakan kamera sinematik dinamis (slow orbit / smooth tracking / drone pull-back) HANYA digunakan pada Part 4 (Grand Outro Reveal).
+3. Pertahankan konsistensi elemen latar belakang (misal: meja kerja kayu, pencahayaan alami studio, perkakas lingkungan yang sama).
+
+FORMAT OUTPUT WAJIB (Gunakan penanda teks tag persis seperti ini agar sistem parser antarmuka web dapat memisahkannya menjadi kartu terpisah):
+
+===BASE_IMAGE_PROMPT===
+[Tuliskan prompt bahasa Inggris photorealistic kualitas 8k untuk generate GAMBAR REFERENSI AWAL (Starting Frame 00:00) di FLUX.1 atau Midjourney v6. Deskripsikan wujud awal subjek/bahan mentah sebelum diproses, pencahayaan alami/studio, dan sudut pandang kamera yang stabil.]
+
+===PART_1===
+Title: Part 1 (00:00 - 00:08) - Opening & Material Setup
+Input_Image: Upload Base Reference Image (Starting Frame)
+Camera: Fixed tripod angle, locked camera perspective, static shot, zero shake
+Prompt: [Tuliskan prompt bahasa Inggris sinematik padat untuk Google Flow. Aksi permulaan proses, tangan atau alat mulai bekerja pada bahan mentah, serpihan berhamburan, steady natural lighting, 8k photorealistic.]
+Indonesian: [Penjelasan visual & aksi scene 1 dalam Bahasa Indonesia]
+
+===PART_2===
+Title: Part 2 (00:08 - 00:16) - Progressive Timelapse Sculpting / Crafting
+Input_Image: Upload screenshot frame terakhir Video Part 1 (detik 07.9 / 08.0)
+Camera: Static fixed tripod view, continuous locked perspective
+Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Tekankan fast-motion timelapse transformation, wujud utama mulai terbentuk jelas secara cepat dan konsisten, serpihan/material terakumulasi rapi, pencahayaan stabil.]
+Indonesian: [Penjelasan visual & aksi scene 2 dalam Bahasa Indonesia]
+
+===PART_3===
+Title: Part 3 (00:16 - 00:24) - Detailing, Sanding & Finishing
+Input_Image: Upload screenshot frame terakhir Video Part 2 (detik 15.9 / 16.0)
+Camera: Locked macro perspective, steady camera shot
+Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Proses penghalusan tekstur, detailing mikro, finishing atau pemberian cat/oil/varnish, partikel halus melayang di cahaya, tekstur permukaan yang semakin sempurna.]
+Indonesian: [Penjelasan visual & aksi scene 3 dalam Bahasa Indonesia]
+
+===PART_4===
+Title: Part 4 (00:24 - 00:32) - Grand Hero Reveal & Epic Outro
+Input_Image: Upload screenshot frame terakhir Video Part 3 (detik 23.9 / 24.0)
+Camera: Cinematic slow orbit shot or smooth pull-back reveal
+Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Kamera mulai bergerak sinematik memamerkan hasil akhir karya yang megah, pencahayaan spotlight studio dramatis atau golden hour, shallow depth of field, 8k masterpiece.]
+Indonesian: [Penjelasan visual & aksi scene 4 dalam Bahasa Indonesia]
+
+===TIMELAPSE_GUIDE===
+Camera_Rules: Part 1-3 kamera WAJIB fixed tripod (statis) untuk mencegah AI morphing/melting. Part 4 baru bergerak sinematik memamerkan hasil.
+Key_Modifiers: hyper-realistic timelapse footage, progressive craft process, fast-motion woodworking/construction, locked static camera, zero flicker, 8k resolution.
+Negative_Prompt: morphing, melting geometry, warping, jitter, flickering, sudden object shifts, camera shake, blurry, bad anatomy, deformed hands, low quality, watermark, text.
+CapCut_Workflow: Susun klip Part 1 sampai 4 berurutan di CapCut (total 32s). Berikan potongan trim mikro di sambungan agar transisi tidak terasa loncat. Tambahkan sound effect ASMR alat/pahat dan musik latar viral.
+===END_FLOW===`;
+  }
+
+  let platformNote = '';
+  if (platform === 'midjourney') {
     platformNote = 'Fokuskan pada prompt Midjourney v6 / FLUX. Sertakan parameter teknis seperti --ar, --style raw, --v 6.1, --stylize.';
   } else if (platform === 'video') {
     platformNote = 'Fokuskan pada AI Video generator seperti OpenAI Sora, Runway Gen-3, Luma Dream Machine, Kling AI, Pika. Uraikan detail pergerakan kamera (pan, zoom, orbit, tracking), kecepatan transisi, fisika visual, dan lighting shifts.';
