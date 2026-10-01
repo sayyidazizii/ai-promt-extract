@@ -91,30 +91,34 @@ Prompt: [Tuliskan prompt bahasa Inggris photorealistic untuk generate GAMBAR 5 d
 
 ===PART_1===
 Title: Klip 1 (00:00 - 00:08) - Opening & Material Setup
-Input_Image: Gunakan Gambar 1 (0s) -> Bertransformasi menuju wujud Gambar 2 (8s)
+Frame_Awal: Foto 1 (0s)
+Frame_Akhir: Foto 2 (8s)
 Camera: Fixed tripod angle, locked camera perspective, static shot, zero shake
-Prompt: [Tuliskan prompt bahasa Inggris sinematik padat untuk Google Flow. Aksi permulaan proses, tangan atau alat mulai bekerja pada bahan mentah, serpihan berhamburan, steady natural lighting, 8k photorealistic.]
+Prompt: [Tuliskan prompt bahasa Inggris sinematik padat untuk Google Flow. Aksi permulaan proses dari Foto 1 menuju Foto 2, tangan atau alat mulai bekerja pada bahan mentah, serpihan berhamburan, steady natural lighting, 8k photorealistic.]
 Indonesian: [Penjelasan visual & aksi scene 1 dalam Bahasa Indonesia]
 
 ===PART_2===
 Title: Klip 2 (00:08 - 00:16) - Progressive Timelapse Sculpting
-Input_Image: Gunakan Gambar 2 (8s) -> Bertransformasi menuju wujud Gambar 3 (16s)
+Frame_Awal: Foto 2 (8s)
+Frame_Akhir: Foto 3 (16s)
 Camera: Static fixed tripod view, continuous locked perspective
-Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Tekankan fast-motion timelapse transformation, wujud utama mulai terbentuk jelas secara cepat dan konsisten, serpihan/material terakumulasi rapi, pencahayaan stabil.]
+Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Tekankan fast-motion timelapse transformation dari bentuk Foto 2 menuju wujud utama Foto 3, serpihan/material terakumulasi rapi, pencahayaan stabil.]
 Indonesian: [Penjelasan visual & aksi scene 2 dalam Bahasa Indonesia]
 
 ===PART_3===
 Title: Klip 3 (00:16 - 00:24) - Detailing, Sanding & Finishing
-Input_Image: Gunakan Gambar 3 (16s) -> Bertransformasi menuju wujud Gambar 4 (24s)
+Frame_Awal: Foto 3 (16s)
+Frame_Akhir: Foto 4 (24s)
 Camera: Locked macro perspective, steady camera shot
-Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Proses penghalusan tekstur, detailing mikro, finishing atau pemberian cat/oil/varnish, partikel halus melayang di cahaya, tekstur permukaan yang semakin sempurna.]
+Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Proses penghalusan tekstur dari Foto 3 menuju Foto 4, detailing mikro, finishing atau pemberian cat/oil/varnish, partikel halus melayang di cahaya, tekstur permukaan yang semakin sempurna.]
 Indonesian: [Penjelasan visual & aksi scene 3 dalam Bahasa Indonesia]
 
 ===PART_4===
 Title: Klip 4 (00:24 - 00:32) - Grand Hero Reveal & Epic Outro
-Input_Image: Gunakan Gambar 4 (24s) -> Reveal mahakarya sempurna Gambar 5 (32s)
+Frame_Awal: Foto 4 (24s)
+Frame_Akhir: Foto 5 (32s)
 Camera: Cinematic slow orbit shot or smooth pull-back reveal
-Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Kamera mulai bergerak sinematik memamerkan hasil akhir karya yang megah, pencahayaan spotlight studio dramatis atau golden hour, shallow depth of field, 8k masterpiece.]
+Prompt: [Tuliskan prompt bahasa Inggris untuk Google Flow. Kamera mulai bergerak sinematik memamerkan hasil akhir karya dari Foto 4 menuju mahakarya sempurna Foto 5, pencahayaan spotlight studio dramatis atau golden hour, shallow depth of field, 8k masterpiece.]
 Indonesian: [Penjelasan visual & aksi scene 4 dalam Bahasa Indonesia]
 
 ===TIMELAPSE_GUIDE===

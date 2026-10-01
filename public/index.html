@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Prompt & Keyframe Storyboard 32s | Google Flow (Veo)</title>
+  <title>AI Prompt Extractor | 5 Image Prompts & 4 Google Flow Video Prompts (32s)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
@@ -59,13 +59,13 @@
         </div>
         <div>
           <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-zinc-200 to-emerald-400 bg-clip-text text-transparent">AI Prompt Extractor</span>
-          <span class="text-xs ml-2 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">v3.0 Keyframe Pro</span>
+          <span class="text-xs ml-2 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">v3.5 Split Edition</span>
         </div>
       </div>
       <div class="flex items-center gap-2 sm:gap-3">
         <button onclick="openTutorialModal()" class="flex items-center gap-1.5 text-xs text-amber-300 hover:text-amber-200 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-3 py-1.5 rounded-xl transition shadow-sm font-medium">
           <i data-lucide="book-open" class="w-4 h-4 text-amber-400"></i>
-          <span class="hidden sm:inline">Panduan</span> <span>Workflow 5 Gambar</span>
+          <span class="hidden sm:inline">Panduan</span> <span>Start & End Frame</span>
         </button>
 
         <a href="https://flow.google" target="_blank" rel="noopener noreferrer" class="hidden md:flex items-center gap-1.5 text-xs text-blue-300 hover:text-blue-200 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 px-3 py-1.5 rounded-xl transition font-medium">
@@ -86,14 +86,14 @@
     <!-- Hero Title -->
     <div class="text-center max-w-3xl mx-auto mb-7">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">
-        <i data-lucide="clapperboard" class="w-3.5 h-3.5"></i>
-        <span>5 Gambar Proses (Keyframes) ➔ 4 Klip Video Google Flow (32 Detik)</span>
+        <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+        <span>Pemisahan Rapi: 5 Prompt Image (Atas) & 4 Prompt Video (Bawah)</span>
       </div>
       <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
-        Ekstrak Visual Menjadi <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">Gambar & Prompt Klip Terpisah</span>
+        Ekstrak Visual Menjadi <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">Prompt Image & Video Terpisah</span>
       </h1>
       <p class="text-zinc-400 text-xs md:text-sm mt-2 max-w-2xl mx-auto">
-        Tersedia gambar referensi nyata & prompt terpisah per part! Anda bisa langsung memakai/download gambar prosesnya atau copy prompt untuk generate sendiri.
+        Generate Foto 1 sampai 5 terlebih dahulu di Midjourney / FLUX, lalu gunakan sebagai <b>Frame Awal & Frame Akhir</b> di Google Flow untuk menghasilkan 4 klip video 32 detik yang mulus tanpa cacat!
       </p>
     </div>
 
@@ -130,8 +130,8 @@
             <div class="grid grid-cols-2 gap-2" id="platform-selector">
               <button type="button" data-val="flow" class="platform-btn active col-span-2 text-left p-3 rounded-xl border border-emerald-500/50 bg-emerald-500/10 text-emerald-300 text-xs font-medium transition hover:border-emerald-500 relative">
                 <span class="absolute top-2 right-2 px-2 py-0.5 bg-emerald-500 text-zinc-950 font-bold text-[9px] rounded-full uppercase">Utama</span>
-                <span class="block font-bold text-sm text-emerald-200">✨ Google Flow / Veo (5 Gambar + 4 Klip)</span>
-                <span class="text-[11px] text-zinc-300 block mt-0.5">5 Gambar Proses Milestone + 4 Prompt Video 8s Siap Download</span>
+                <span class="block font-bold text-sm text-emerald-200">✨ Google Flow / Veo (Split Prompt Edition)</span>
+                <span class="text-[11px] text-zinc-300 block mt-0.5">5 Prompt Image (Midjourney/FLUX) + 4 Prompt Video (Start & End Frame)</span>
               </button>
               <button type="button" data-val="general" class="platform-btn text-left p-2.5 rounded-xl border border-zinc-800 bg-zinc-900/60 text-zinc-300 text-xs font-medium transition hover:border-zinc-700">
                 <span class="block font-semibold">⚡ Universal AI</span>
@@ -164,7 +164,7 @@
                   <p class="font-semibold text-zinc-200 text-sm">
                     Drag & drop video / gambar, atau <span class="text-emerald-400 underline decoration-dotted">pilih file</span>
                   </p>
-                  <p class="text-[11px] text-zinc-400 mt-0.5">Otomatis potong 5 frame milestone jika upload video! (Maks 100MB)</p>
+                  <p class="text-[11px] text-zinc-400 mt-0.5">Mendukung MP4, MOV, WEBM, JPG, PNG, WEBP (Maks 100MB)</p>
                 </div>
                 <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-zinc-800/80 border border-zinc-700 text-[10px] text-zinc-300">
                   <i data-lucide="clipboard" class="w-3 h-3 text-emerald-400"></i>
@@ -214,21 +214,15 @@
               <img id="img-preview" class="max-h-56 w-auto object-contain hidden" alt="Preview Gambar">
               <video id="vid-preview" class="max-h-56 w-full object-contain hidden" controls playsinline></video>
             </div>
-
-            <!-- Status Ekstraksi Frame -->
-            <div id="frame-extract-status" class="hidden mt-2 p-2 bg-emerald-950/30 border border-emerald-500/30 rounded-lg text-[10px] text-emerald-300 flex items-center gap-2">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400 flex-shrink-0"></i>
-              <span>5 frame kunci berhasil diekstrak otomatis dari video!</span>
-            </div>
           </div>
 
           <!-- Generate Action Button -->
           <button id="generate-btn" onclick="startGeneration()" class="w-full relative overflow-hidden bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 hover:from-emerald-500 hover:to-indigo-500 text-white font-bold py-3.5 px-5 rounded-2xl shadow-lg shadow-emerald-900/30 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer group">
             <i data-lucide="sparkle" class="w-4 h-4 group-hover:rotate-12 transition-transform"></i>
-            <span id="btn-text" class="text-sm font-semibold tracking-wide">Generate Storyboard & Prompt</span>
+            <span id="btn-text" class="text-sm font-semibold tracking-wide">Generate Prompt Terpisah (5 Image & 4 Video)</span>
           </button>
 
-          <!-- Visual Progress & Step Tracker (Shown while loading) -->
+          <!-- Visual Progress Tracker -->
           <div id="progress-container" class="hidden border border-emerald-500/30 bg-emerald-950/20 rounded-2xl p-4 space-y-3 animate-in fade-in duration-300">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
@@ -253,7 +247,7 @@
               </div>
               <div id="step-3" class="step-badge text-zinc-500">
                 <span class="block">3. Craft Storyboard</span>
-                <span class="text-[8px] text-zinc-500">5 Keyframes & Video</span>
+                <span class="text-[8px] text-zinc-500">5 Image & 4 Video</span>
               </div>
             </div>
 
@@ -274,7 +268,7 @@
             <div class="flex items-center justify-between border-b border-zinc-800 pb-3 mb-4">
               <div class="flex items-center gap-2">
                 <i data-lucide="clapperboard" class="w-4 h-4 text-emerald-400"></i>
-                <h3 class="font-bold text-sm text-zinc-100">Hasil Generator Storyboard & Referensi Gambar</h3>
+                <h3 class="font-bold text-sm text-zinc-100">Hasil Generator: 5 Image & 4 Video Prompts</h3>
               </div>
               <div class="flex items-center gap-2">
                 <span id="model-badge" class="hidden text-[10px] px-2.5 py-0.5 rounded-full bg-zinc-800 border border-zinc-700 text-zinc-300 font-mono">
@@ -290,65 +284,65 @@
             <!-- Empty State -->
             <div id="result-empty" class="py-24 text-center text-zinc-500 space-y-3">
               <div class="w-16 h-16 mx-auto rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-600">
-                <i data-lucide="film" class="w-8 h-8"></i>
+                <i data-lucide="layers" class="w-8 h-8"></i>
               </div>
-              <p class="text-sm font-medium text-zinc-400">Belum ada prompt atau storyboard yang dibuat</p>
+              <p class="text-sm font-medium text-zinc-400">Belum ada prompt yang diekstrak</p>
               <p class="text-xs text-zinc-500 max-w-sm mx-auto">
-                Upload video atau gambar di sebelah kiri, lalu klik <b>Generate Storyboard & Prompt</b> untuk mendapatkan 5 gambar proses dan 4 prompt Google Flow.
+                Upload video atau foto di sebelah kiri, pilih <b>Google Flow</b>, lalu klik <b>Generate</b> untuk mendapatkan 5 prompt gambar proses dan 4 prompt video terpisah.
               </p>
             </div>
 
             <!-- Populated Result Content -->
-            <div id="result-content" class="hidden space-y-4">
+            <div id="result-content" class="hidden space-y-6">
               
-              <!-- GOOGLE FLOW MULTI-PART & KEYFRAME VIEW -->
-              <div id="flow-storyboard-view" class="hidden space-y-4">
+              <!-- GOOGLE FLOW SPLIT VIEW (5 IMAGES TOP, 4 VIDEOS BOTTOM) -->
+              <div id="flow-storyboard-view" class="hidden space-y-6">
                 
                 <!-- Chaining Workflow Diagram Banner -->
                 <div class="bg-gradient-to-r from-emerald-950/40 via-zinc-900 to-indigo-950/40 border border-emerald-500/30 rounded-xl p-3.5">
                   <div class="flex items-center justify-between mb-2">
                     <span class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
-                      <i data-lucide="git-merge" class="w-3.5 h-3.5"></i> Alur 5 Gambar Proses ➔ 4 Klip Video (32s Timelapse):
+                      <i data-lucide="git-merge" class="w-3.5 h-3.5"></i> Alur Kerja Start Frame ➔ End Frame di Google Flow (32s):
                     </span>
                     <button onclick="openTutorialModal()" class="text-[11px] text-amber-300 hover:underline flex items-center gap-1">
                       <i data-lucide="help-circle" class="w-3 h-3"></i> Cara Pakai
                     </button>
                   </div>
                   <div class="flex items-center gap-1 overflow-x-auto text-[10px] pb-1 font-mono text-zinc-300 custom-scrollbar">
-                    <span class="px-2 py-1 bg-zinc-800 text-amber-300 rounded border border-zinc-700 whitespace-nowrap">📸 Gambar 1 (0s)</span>
+                    <span class="px-2 py-1 bg-amber-950/80 text-amber-300 rounded border border-amber-500/30 whitespace-nowrap">📸 Foto 1 (0s)</span>
                     <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
                     <span class="px-2 py-1 bg-emerald-950 text-emerald-300 rounded border border-emerald-500/40 whitespace-nowrap">🎬 Klip 1 (8s)</span>
                     <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
-                    <span class="px-2 py-1 bg-zinc-800 text-amber-300 rounded border border-zinc-700 whitespace-nowrap">📸 Gambar 2 (8s)</span>
+                    <span class="px-2 py-1 bg-amber-950/80 text-amber-300 rounded border border-amber-500/30 whitespace-nowrap">📸 Foto 2 (8s)</span>
                     <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
                     <span class="px-2 py-1 bg-emerald-950 text-emerald-300 rounded border border-emerald-500/40 whitespace-nowrap">🎬 Klip 2 (8s)</span>
                     <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
-                    <span class="px-2 py-1 bg-zinc-800 text-amber-300 rounded border border-zinc-700 whitespace-nowrap">📸 Gambar 3 (16s)</span>
+                    <span class="px-2 py-1 bg-amber-950/80 text-amber-300 rounded border border-amber-500/30 whitespace-nowrap">📸 Foto 3 (16s)</span>
                     <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
                     <span class="px-2 py-1 bg-emerald-950 text-emerald-300 rounded border border-emerald-500/40 whitespace-nowrap">🎬 Klip 3 (8s)</span>
                     <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
-                    <span class="px-2 py-1 bg-zinc-800 text-amber-300 rounded border border-zinc-700 whitespace-nowrap">📸 Gambar 4 (24s)</span>
+                    <span class="px-2 py-1 bg-amber-950/80 text-amber-300 rounded border border-amber-500/30 whitespace-nowrap">📸 Foto 4 (24s)</span>
                     <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
                     <span class="px-2 py-1 bg-emerald-950 text-emerald-300 rounded border border-emerald-500/40 whitespace-nowrap">🎬 Klip 4 (8s)</span>
                     <i data-lucide="arrow-right" class="w-3 h-3 text-emerald-400 flex-shrink-0"></i>
-                    <span class="px-2 py-1 bg-indigo-950 text-indigo-300 rounded border border-indigo-500/40 whitespace-nowrap">🏆 Gambar 5 (32s)</span>
+                    <span class="px-2 py-1 bg-indigo-950 text-indigo-300 rounded border border-indigo-500/40 whitespace-nowrap">🏆 Foto 5 (32s)</span>
                   </div>
                 </div>
 
                 <!-- Action Toolbar -->
                 <div class="flex items-center justify-between flex-wrap gap-2 pt-1">
                   <div class="flex items-center flex-wrap gap-2">
-                    <button id="btn-render-all-ai" onclick="renderAllAiImages()" class="text-xs bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-medium px-3.5 py-1.5 rounded-xl transition flex items-center gap-1.5 shadow-sm">
-                      <i data-lucide="wand-2" class="w-3.5 h-3.5"></i>
-                      <span>Generate 5 Gambar AI (FLUX.1)</span>
+                    <button onclick="copyAllImagePrompts()" class="text-xs bg-amber-600 hover:bg-amber-500 text-white font-medium px-3.5 py-1.5 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+                      <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                      <span>Salin Semua Prompt Image (1-5)</span>
                     </button>
-                    <button onclick="downloadAllImages()" class="text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-200 font-medium px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 border border-zinc-700">
-                      <i data-lucide="download" class="w-3.5 h-3.5"></i>
-                      <span>Download Semua Gambar</span>
-                    </button>
-                    <button onclick="copyAllFlowPrompts()" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+                    <button onclick="copyAllVideoPrompts()" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-3.5 py-1.5 rounded-xl transition flex items-center gap-1.5 shadow-sm">
                       <i data-lucide="copy-check" class="w-3.5 h-3.5"></i>
-                      <span>Salin Semua Prompt Video</span>
+                      <span>Salin Semua Prompt Video (1-4)</span>
+                    </button>
+                    <button onclick="downloadStoryboardTxt()" class="text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-200 font-medium px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 border border-zinc-700">
+                      <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                      <span>Download .txt</span>
                     </button>
                   </div>
                   <a href="https://flow.google" target="_blank" rel="noopener noreferrer" class="text-xs bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 shadow-sm">
@@ -357,13 +351,56 @@
                   </a>
                 </div>
 
-                <!-- CARDS 1 to 5 CONTAINER (RENDERED DYNAMICALLY) -->
-                <div id="keyframe-cards-container" class="space-y-4">
-                  <!-- Rendered dynamically via JS -->
+                <!-- ========================================== -->
+                <!-- SEKSI 1: PROMPT GAMBAR PROSES (IMAGE 1..5) -->
+                <!-- ========================================== -->
+                <div class="space-y-3 pt-2">
+                  <div class="flex items-center justify-between border-b border-amber-500/30 pb-2">
+                    <div class="flex items-center gap-2">
+                      <div class="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs">
+                        📸
+                      </div>
+                      <div>
+                        <h4 class="text-xs sm:text-sm font-bold text-amber-300">SEKSI 1: PROMPT GAMBAR PROSES (IMAGE 1 - 5)</h4>
+                        <p class="text-[10px] text-zinc-400">Generate 5 foto ini di Midjourney v6 atau FLUX.1 terlebih dahulu</p>
+                      </div>
+                    </div>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono">5 Foto Keyframe</span>
+                  </div>
+
+                  <!-- Container 5 Cards Image Prompts -->
+                  <div id="image-prompts-container" class="space-y-3">
+                    <!-- Rendered dynamically -->
+                  </div>
                 </div>
 
-                <!-- Card: Timelapse Rules, Negative Prompt & CapCut Tips -->
-                <div id="card-timelapse-guide" class="bg-zinc-900/90 border border-zinc-800 rounded-xl p-4 space-y-3">
+                <!-- ========================================== -->
+                <!-- SEKSI 2: PROMPT VIDEO GOOGLE FLOW (KLIP 1..4) -->
+                <!-- ========================================== -->
+                <div class="space-y-3 pt-4">
+                  <div class="flex items-center justify-between border-b border-emerald-500/30 pb-2">
+                    <div class="flex items-center gap-2">
+                      <div class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">
+                        🎬
+                      </div>
+                      <div>
+                        <h4 class="text-xs sm:text-sm font-bold text-emerald-300">SEKSI 2: PROMPT VIDEO GOOGLE FLOW (KLIP 1 - 4 @ 8 DETIK)</h4>
+                        <p class="text-[10px] text-zinc-400">Gunakan foto hasil generate di atas sebagai Frame Awal & Frame Akhir di Google Flow</p>
+                      </div>
+                    </div>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">4 Klip @8s = 32s</span>
+                  </div>
+
+                  <!-- Container 4 Cards Video Prompts -->
+                  <div id="video-prompts-container" class="space-y-3">
+                    <!-- Rendered dynamically -->
+                  </div>
+                </div>
+
+                <!-- ========================================== -->
+                <!-- SEKSI 3: TIMELAPSE GUIDE & NEGATIVE PROMPT -->
+                <!-- ========================================== -->
+                <div id="card-timelapse-guide" class="bg-zinc-900/90 border border-zinc-800 rounded-xl p-4 space-y-3 mt-4">
                   <div class="flex items-center justify-between">
                     <h4 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5 uppercase tracking-wider">
                       <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> Panduan Timelapse & Negative Prompt
@@ -464,7 +501,7 @@
 
   </main>
 
-  <!-- MODAL TUTORIAL WORKFLOW 5 GAMBAR PROSES -->
+  <!-- MODAL TUTORIAL WORKFLOW START FRAME & END FRAME -->
   <div id="tutorial-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
     <div class="bg-zinc-900 border border-zinc-800 rounded-3xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
       
@@ -475,8 +512,8 @@
             <i data-lucide="clapperboard" class="w-5 h-5"></i>
           </div>
           <div>
-            <h3 class="font-bold text-base text-zinc-100">Panduan Workflow 5 Gambar ➔ 4 Klip Video (32s)</h3>
-            <p class="text-xs text-zinc-400">Metode Keyframe-Driven Workflow untuk video viral Facebook Reels & Shorts</p>
+            <h3 class="font-bold text-base text-zinc-100">Tutorial Workflow Start & End Frame (32s)</h3>
+            <p class="text-xs text-zinc-400">Generate 5 foto proses manual dulu, lalu gerakkan di Google Flow</p>
           </div>
         </div>
         <button onclick="closeTutorialModal()" class="text-zinc-400 hover:text-white p-2 rounded-xl hover:bg-zinc-800 transition">
@@ -490,25 +527,28 @@
         <!-- Summary Box -->
         <div class="bg-amber-950/30 border border-amber-500/30 rounded-2xl p-4 text-xs text-amber-200 space-y-1.5 leading-relaxed">
           <p class="font-semibold text-amber-300 flex items-center gap-1.5">
-            <i data-lucide="info" class="w-4 h-4"></i> Mengapa Membuat 5 Gambar Proses Dulu?
+            <i data-lucide="info" class="w-4 h-4"></i> Mengapa Memakai Metode Ini?
           </p>
           <p>
-            Dengan menyiapkan 5 gambar proses milestone (0s, 8s, 16s, 24s, 32s), Anda memegang kontrol penuh atas bentuk transformasi fisik. Anda tidak perlu lagi menunggu video selesai untuk screenshot. Di Google Flow, 4 klip video bisa langsung di-generate sekaligus secara paralel!
+            Dengan menyiapkan Foto 1 sampai Foto 5 terlebih dahulu, Anda memegang kendali penuh atas wujud transformasi. Saat di Google Flow, Anda tinggal memasukkan Foto Awal (Start Frame) dan Foto Akhir (End Frame), sehingga AI tidak akan berhalusinasi atau mengubah bentuk objek secara acak.
           </p>
         </div>
 
         <!-- Steps Timeline -->
         <div class="space-y-4">
           <div class="flex gap-4">
-            <div class="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500 text-emerald-400 font-bold flex items-center justify-center text-xs flex-shrink-0">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500 text-amber-400 font-bold flex items-center justify-center text-xs flex-shrink-0">
               1
             </div>
             <div class="space-y-1">
-              <h4 class="font-bold text-zinc-200 text-xs">Pilih Gambar Referensi Anda di Web Ini</h4>
+              <h4 class="font-bold text-zinc-200 text-xs">Generate 5 Foto di Midjourney v6 atau FLUX.1</h4>
               <p class="text-xs text-zinc-400 leading-relaxed">
-                Anda memiliki 2 cara:
-                <br>• <b>Cara Instan:</b> Langsung klik <b>Download Gambar</b> pada masing-masing kartu di web ini (hasil ekstraksi video atau tombol Generate AI FLUX).
-                <br>• <b>Cara Custom:</b> Copy prompt gambar dari masing-masing kartu, lalu generate sendiri di Midjourney v6.
+                Salin prompt dari <b>Seksi 1 (Image 1 sampai 5)</b>. Generate di Midjourney / FLUX, lalu simpan kelima foto tersebut ke laptop Anda:
+                <br>• <code class="text-amber-300">foto1.jpg</code> (0s - Bahan Mentah)
+                <br>• <code class="text-amber-300">foto2.jpg</code> (8s - Pola Kasar)
+                <br>• <code class="text-amber-300">foto3.jpg</code> (16s - Wujud Utama)
+                <br>• <code class="text-amber-300">foto4.jpg</code> (24s - Detailing & Amplas)
+                <br>• <code class="text-amber-300">foto5.jpg</code> (32s - Mahakarya Jadi)
               </p>
             </div>
           </div>
@@ -518,9 +558,9 @@
               2
             </div>
             <div class="space-y-1">
-              <h4 class="font-bold text-zinc-200 text-xs">Buat Klip 1 (00:00 - 00:08) di Google Flow</h4>
+              <h4 class="font-bold text-zinc-200 text-xs">Buka Google Flow & Render Klip 1 (00:00 - 00:08)</h4>
               <p class="text-xs text-zinc-400 leading-relaxed">
-                Buka <a href="https://flow.google" target="_blank" class="text-blue-400 underline">flow.google</a>. Masukkan <b>Gambar 1</b> sebagai input + paste prompt <b>Klip 1</b>. Klik Generate (8 detik).
+                Buka <a href="https://flow.google" target="_blank" class="text-blue-400 underline">flow.google</a>. Masukkan <b>Start Frame: foto1.jpg</b> dan <b>End Frame: foto2.jpg</b> + paste <b>Prompt Video 1</b>. Klik Generate (8 detik).
               </p>
             </div>
           </div>
@@ -530,9 +570,9 @@
               3
             </div>
             <div class="space-y-1">
-              <h4 class="font-bold text-zinc-200 text-xs">Buat Klip 2 (00:08 - 00:16) di Google Flow</h4>
+              <h4 class="font-bold text-zinc-200 text-xs">Render Klip 2 (00:08 - 00:16)</h4>
               <p class="text-xs text-zinc-400 leading-relaxed">
-                Masukkan <b>Gambar 2</b> sebagai input + paste prompt <b>Klip 2</b>. Klik Generate (8 detik).
+                Masukkan <b>Start Frame: foto2.jpg</b> dan <b>End Frame: foto3.jpg</b> + paste <b>Prompt Video 2</b>. Klik Generate (8 detik).
               </p>
             </div>
           </div>
@@ -542,9 +582,9 @@
               4
             </div>
             <div class="space-y-1">
-              <h4 class="font-bold text-zinc-200 text-xs">Buat Klip 3 (00:16 - 00:24) di Google Flow</h4>
+              <h4 class="font-bold text-zinc-200 text-xs">Render Klip 3 (00:16 - 00:24)</h4>
               <p class="text-xs text-zinc-400 leading-relaxed">
-                Masukkan <b>Gambar 3</b> sebagai input + paste prompt <b>Klip 3</b>. Klik Generate (8 detik).
+                Masukkan <b>Start Frame: foto3.jpg</b> dan <b>End Frame: foto4.jpg</b> + paste <b>Prompt Video 3</b>. Klik Generate (8 detik).
               </p>
             </div>
           </div>
@@ -554,9 +594,9 @@
               5
             </div>
             <div class="space-y-1">
-              <h4 class="font-bold text-zinc-200 text-xs">Buat Klip 4 (00:24 - 00:32) di Google Flow</h4>
+              <h4 class="font-bold text-zinc-200 text-xs">Render Klip 4 (00:24 - 00:32) - Grand Hero Reveal</h4>
               <p class="text-xs text-zinc-400 leading-relaxed">
-                Masukkan <b>Gambar 4</b> sebagai input + paste prompt <b>Klip 4</b>. Kamera akan bergerak sinematik memperlihatkan hasil akhir megah <b>Gambar 5</b>!
+                Masukkan <b>Start Frame: foto4.jpg</b> dan <b>End Frame: foto5.jpg</b> + paste <b>Prompt Video 4</b>. Kamera bergerak sinematik menampilkan kemegahan mahakarya hasil jadi!
               </p>
             </div>
           </div>
@@ -566,9 +606,9 @@
               6
             </div>
             <div class="space-y-1">
-              <h4 class="font-bold text-zinc-200 text-xs">Gabung di CapCut (32 Detik Video Utuh)</h4>
+              <h4 class="font-bold text-zinc-200 text-xs">Satukan di CapCut (32 Detik Video Utuh)</h4>
               <p class="text-xs text-zinc-400 leading-relaxed">
-                Tarik ke-4 klip ke CapCut secara berurutan. Potong sedikit (trim 0.1s) di sambungan, tambahkan sound effect ASMR alat/pahat dan musik viral. Video 32 detik siap tayang!
+                Tarik ke-4 klip ke CapCut secara berurutan. Beri potongan trim mikro (0.1s) di sambungan klip, tambahkan musik viral dan efek suara ASMR. Siap diunggah ke Facebook Reels!
               </p>
             </div>
           </div>
@@ -598,25 +638,6 @@
     </div>
   </div>
 
-  <!-- LIGHTBOX MODAL UNTUK PREVIEW GAMBAR PENUH -->
-  <div id="image-lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="relative max-w-4xl w-full flex flex-col items-center">
-      <button onclick="closeLightboxModal()" class="absolute -top-12 right-0 text-zinc-400 hover:text-white p-2 rounded-full hover:bg-zinc-800 transition">
-        <i data-lucide="x" class="w-6 h-6"></i>
-      </button>
-      <img id="lightbox-img" class="max-h-[80vh] w-auto object-contain rounded-2xl border border-zinc-800 shadow-2xl" src="" alt="Full Preview">
-      <div class="mt-4 flex items-center gap-3">
-        <a id="lightbox-download-link" href="#" download="referensi-gambar.jpg" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 transition shadow-lg">
-          <i data-lucide="download" class="w-4 h-4"></i>
-          <span>Download Gambar Ini</span>
-        </a>
-        <button onclick="closeLightboxModal()" class="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded-xl text-xs font-semibold transition">
-          Tutup
-        </button>
-      </div>
-    </div>
-  </div>
-
   <!-- Toast Notification Container -->
   <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-zinc-900 border border-emerald-500/40 text-zinc-100 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3">
     <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
@@ -630,8 +651,6 @@
     let selectedPlatform = 'flow';
     let currentResultPrompt = '';
     let parsedStoryboardData = null;
-    let extractedVideoFrames = []; // Stores 5 DataURLs extracted from uploaded video
-    let generatedAiImages = {};    // Stores { 1: url, 2: url, 3: url, 4: url, 5: url }
 
     // Initialize Lucide icons
     lucide.createIcons();
@@ -644,22 +663,6 @@
 
     function closeTutorialModal() {
       document.getElementById('tutorial-modal').classList.add('hidden');
-    }
-
-    function openLightbox(imgSrc, filename) {
-      const modal = document.getElementById('image-lightbox-modal');
-      const img = document.getElementById('lightbox-img');
-      const downloadLink = document.getElementById('lightbox-download-link');
-
-      img.src = imgSrc;
-      downloadLink.href = imgSrc;
-      downloadLink.download = filename || `referensi-gambar-${Date.now()}.jpg`;
-      modal.classList.remove('hidden');
-      lucide.createIcons();
-    }
-
-    function closeLightboxModal() {
-      document.getElementById('image-lightbox-modal').classList.add('hidden');
     }
 
     // Toggle Raw Text
@@ -774,67 +777,8 @@
       }
     }
 
-    // Video Keyframe Extractor (5 Frames) via HTML5 Canvas
-    async function extractKeyframesFromVideo(fileOrUrl) {
-      return new Promise((resolve) => {
-        const video = document.createElement('video');
-        video.crossOrigin = 'anonymous';
-        video.muted = true;
-        video.playsInline = true;
-        video.preload = 'metadata';
-
-        let videoUrl = '';
-        if (typeof fileOrUrl === 'string') {
-          videoUrl = fileOrUrl;
-        } else {
-          videoUrl = URL.createObjectURL(fileOrUrl);
-        }
-
-        video.src = videoUrl;
-
-        video.onloadedmetadata = async () => {
-          const duration = video.duration || 32;
-          const timestamps = [
-            0.1,                                   // Frame 1: 0s (Raw)
-            duration * 0.25,                       // Frame 2: ~8s (Rough)
-            duration * 0.50,                       // Frame 3: ~16s (Mid-stage)
-            duration * 0.75,                       // Frame 4: ~24s (Detailing)
-            Math.max(duration - 0.4, duration * 0.95) // Frame 5: ~32s (Final)
-          ];
-
-          const frames = [];
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-
-          for (let i = 0; i < timestamps.length; i++) {
-            const time = timestamps[i];
-            await new Promise((resSeek) => {
-              video.currentTime = time;
-              video.onseeked = () => {
-                canvas.width = video.videoWidth || 640;
-                canvas.height = video.videoHeight || 360;
-                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-                frames.push(canvas.toDataURL('image/jpeg', 0.92));
-                resSeek();
-              };
-            });
-          }
-
-          if (typeof fileOrUrl !== 'string') {
-            URL.revokeObjectURL(videoUrl);
-          }
-          resolve(frames);
-        };
-
-        video.onerror = () => {
-          console.warn('Video extraction error or CORS prevented frame extraction.');
-          resolve([]);
-        };
-      });
-    }
-
     // Handle File Selection & Preview
-    async function handleFileSelection(file, overrideName) {
+    function handleFileSelection(file, overrideName) {
       if (!file) return;
       if (!file.type.startsWith('image/') && !file.type.startsWith('video/')) {
         return showToast('Hanya format file gambar atau video yang didukung!', true);
@@ -844,7 +788,6 @@
       }
 
       selectedFile = file;
-      extractedVideoFrames = [];
       const fname = overrideName || file.name || 'uploaded_media';
       const fsize = (file.size / 1024 / 1024).toFixed(2) + ' MB';
       const isVideo = file.type.startsWith('video/');
@@ -858,25 +801,12 @@
 
       const imgP = document.getElementById('img-preview');
       const vidP = document.getElementById('vid-preview');
-      const statusExtract = document.getElementById('frame-extract-status');
       const url = URL.createObjectURL(file);
-
-      statusExtract.classList.add('hidden');
 
       if (isVideo) {
         vidP.src = url;
         vidP.classList.remove('hidden');
         imgP.classList.add('hidden');
-
-        // Automatically extract 5 frames in background!
-        extractKeyframesFromVideo(file).then(frames => {
-          if (frames && frames.length > 0) {
-            extractedVideoFrames = frames;
-            statusExtract.classList.remove('hidden');
-            lucide.createIcons();
-          }
-        });
-
       } else {
         imgP.src = url;
         imgP.classList.remove('hidden');
@@ -888,12 +818,10 @@
 
     function clearSelectedMedia() {
       selectedFile = null;
-      extractedVideoFrames = [];
       fileInput.value = '';
       document.getElementById('img-preview').src = '';
       document.getElementById('vid-preview').src = '';
       document.getElementById('media-preview-container').classList.add('hidden');
-      document.getElementById('frame-extract-status').classList.add('hidden');
     }
 
     // Generation Execution
@@ -950,7 +878,7 @@
           }, 2000);
 
           const genTimer = setTimeout(() => {
-            setProgress(85, 'Meracik 5 Keyframes & Storyboard...', 'Menyusun alur 5 gambar dan 4 klip Google Flow...', 3);
+            setProgress(85, 'Meracik 5 Image & 4 Video Prompts...', 'Menyusun prompt gambar proses dan prompt video...', 3);
           }, isVid ? 8000 : 3500);
 
           const res = await fetch('/api/generate', { method: 'POST', body: formData });
@@ -965,7 +893,7 @@
           }, 3000);
 
           const genTimer = setTimeout(() => {
-            setProgress(85, 'Meracik Storyboard & Gambar...', 'Mengekstrak rantai 5 gambar dan 4 video...', 3);
+            setProgress(85, 'Meracik Prompt...', 'Mengekstrak 5 prompt image dan 4 video...', 3);
           }, 7000);
 
           const res = await fetch('/api/generate-url', {
@@ -982,10 +910,10 @@
           throw new Error(responseJson.error);
         }
 
-        setProgress(100, 'Selesai!', 'Storyboard 5 gambar & prompt berhasil dibuat.', 3);
+        setProgress(100, 'Selesai!', 'Prompt berhasil dibuat.', 3);
         displayResult(responseJson);
         loadHistory();
-        showToast('Storyboard & gambar referensi siap dipakai!');
+        showToast('5 Prompt Image dan 4 Prompt Video siap!');
 
       } catch (err) {
         showToast('Gagal: ' + err.message, true);
@@ -1026,7 +954,7 @@
           const pMatch = block.match(/Prompt:\s*([\s\S]*?)$/i);
           result.imagePrompts[i] = {
             num: i,
-            title: titleMatch ? titleMatch[1].trim() : `Gambar ${i}`,
+            title: titleMatch ? titleMatch[1].trim() : `Foto ${i}`,
             prompt: pMatch ? pMatch[1].replace(/\[|\]/g, '').trim() : block.replace(/\[|\]/g, '').trim()
           };
         }
@@ -1038,7 +966,7 @@
         if (baseMatch) {
           result.imagePrompts[1] = {
             num: 1,
-            title: 'Gambar 1 (0s) - Base Starting Frame',
+            title: 'Foto 1 (0s) - Base Starting Frame',
             prompt: baseMatch[1].replace(/\[|\]/g, '').trim()
           };
         }
@@ -1052,7 +980,8 @@
         if (match) {
           const block = match[1];
           const titleMatch = block.match(/Title:\s*(.+)/i);
-          const inputMatch = block.match(/Input_Image:\s*(.+)/i) || block.match(/Reference:\s*(.+)/i);
+          const awalMatch = block.match(/Frame_Awal:\s*(.+)/i) || block.match(/Input_Image:\s*(.+)/i);
+          const akhirMatch = block.match(/Frame_Akhir:\s*(.+)/i);
           const cameraMatch = block.match(/Camera:\s*(.+)/i);
           const promptMatch = block.match(/Prompt:\s*([\s\S]*?)(?:Indonesian:|$)/i);
           const indoMatch = block.match(/Indonesian:\s*([\s\S]*?)$/i);
@@ -1060,7 +989,8 @@
           result.parts.push({
             num: i,
             title: titleMatch ? titleMatch[1].trim() : `Klip ${i}`,
-            inputImage: inputMatch ? inputMatch[1].trim() : `Gambar ${i}`,
+            frameAwal: awalMatch ? awalMatch[1].trim() : `Foto ${i} (${(i-1)*8}s)`,
+            frameAkhir: akhirMatch ? akhirMatch[1].trim() : `Foto ${i+1} (${i*8}s)`,
             camera: cameraMatch ? cameraMatch[1].trim() : 'Fixed tripod angle',
             prompt: promptMatch ? promptMatch[1].replace(/\[|\]/g, '').trim() : '',
             indonesian: indoMatch ? indoMatch[1].replace(/\[|\]/g, '').trim() : ''
@@ -1106,11 +1036,11 @@
       const genView = document.getElementById('general-result-view');
 
       if (parsedStoryboardData && (Object.keys(parsedStoryboardData.imagePrompts).length > 0 || parsedStoryboardData.parts.length > 0)) {
-        // RENDER 5 KEYFRAME & 4 CLIPS STORYBOARD
+        // RENDER 5 IMAGE PROMPTS (TOP) & 4 VIDEO PROMPTS (BOTTOM)
         flowView.classList.remove('hidden');
         genView.classList.add('hidden');
 
-        renderKeyframeCards();
+        renderSplitPrompts();
 
         // Populate Timelapse Guide & Negative Prompt
         document.getElementById('negative-prompt-text').textContent = parsedStoryboardData.timelapseGuide.negativePrompt || 'morphing, melting geometry, warping, jitter, flickering, sudden object shifts, camera shake, blurry, bad anatomy, deformed hands, low quality, watermark, text.';
@@ -1140,207 +1070,107 @@
       lucide.createIcons();
     }
 
-    // Render the 5 Milestone Cards with integrated Image Previews + Prompts
-    function renderKeyframeCards() {
-      const container = document.getElementById('keyframe-cards-container');
-      const milestones = [
-        { num: 1, time: '00:00 (Detik 0s)', tag: 'Bahan Mentah Awal', hasVideo: true },
-        { num: 2, time: '00:08 (Detik 8s)', tag: 'Pola Kasar Terbentuk', hasVideo: true },
-        { num: 3, time: '00:16 (Detik 16s)', tag: 'Wujud Utama Jelas', hasVideo: true },
-        { num: 4, time: '00:24 (Detik 24s)', tag: 'Detailing & Polish', hasVideo: true },
-        { num: 5, time: '00:32 (Detik 32s)', tag: 'Mahakarya Selesai', hasVideo: false }
+    // Render Split Sections: 5 Image Prompts (Top) + 4 Video Prompts (Bottom)
+    function renderSplitPrompts() {
+      // 1. RENDER 5 IMAGE PROMPT CARDS (TOP SECTION)
+      const imgContainer = document.getElementById('image-prompts-container');
+      const imgKeys = [1, 2, 3, 4, 5];
+      const milestoneTags = [
+        'Foto Awal (Detik 0s - Bahan Mentah)',
+        'Foto Progress 25% (Detik 8s - Pola Kasar Terbentuk)',
+        'Foto Progress 50% (Detik 16s - Wujud Utama Mulai Jelas)',
+        'Foto Progress 75% (Detik 24s - Detailing Halus & Amplas Polish)',
+        'Foto Akhir 100% (Detik 32s - Mahakarya Hasil Jadi Selesai)'
       ];
 
-      container.innerHTML = milestones.map(m => {
-        const imgData = parsedStoryboardData.imagePrompts[m.num] || { title: `Gambar ${m.num}`, prompt: 'Realistic craftsmanship visual' };
-        const partData = parsedStoryboardData.parts[m.num - 1]; // Only 1..4 have video clips
-
-        // Determine image source:
-        // Priority 1: AI Generated image (if already generated)
-        // Priority 2: Extracted video frame (if uploaded video)
-        // Priority 3: Fallback placeholder
-        let currentImageSrc = generatedAiImages[m.num] || (extractedVideoFrames[m.num - 1] ? extractedVideoFrames[m.num - 1] : '');
-        const isExtracted = !generatedAiImages[m.num] && Boolean(extractedVideoFrames[m.num - 1]);
-        const isAiGen = Boolean(generatedAiImages[m.num]);
-
+      imgContainer.innerHTML = imgKeys.map((num, idx) => {
+        const item = parsedStoryboardData.imagePrompts[num] || { title: `Foto ${num}`, prompt: 'Realistic visual prompt' };
         return `
-          <div class="bg-zinc-900/90 border border-zinc-800 hover:border-emerald-500/50 rounded-2xl p-4 sm:p-5 transition shadow-lg space-y-4">
-            
-            <!-- Card Header -->
-            <div class="flex items-center justify-between flex-wrap gap-2 border-b border-zinc-800/80 pb-3">
-              <div class="flex items-center gap-2.5">
-                <span class="w-7 h-7 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white font-extrabold text-xs flex items-center justify-center shadow-sm">
-                  ${m.num}
+          <div class="bg-zinc-900/90 border border-zinc-800 hover:border-amber-500/50 rounded-xl p-3.5 space-y-2.5 transition">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-md bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center border border-amber-500/30">
+                  ${num}
                 </span>
                 <div>
-                  <h4 class="text-xs sm:text-sm font-bold text-zinc-100 flex items-center gap-2">
-                    <span>Gambar ${m.num}: ${imgData.title}</span>
-                  </h4>
-                  <div class="flex items-center gap-2 text-[10px] text-zinc-400 mt-0.5">
-                    <span class="text-amber-400 font-mono font-semibold">${m.time}</span>
-                    <span>•</span>
-                    <span class="text-zinc-300">${m.tag}</span>
-                  </div>
+                  <h5 class="text-xs font-bold text-zinc-100">${item.title}</h5>
+                  <span class="text-[10px] text-amber-400/90 font-mono">${milestoneTags[idx]}</span>
                 </div>
               </div>
 
-              <!-- Top Image Controls -->
+              <button onclick="copyElementText('img-prompt-val-${num}', 'Prompt Foto ${num} berhasil disalin!')" class="text-xs bg-zinc-800 hover:bg-zinc-700 text-amber-300 hover:text-white px-3 py-1.5 rounded-lg transition font-medium flex items-center gap-1.5 border border-zinc-700 shadow-sm">
+                <i data-lucide="copy" class="w-3 h-3"></i>
+                <span>Copy Prompt Foto ${num}</span>
+              </button>
+            </div>
+
+            <p id="img-prompt-val-${num}" class="text-zinc-200 text-xs font-mono leading-relaxed bg-black/40 p-2.5 rounded-lg border border-zinc-800/80 selection:bg-amber-500/30 select-all">${item.prompt}</p>
+          </div>
+        `;
+      }).join('');
+
+      // 2. RENDER 4 VIDEO PROMPT CARDS (BOTTOM SECTION)
+      const vidContainer = document.getElementById('video-prompts-container');
+      vidContainer.innerHTML = parsedStoryboardData.parts.map(part => {
+        const startFoto = `Foto ${part.num} (${(part.num - 1) * 8}s)`;
+        const endFoto = `Foto ${part.num + 1} (${part.num * 8}s)`;
+
+        return `
+          <div class="bg-zinc-900/90 border border-zinc-800 hover:border-emerald-500/50 rounded-xl p-4 space-y-3 transition">
+            
+            <!-- Video Card Header -->
+            <div class="flex items-center justify-between flex-wrap gap-2">
               <div class="flex items-center gap-2">
-                <button onclick="renderSingleAiImage(${m.num})" class="text-xs bg-purple-600/20 hover:bg-purple-600/30 text-purple-300 border border-purple-500/30 px-2.5 py-1 rounded-lg transition font-medium flex items-center gap-1">
-                  <i data-lucide="wand-2" class="w-3 h-3"></i>
-                  <span>${isAiGen ? 'Render Ulang AI' : 'Render AI'}</span>
-                </button>
+                <span class="w-6 h-6 rounded-md bg-emerald-500/20 text-emerald-400 font-bold text-xs flex items-center justify-center border border-emerald-500/30">
+                  ${part.num}
+                </span>
+                <div>
+                  <h5 class="text-xs font-bold text-zinc-100">${part.title}</h5>
+                  <span class="text-[10px] text-emerald-400 font-mono">Durasi: 8 Detik (${(part.num - 1) * 8}s - ${part.num * 8}s)</span>
+                </div>
+              </div>
+
+              <button onclick="copyElementText('vid-prompt-val-${part.num}', 'Prompt Video Klip ${part.num} berhasil disalin!')" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-lg transition font-medium flex items-center gap-1.5 shadow-sm">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span>Copy Prompt Video ${part.num}</span>
+              </button>
+            </div>
+
+            <!-- Start Frame & End Frame Badge Tracker -->
+            <div class="flex flex-wrap items-center gap-2 text-[10px]">
+              <div class="px-2.5 py-1 rounded-md bg-amber-950/40 border border-amber-500/30 text-amber-300 flex items-center gap-1 font-mono">
+                <i data-lucide="image" class="w-3 h-3 text-amber-400"></i>
+                <span><b>Frame Awal:</b> ${part.frameAwal || startFoto}</span>
+              </div>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <div class="px-2.5 py-1 rounded-md bg-amber-950/40 border border-amber-500/30 text-amber-300 flex items-center gap-1 font-mono">
+                <i data-lucide="image" class="w-3 h-3 text-amber-400"></i>
+                <span><b>Frame Akhir:</b> ${part.frameAkhir || endFoto}</span>
+              </div>
+              <div class="px-2 py-1 rounded-md bg-zinc-800 border border-zinc-700 text-teal-300 flex items-center gap-1">
+                <i data-lucide="camera" class="w-3 h-3 text-teal-400"></i>
+                <span>${part.camera}</span>
               </div>
             </div>
 
-            <!-- Two-Column Layout (Left: Image Preview & Download, Right: Prompts) -->
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
-              
-              <!-- LEFT: Image Preview Box (4 cols) -->
-              <div class="md:col-span-4 space-y-2">
-                <div class="relative group rounded-xl overflow-hidden bg-black/60 border border-zinc-800 aspect-[4/3] flex items-center justify-center">
-                  
-                  <img id="card-img-${m.num}" 
-                       src="${currentImageSrc || 'https://placehold.co/400x300/18181b/52525b?text=Gambar+' + m.num}" 
-                       alt="Referensi Gambar ${m.num}" 
-                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer"
-                       onclick="openLightbox(this.src, 'gambar_${m.num}_referensi.jpg')">
-
-                  <!-- Image Badge Tag -->
-                  <div class="absolute top-2 left-2 px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider ${isExtracted ? 'bg-teal-500/90 text-zinc-950' : isAiGen ? 'bg-purple-500/90 text-white' : 'bg-zinc-800/90 text-zinc-300'}">
-                    ${isExtracted ? 'Frame Asli Video' : isAiGen ? 'FLUX.1 AI Render' : 'Placeholder'}
-                  </div>
-
-                  <!-- Quick Zoom Overlay -->
-                  <div onclick="openLightbox(document.getElementById('card-img-${m.num}').src, 'gambar_${m.num}_referensi.jpg')" class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-xs gap-1 cursor-pointer transition">
-                    <i data-lucide="zoom-in" class="w-4 h-4"></i>
-                    <span>Buka Penuh</span>
-                  </div>
-                </div>
-
-                <!-- Download Image Button -->
-                <button onclick="downloadImageCard(${m.num})" class="w-full text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-200 py-1.5 px-3 rounded-lg transition font-medium flex items-center justify-center gap-1.5 border border-zinc-700 shadow-sm">
-                  <i data-lucide="download" class="w-3.5 h-3.5 text-emerald-400"></i>
-                  <span>Download Gambar ${m.num}</span>
-                </button>
-              </div>
-
-              <!-- RIGHT: Prompts & Details (8 cols) -->
-              <div class="md:col-span-8 space-y-3">
-                
-                <!-- PROMPT 1: PROMPT GAMBAR (FLUX / MIDJOURNEY) -->
-                <div class="space-y-1">
-                  <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1">
-                      <i data-lucide="image" class="w-3 h-3"></i> Prompt Gambar ${m.num} (FLUX / Midjourney):
-                    </span>
-                    <button onclick="copyElementText('img-prompt-text-${m.num}', 'Prompt Gambar ${m.num} berhasil disalin!')" class="text-[10px] bg-zinc-800 hover:bg-zinc-700 text-zinc-300 px-2 py-0.5 rounded transition flex items-center gap-1 border border-zinc-700">
-                      <i data-lucide="copy" class="w-2.5 h-2.5"></i> Copy Prompt Gambar
-                    </button>
-                  </div>
-                  <p id="img-prompt-text-${m.num}" class="text-zinc-200 text-xs font-mono leading-relaxed bg-black/40 p-2.5 rounded-lg border border-zinc-800/80 selection:bg-amber-500/30">${imgData.prompt}</p>
-                </div>
-
-                <!-- PROMPT 2: PROMPT VIDEO GOOGLE FLOW (FOR KLIP 1..4) -->
-                ${m.hasVideo && partData ? `
-                  <div class="space-y-1 pt-1 border-t border-zinc-800/60">
-                    <div class="flex items-center justify-between flex-wrap gap-1">
-                      <div class="flex items-center gap-1.5">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1">
-                          <i data-lucide="video" class="w-3 h-3"></i> Prompt Video ${m.num} Google Flow (8 Detik):
-                        </span>
-                        <span class="text-[9px] px-1.5 py-0.2 rounded bg-zinc-800 text-teal-300 border border-zinc-700 font-mono">
-                          ${partData.camera}
-                        </span>
-                      </div>
-                      <button onclick="copyElementText('vid-prompt-text-${m.num}', 'Prompt Video Klip ${m.num} berhasil disalin!')" class="text-[10px] bg-emerald-600 hover:bg-emerald-500 text-white px-2.5 py-0.5 rounded transition flex items-center gap-1 shadow-sm font-medium">
-                        <i data-lucide="copy" class="w-2.5 h-2.5"></i> Copy Prompt Video
-                      </button>
-                    </div>
-
-                    <p id="vid-prompt-text-${m.num}" class="text-zinc-100 text-xs font-mono leading-relaxed bg-emerald-950/20 p-2.5 rounded-lg border border-emerald-500/20 selection:bg-emerald-500">${partData.prompt}</p>
-
-                    <!-- Indonesian Description & Connection -->
-                    <div class="flex items-start justify-between gap-2 text-[10px] text-zinc-400 pt-0.5">
-                      <span>💡 <b>Alur:</b> Upload <b>Gambar ${m.num}</b> ke Google Flow ➔ Bergerak menuju <b>Gambar ${m.num + 1}</b></span>
-                    </div>
-                    ${partData.indonesian ? `<p class="text-[10px] text-zinc-300 italic bg-black/20 p-1.5 rounded">${partData.indonesian}</p>` : ''}
-                  </div>
-                ` : `
-                  <div class="p-2.5 bg-amber-950/20 border border-amber-500/20 rounded-lg text-[10px] text-amber-300 flex items-center gap-2">
-                    <i data-lucide="trophy" class="w-3.5 h-3.5 flex-shrink-0 text-amber-400"></i>
-                    <span><b>Gambar 5:</b> Merupakan hasil mahakarya 100% jadi. Digunakan sebagai frame target akhir di CapCut atau cover thumbnail viral Reels!</span>
-                  </div>
-                `}
-
-              </div>
-
+            <!-- Video Prompt Box -->
+            <div class="space-y-1">
+              <span class="text-[11px] font-semibold text-emerald-400 uppercase tracking-wider">Prompt Video Google Flow (Paste bersama Foto Awal & Akhir):</span>
+              <p id="vid-prompt-val-${part.num}" class="text-zinc-100 text-xs font-mono leading-relaxed bg-black/50 p-2.5 rounded-lg border border-zinc-800 selection:bg-emerald-500 select-all">${part.prompt}</p>
             </div>
+
+            <!-- Indonesian Description -->
+            ${part.indonesian ? `
+              <div class="bg-zinc-950/50 p-2 rounded-lg border border-zinc-800/80 text-[11px] text-zinc-300">
+                <span class="font-semibold text-zinc-400">Deskripsi:</span> ${part.indonesian}
+              </div>
+            ` : ''}
 
           </div>
         `;
       }).join('');
 
       lucide.createIcons();
-    }
-
-    // AI Direct Image Rendering using Pollinations FLUX.1
-    async function renderSingleAiImage(num) {
-      if (!parsedStoryboardData || !parsedStoryboardData.imagePrompts[num]) return;
-      const prompt = parsedStoryboardData.imagePrompts[num].prompt;
-      const cardImg = document.getElementById(`card-img-${num}`);
-
-      showToast(`Sedang me-render Gambar ${num} dengan FLUX.1...`);
-      const cleanPrompt = prompt.replace(/[^\w\s,.-]/gi, ' ').trim().slice(0, 450);
-      const seed = Math.floor(Math.random() * 1000000);
-      const aiUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(cleanPrompt)}?model=flux&width=1024&height=1024&nologo=true&seed=${seed}`;
-
-      const preloader = new Image();
-      preloader.onload = () => {
-        generatedAiImages[num] = aiUrl;
-        if (cardImg) {
-          cardImg.src = aiUrl;
-        }
-        showToast(`Gambar ${num} berhasil di-render oleh AI!`);
-      };
-      preloader.onerror = () => {
-        showToast(`Gagal merender Gambar ${num}. Coba lagi nanti.`, true);
-      };
-      preloader.src = aiUrl;
-    }
-
-    async function renderAllAiImages() {
-      if (!parsedStoryboardData || !parsedStoryboardData.imagePrompts) return;
-      showToast('Memulai render 5 Gambar AI dengan FLUX.1...');
-
-      for (let i = 1; i <= 5; i++) {
-        renderSingleAiImage(i);
-        await new Promise(r => setTimeout(r, 600)); // Stagger slightly
-      }
-    }
-
-    // Download Single Image Card
-    function downloadImageCard(num) {
-      const cardImg = document.getElementById(`card-img-${num}`);
-      if (!cardImg || !cardImg.src) return;
-
-      const a = document.createElement('a');
-      a.href = cardImg.src;
-      a.download = `gambar_${num}_referensi.jpg`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      showToast(`Gambar ${num} berhasil diunduh!`);
-    }
-
-    // Download All 5 Images
-    function downloadAllImages() {
-      showToast('Mengunduh semua 5 gambar referensi...');
-      for (let i = 1; i <= 5; i++) {
-        setTimeout(() => {
-          downloadImageCard(i);
-        }, i * 400);
-      }
     }
 
     // Copy Handlers
@@ -1357,23 +1187,78 @@
       showToast('Seluruh teks prompt berhasil disalin!');
     }
 
-    function copyAllFlowPrompts() {
+    function copyAllImagePrompts() {
+      if (!parsedStoryboardData || !parsedStoryboardData.imagePrompts) {
+        return copyFullPrompt();
+      }
+
+      let text = `📸 DAFTAR 5 PROMPT GAMBAR PROSES (GENERATE DI MIDJOURNEY / FLUX)\n=================================================================\n\n`;
+      for (let i = 1; i <= 5; i++) {
+        const item = parsedStoryboardData.imagePrompts[i];
+        if (item) {
+          text += `[FOTO ${i}: ${item.title.toUpperCase()}]\n${item.prompt}\n\n-----------------------------------------------------------------\n\n`;
+        }
+      }
+
+      navigator.clipboard.writeText(text);
+      showToast('Semua prompt Foto 1 s/d 5 berhasil disalin!');
+    }
+
+    function copyAllVideoPrompts() {
       if (!parsedStoryboardData || !parsedStoryboardData.parts || parsedStoryboardData.parts.length === 0) {
         return copyFullPrompt();
       }
 
-      let combined = `🎬 GOOGLE FLOW (VEO) 32-SECOND TIMELAPSE STORYBOARD\n======================================================\n\n`;
-      
+      let text = `🎬 DAFTAR 4 PROMPT VIDEO GOOGLE FLOW (START & END FRAME)\n=================================================================\n\n`;
       parsedStoryboardData.parts.forEach(p => {
-        combined += `[${p.title.toUpperCase()}]\nInput: ${p.inputImage}\nCamera: ${p.camera}\nPrompt:\n${p.prompt}\n\n`;
+        text += `[${p.title.toUpperCase()}]\nFrame Awal: ${p.frameAwal}\nFrame Akhir: ${p.frameAkhir}\nKamera: ${p.camera}\nPrompt:\n${p.prompt}\n\nDeskripsi: ${p.indonesian || '-'}\n\n-----------------------------------------------------------------\n\n`;
       });
 
       if (parsedStoryboardData.timelapseGuide.negativePrompt) {
-        combined += `[NEGATIVE PROMPT]\n${parsedStoryboardData.timelapseGuide.negativePrompt}\n\n`;
+        text += `[NEGATIVE PROMPT]\n${parsedStoryboardData.timelapseGuide.negativePrompt}\n\n`;
       }
 
-      navigator.clipboard.writeText(combined);
-      showToast('Semua prompt video Google Flow berhasil disalin!');
+      navigator.clipboard.writeText(text);
+      showToast('Semua prompt Video Klip 1 s/d 4 berhasil disalin!');
+    }
+
+    // Download Storyboard as .txt file
+    function downloadStoryboardTxt() {
+      if (!currentResultPrompt) return;
+      let textToDownload = currentResultPrompt;
+
+      if (parsedStoryboardData && parsedStoryboardData.parts.length > 0) {
+        textToDownload = `🎬 GOOGLE FLOW (VEO) 32-SECOND STORYBOARD (5 IMAGES & 4 VIDEOS)\n=================================================================\n\n`;
+        
+        textToDownload += `📸 SEKSI 1: PROMPT GAMBAR PROSES (GENERATE DI MIDJOURNEY / FLUX)\n-----------------------------------------------------------------\n`;
+        for (let i = 1; i <= 5; i++) {
+          const item = parsedStoryboardData.imagePrompts[i];
+          if (item) {
+            textToDownload += `[FOTO ${i}: ${item.title.toUpperCase()}]\n${item.prompt}\n\n`;
+          }
+        }
+
+        textToDownload += `\n🎬 SEKSI 2: PROMPT VIDEO GOOGLE FLOW (START FRAME & END FRAME)\n-----------------------------------------------------------------\n`;
+        parsedStoryboardData.parts.forEach(p => {
+          textToDownload += `[${p.title.toUpperCase()}]\nFrame Awal: ${p.frameAwal}\nFrame Akhir: ${p.frameAkhir}\nKamera: ${p.camera}\nPrompt:\n${p.prompt}\n\nDeskripsi: ${p.indonesian || '-'}\n\n-----------------------------------------------------------------\n\n`;
+        });
+
+        textToDownload += `\n💡 PANDUAN TEKNIS & PARAMETER\n-----------------------------------------------------------------\n`;
+        textToDownload += `Kamera: ${parsedStoryboardData.timelapseGuide.cameraRules || 'Fixed Tripod di Klip 1-3'}\n`;
+        textToDownload += `Negative Prompt: ${parsedStoryboardData.timelapseGuide.negativePrompt || '-'}\n`;
+        textToDownload += `CapCut Tips: ${parsedStoryboardData.timelapseGuide.capcutWorkflow || '-'}\n`;
+      }
+
+      const blob = new Blob([textToDownload], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `google-flow-storyboard-32s-${Date.now()}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('File storyboard .txt berhasil diunduh!');
     }
 
     // Toast Notification
@@ -1419,7 +1304,7 @@
                     <span class="text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full ${isVid ? 'bg-teal-500/10 text-teal-400 border border-teal-500/20' : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'}">
                       ${isVid ? '🎬 Video' : '🖼️ Gambar'}
                     </span>
-                    ${isFlow ? '<span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">5 Keyframes</span>' : ''}
+                    ${isFlow ? '<span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">5 Image & 4 Video</span>' : ''}
                   </div>
                   <span class="text-[11px] text-zinc-500 font-mono">#${item.id}</span>
                 </div>
